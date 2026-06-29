@@ -4,14 +4,10 @@ import { createBrowserRouter } from "react-router-dom";
 
 import App from "./App";
 
-// page components
-
 import Bar from "./pages/Bar/Bar";
 import Cocktails from "./pages/Cocktails/Cocktails";
 import Favorites from "./pages/Favorites/Favorites";
 import Home from "./pages/Home/Home";
-
-// router creation
 
 const router = createBrowserRouter([
 	{
@@ -36,8 +32,6 @@ const router = createBrowserRouter([
 		],
 	},
 ]);
-
-// rendering
 
 const rootElement = document.getElementById("root");
 
