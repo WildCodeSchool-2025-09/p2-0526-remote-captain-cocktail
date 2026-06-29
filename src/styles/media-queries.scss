@@ -1,0 +1,32 @@
+$breakpoints: (
+    'xs':  480px,
+    'sm':  768px,
+    'md':  992px,
+    'lg':  1024px,
+    'xl':  1200px,
+);
+
+@mixin breakpoint($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @warn "Breakpoint `#{$breakpoint}` introuvable. Disponibles : #{map-keys($breakpoints)}.";
+    }
+}
+
+/*
+
+Call media-queries mixin into files like that :
+
+.selector {
+    color: red;
+
+    @include breakpoint('md') {
+         color: blue;
+    };
+
+};
+
+*/
