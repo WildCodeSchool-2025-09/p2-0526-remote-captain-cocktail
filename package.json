@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "vite --open",
 		"build": "tsc -b && vite build",
 		"check": "biome check --error-on-warnings --no-errors-on-unmatched --staged . && npm run check-types --if-present",
 		"preview": "vite preview",
@@ -16,7 +16,9 @@
 		"gg": "file:",
 		"lesperses": "file:",
 		"react": "^18.3.1",
-		"react-dom": "^18.3.1"
+		"react-dom": "^18.3.1",
+		"react-router": "^6.30.4",
+		"react-router-dom": "^6.30.4"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.2",
