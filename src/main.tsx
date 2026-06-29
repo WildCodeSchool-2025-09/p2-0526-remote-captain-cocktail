@@ -6,10 +6,10 @@ import App from "./App";
 
 // page components
 
-import Home from "./pages/Home/Home";
 import Bar from "./pages/Bar/Bar";
 import Cocktails from "./pages/Cocktails/Cocktails";
 import Favorites from "./pages/Favorites/Favorites";
+import Home from "./pages/Home/Home";
 
 // router creation
 
