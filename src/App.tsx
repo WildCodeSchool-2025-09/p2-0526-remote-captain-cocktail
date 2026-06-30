@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
 
-import "./App.css";
+import "./App.scss";
 
 function App() {
 	return (
