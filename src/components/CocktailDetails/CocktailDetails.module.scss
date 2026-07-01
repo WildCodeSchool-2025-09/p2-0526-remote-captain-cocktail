@@ -1,3 +1,19 @@
 .cocktail-card {
-    background-color: blue;
+    font-family: poppins;
+
+    h1 {
+        font-family: pacifico;
+    }
+
+    img
+    {
+        &.favheart {
+        width: 30px;
+        }
+        &.cocktail-img{
+            width: 300px;
+        }
+        &.ingredient-img{
+            width: 50px;
+    }}
 }
