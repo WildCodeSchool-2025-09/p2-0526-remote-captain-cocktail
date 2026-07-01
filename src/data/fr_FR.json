@@ -1,3 +1,30 @@
 {
-    "cocktail": "Cocktail"
+    "cocktail": "Cocktail",
+    "bar": {
+        "howTo": {
+            "title": "Comment ça marche?",
+            "steps": [
+                {
+                    "id": "add",
+                    "line1": "Ajoute des ingrédients",
+                    "line2": "à ton bar"                    
+                },
+                {
+                    "id": "discover",
+                    "line1": "Découvre les cocktails",
+                    "line2": "que tu peux réaliser"                    
+                },
+                {
+                    "id": "explore",
+                    "line1": "Explore nos suggestions",
+                    "line2": "et ce qu'il te manque"                    
+                },
+                {
+                    "id": "click",
+                    "line1": "Clique sur un cocktail",
+                    "line2": "pour voir la recette"                    
+                }
+            ]
+        }
+    }
 }
