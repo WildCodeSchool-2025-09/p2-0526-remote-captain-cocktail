@@ -1,16 +1,49 @@
+import { useEffect, useState } from "react";
+
 import IngredientsDropdown from "../../components/IngredientsDropdown/IngredientsDropdown";
-import IngredientsSearch from "../../components/IngredientsSearch/IngredientsDropdown";
+import IngredientsSearch from "../../components/IngredientsSearch/IngredientsSearch";
 import MyIngredients from "../../components/MyIngredients/MyIngredients";
 import MySuggestions from "../../components/MySuggestions/MySuggestions";
 
 import styles from "./Bar.module.scss";
 
 import t from "../../data/fr_FR.json";
+import type { IngredientListItem } from "../../types/types";
+
+const API_KEY = import.meta.env.VITE_API_KEY;
+const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
 
 function Bar() {
+	const [ingredients, setIngredients] = useState<IngredientListItem[]>([]);
+
+	useEffect(() => {
+		fetch(`${BASE}/list.php?i=list`)
+			.then((res) => res.json())
+			.then((data) => setIngredients(data.drinks));
+	}, []);
+
+	const [search, setSearch] = useState("");
+
+	// async function getAllDrinks() {
+	// 	const letters = "abcdefghijklmnopqrstuvwxyz".split("");
+	// 	const results = await Promise.all(
+	// 		letters.map((letter) =>
+	// 			fetch(`${BASE}/search.php?f=${letter}`)
+	// 				.then((res) => res.json())
+	// 				.then((data) => data.drinks ?? []),
+	// 		),
+	// 	);
+	// 	return results.flat();
+	// }
+
+	// useEffect(() => {
+	// 	getAllDrinks().then((drinks) => setCocktails(drinks));
+	// }, []);
+
 	return (
 		<div className={styles["bar-page"]}>
-			<IngredientsSearch />
+			{console.log(ingredients)}
+			<IngredientsSearch search={search} setSearch={setSearch} />
 			<div className="how-to">
 				<h3>{t.bar.howTo.title}</h3>
 				<ul>
