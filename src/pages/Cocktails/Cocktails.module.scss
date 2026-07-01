@@ -1,0 +1,215 @@
+@use '../../styles/colors.scss';
+@use '../../styles/variables.scss';
+@use '../../styles/media-queries.scss' as *;
+
+/* ======== ECRAN COMPLET =========*/
+:global(body) {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-image: url('/assets/images/background-pages.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+}
+
+:global(nav) {
+  display: none;
+}
+
+:global(main nav) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: var(--spacer-medium);
+}
+
+/* ======== HEADER =========*/
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  margin: 30px 0 0 0;
+  padding: 0 var(--spacer-medium);
+  
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 0;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 0 0 12px 12px;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 5px var(--secondary), inset 0 0 10px rgba(255, 77, 182, 0.2);
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  color: white;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+}
+
+.search-bar input::placeholder {
+  color: white;
+}
+
+.search-bar input::placeholder {
+  color: white;
+}
+
+.icon-search {
+  width: 13px;
+  height: 13px;
+  filter: brightness(0) invert(1);
+}
+
+.search-row button {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 5px var(--secondary), inset 0 0 10px rgba(255, 77, 182, 0.2);
+}
+
+.icon-sort {
+  width: 14px;
+  height: 14px;
+  filter: brightness(0) invert(1);
+}
+
+.filter-row {
+  display: flex;
+  padding-top: 5px;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.btn-active {
+  background: -moz-linear-gradient(left, var(--secondary) 0%, var(--primary) 100%);
+  background: -webkit-linear-gradient(left, var(--secondary) 0%, var(--primary) 100%);
+  background: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
+  border-radius: 40px;
+  padding: var(--spacer-small) var(--spacer-medium);
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  box-shadow: 0px 0px 21px -3px var(--secondary);
+}
+
+.filter-row button {
+  flex: 1;
+  padding: 6px 14px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 5px var(--secondary), inset 0 0 10px rgba(255, 77, 182, 0.2);
+}
+
+.filter-row .btn-active {
+  background: -moz-linear-gradient(left, var(--secondary) 0%, var(--primary) 100%);
+  background: -webkit-linear-gradient(left, var(--secondary) 0%, var(--primary) 100%);
+  background: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
+  border-radius: 40px;
+  border: none;
+  box-shadow: 0px 0px 21px -3px var(--secondary);
+}
+
+/* ======== LES COCKTAILS =========*/
+
+.cocktails-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: var(--spacer-medium);
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid transparent;
+  background: linear-gradient(var(--background2), var(--background2)) padding-box, linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
+}
+
+article p {
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 0 0 12px 12px;
+  margin-top: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+article button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(100, 100, 100, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+  .icon-heart {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1); 
+}
+
+
+
+/* ======== FOOTER TEMPORAIRE =========*/
+
+.temp-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: black;
+}
