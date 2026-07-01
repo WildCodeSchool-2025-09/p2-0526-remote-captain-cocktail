@@ -43,6 +43,10 @@ function Bar() {
 	return (
 		<div className={styles["bar-page"]}>
 			{console.log(ingredients)}
+			<h1 className={styles["bar-title"]}>
+				<span>{t.bar.title}</span>
+				<img src="/assets/icons/palm.svg" alt="title icon" />
+			</h1>
 			<IngredientsSearch search={search} setSearch={setSearch} />
 			<div className="how-to">
 				<h3>{t.bar.howTo.title}</h3>

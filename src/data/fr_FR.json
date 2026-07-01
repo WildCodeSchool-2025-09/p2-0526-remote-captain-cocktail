@@ -1,6 +1,7 @@
 {
     "cocktail": "Cocktail",
     "bar": {
+        "title": "Mon Bar",
         "howTo": {
             "title": "Comment ça marche?",
             "steps": [
