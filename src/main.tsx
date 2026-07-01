@@ -9,6 +9,7 @@ import Bar from "./pages/Bar/Bar";
 import Cocktails from "./pages/Cocktails/Cocktails";
 import Favorites from "./pages/Favorites/Favorites";
 import Home from "./pages/Home/Home";
+import CocktailDetails from "./components/CocktailDetails/CocktailDetails";
 
 const router = createBrowserRouter([
 	{
@@ -27,9 +28,14 @@ const router = createBrowserRouter([
 				element: <Cocktails />,
 			},
 			{
+				path: "/cocktail/:id",
+				element: <CocktailDetails/>,
+			},
+			{
 				path: "/favorites",
 				element: <Favorites />,
 			},
+
 		],
 	},
 ]);

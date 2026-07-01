@@ -1,21 +1,60 @@
 import { useEffect, useState } from "react";
-import { Cocktails, Ingredients } from "../../types/types";
+import { Cocktails } from "../../types/types";
 import styles from "./CocktailDetails.module.scss";
+import { useParams } from "react-router";
 
 function CocktailDetails() {
-	const [cocktailDetails, setCocktailDetails] = useState("");
-	useEffect(() => {
+	let {id} = useParams();
+	const [cocktailDetails, setCocktailDetails] = useState<Cocktails | null>(null);
+	const [error, setError] = useState(false);
+	const fetchCocktail = () =>{
+		setError(false);
 		const API_KEY = import.meta.env.VITE_API_KEY;
 		const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
-		fetch(`${BASE}/lookup.php?i=11007`)
-			.then((response) => response.json())
+		fetch(`${BASE}/lookup.php?i=${id}`)
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Erreur réseau");
+				}
+				return response.json();
+			})
 			.then((data) => {
 				setCocktailDetails(data.drinks[0]);
+			})
+			.catch(() => {
+				setError(true);
 			});
-	}, []);
+	}
+	useEffect(() => {
+		fetchCocktail();
+	}, [id]);
+	if (error) {
+		return (
+			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
+			<br />
+			<div className={styles.exclamationpoint} role="img" aria-label="!">
+				<span className={styles.icon}></span>
+			</div>
+			<br />
+			<h2>Cocktail introuvable</h2>
+			<br />
+			<p>Une erreur est survenue. Vérifiez votre connexion et réessayez.</p>
+			<br />
+			<button onClick={fetchCocktail}>Réessayer</button>
+			<br />
+			</article>
+		)
+	}
+	if (!cocktailDetails) {
+	return (
+			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
+				<p>Chargement ...</p>
+		</article>
+		)		
+	}
+
 	return (
 		<article className={styles["cocktail-card"]}>
-			{console.log(cocktailDetails)}
 			<h1>Details et recette de {cocktailDetails.strDrink}</h1>
 			<img
 				className={styles["cocktail-img"]}

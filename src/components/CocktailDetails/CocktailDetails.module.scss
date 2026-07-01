@@ -1,5 +1,26 @@
+@use '../../styles/reset.scss';
+@use '../../styles/colors.scss';
+@use '../../styles/variables.scss';
+@use '../../styles/fonts.scss';
+@use '../../styles/animations.scss';
+@use '../../styles/media-queries.scss';
+
+
+:global nav {
+    display:none;
+}
+
 .cocktail-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-image: url("../../../public/assets/images/background-pages.png");
     font-family: poppins;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     h1 {
         font-family: pacifico;
@@ -16,4 +37,38 @@
         &.ingredient-img{
             width: 50px;
     }}
+}
+
+.not-found {
+    .exclamationpoint {
+        width: 50px;
+        height: 50px;
+        border: 1px solid var(--secondary);
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 0px 21px -3px var(--secondary);
+
+    }
+
+    .icon {
+        width: 60%;
+        height: 60%;
+        background-color: var(--secondary);
+        -webkit-mask: url("../../public/assets/icons/exclamationpoint.svg") no-repeat center / contain;
+        mask: url("../../public/assets/icons/exclamationpoint.svg") no-repeat center / contain;
+    }
+
+    button {        
+        background: -moz-linear-gradient(left, var(--secondary) 0%, var(--primary) 100%);
+        background: -webkit-linear-gradient(left, var(--secondary) 0%, var(--primary) 100%);
+        background: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
+        border-radius: 40px;
+        padding: var(--spacer-small) var(--spacer-medium);
+        border: none;
+        font-family: poppins;
+        font-weight: 700;
+        box-shadow: 0px 0px 21px -3px var(--secondary);
+    }
 }
