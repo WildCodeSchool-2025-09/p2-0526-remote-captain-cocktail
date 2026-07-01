@@ -1,0 +1,62 @@
+export interface Cocktails {
+	dateModified?: string;
+	idDrink: string;
+	strAlcoholic?: string;
+	strCategory?: string;
+	strCreativeCommonsConfirmed?: string;
+	strDrink: string;
+	strDrinkAlternate?: string;
+	strDrinkThumb?: string;
+	strGlass?: string;
+	strIBA?: string;
+	strImageAttribution?: string;
+	strImageSource?: string;
+	stringredient1?: string;
+	stringredient2?: string;
+	stringredient3?: string;
+	stringredient4?: string;
+	stringredient5?: string;
+	stringredient6?: string;
+	stringredient7?: string;
+	stringredient8?: string;
+	stringredient9?: string;
+	stringredient10?: string;
+	stringredient11?: string;
+	stringredient12?: string;
+	stringredient13?: string;
+	stringredient14?: string;
+	stringredient15?: string;
+	strInstructions?: string;
+	strInstructionsDE?: string;
+	strInstructionsES?: string;
+	strInstructionsFR?: string;
+	strInstructionsIT?: string;
+	"strInstructionsZH-HANS"?: string;
+	"strInstructionsZH-HANT"?: string;
+	strMeasure1?: string;
+	strMeasure2?: string;
+	strMeasure3?: string;
+	strMeasure4?: string;
+	strMeasure5?: string;
+	strMeasure6?: string;
+	strMeasure7?: string;
+	strMeasure8?: string;
+	strMeasure9?: string;
+	strMeasure10?: string;
+	strMeasure11?: string;
+	strMeasure12?: string;
+	strMeasure13?: string;
+	strMeasure14?: string;
+	strMeasure15?: string;
+	strTags?: string;
+	strVideo?: string;
+}
+
+export interface Ingredients {
+	idIngredient: string;
+	strIngredient: string;
+	strDescription?: string;
+	strType?: string;
+	strAlcohol?: string;
+	strABV?: string;
+}
