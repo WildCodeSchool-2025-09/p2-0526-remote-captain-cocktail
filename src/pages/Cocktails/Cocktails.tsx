@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import type { Cocktails as CocktailItem } from "../../types/types";
+import type { Cocktails as CocktailCard } from "../../types/types";
+import styles from "./Cocktails.module.scss";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
@@ -17,7 +18,7 @@ async function getAllDrinks() {
 }
 
 function Cocktails() {
-	const [cocktails, setCocktails] = useState<CocktailItem[]>([]);
+	const [cocktails, setCocktails] = useState<CocktailCard[]>([]);
 
 	useEffect(() => {
 		getAllDrinks().then((drinks) => setCocktails(drinks));
@@ -26,28 +27,56 @@ function Cocktails() {
 	return (
 		<>
 			<h1>Tous les cocktails</h1>
-			<nav>
-				<div>
-					<img src="/assets/icons/search.svg" alt="rechercher" />
-					<input type="text" placeholder="Rechercher un cocktail..." />
-				</div>
-				<button type="button">
-					<img src="/assets/icons/sort.svg" alt="trier" />
-				</button>
-				<button type="button">Nom du filtre</button>
-				<button type="button">Nom du filtre</button>
-				<button type="button">Nom du filtre</button>
-				<button type="button">Nom du filtre</button>
-			</nav>
-			{cocktails.map((cocktail) => (
-				<article key={cocktail.idDrink}>
+			<nav className={styles["search-nav"]}>
+				<div className={styles["search-row"]}>
+					<div className={styles["search-bar"]}>
+						<img
+							className={styles["icon-search"]}
+							src="/assets/icons/search.svg"
+							alt="rechercher"
+						/>
+						<input type="text" placeholder="Rechercher un cocktail..." />
+					</div>
+
 					<button type="button">
-						<img src="/assets/icons/heart.svg" alt="ajouter aux favoris" />
+						<img
+							className={styles["icon-sort"]}
+							src="/assets/icons/sort.svg"
+							alt="trier"
+						/>
 					</button>
-					<img src={cocktail.strDrinkThumb} alt={`${cocktail.strDrink}`} />
-					<p>{cocktail.strDrink}</p>
-				</article>
-			))}
+				</div>
+
+				<div className={styles["filter-row"]}>
+					<button type="button" className={styles["btn-active"]}>
+						Tous
+					</button>
+					<button type="button">Filtre 2</button>
+					<button type="button">Filtre 3</button>
+					<button type="button">Filtre 4</button>
+				</div>
+			</nav>
+
+			<section className={styles["cocktails-grid"]}>
+				{cocktails.map((cocktail) => (
+					<article key={cocktail.idDrink}>
+						<button type="button">
+							<img
+								className={styles["icon-heart"]}
+								src="/assets/icons/heart.svg"
+								alt="ajouter aux favoris"
+							/>
+						</button>
+						<img
+							className={styles["card-img"]}
+							src={cocktail.strDrinkThumb}
+							alt={`${cocktail.strDrink}`}
+						/>
+						<p>{cocktail.strDrink}</p>
+					</article>
+				))}
+			</section>
+			<div className={styles["temp-bottom-bar"]} />
 		</>
 	);
 }
