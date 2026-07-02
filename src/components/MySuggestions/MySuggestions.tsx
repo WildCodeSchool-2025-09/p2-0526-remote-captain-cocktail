@@ -15,23 +15,25 @@ function MySuggestions({
 	const [suggestions, setSuggestions] = useState<Cocktails[]>([]);
 
 	useEffect(() => {
-		if (selectedIngredients.length === 0) {
+		if (selectedIngredients.length < 2) {
 			setSuggestions([]);
 			return;
 		}
 
-		const ingredientNames = selectedIngredients
-			.map((i) => i.strIngredient1)
-			.join(",");
+		Promise.all(
+				selectedIngredients.map((i) =>
+					fetch(`${BASE}/filter.php?i=${i.strIngredient1}`)
+						.then((res) => res.json())
+						.then((data) => (Array.isArray(data.drinks) ? data.drinks : [])),
+				),
+			)
+			.then((results) => {
+				const all = results.flat() as Cocktails[];
+				const countById = new Map<string, number>();
+				for (const d of all) countById.set(d.idDrink, (countById.get(d.idDrink) ?? 0) + 1);
 
-		fetch(`${BASE}/filter.php?i=${ingredientNames}`)
-			.then((res) => res.json())
-			.then((data) => {
-				const unique = [
-					...new Map(
-						data.drinks.map((d: Cocktails) => [d.idDrink, d]),
-					).values(),
-				] as Cocktails[];
+				const unique = [...new Map(all.map((d) => [d.idDrink, d])).values()]
+					.filter((d) => (countById.get(d.idDrink) ?? 0) >= 2) as Cocktails[];
 
 				return Promise.all(
 					unique.map((cocktail) =>
