@@ -1,0 +1,11 @@
+.ingr-and-measure{
+    backdrop-filter: blur(12px);
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));         
+    border-radius: 12px;
+    margin: var(--spacer-small);
+    border: 1px solid rgba(255, 255, 255, 0.14); 
+    
+    .ingredient-img{
+        width: 50px;
+    } 
+}

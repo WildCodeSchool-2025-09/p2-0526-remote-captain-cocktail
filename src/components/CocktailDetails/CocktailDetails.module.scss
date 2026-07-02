@@ -10,10 +10,56 @@
     display:none;
 }
 
+.not-found {
+    .exclamationpoint {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 50px;
+        height: 50px;
+        padding: var(--spacer-small);
+        border: 1px solid var(--secondary);
+        border-radius: 40px;
+        box-shadow: 0px 0px 21px -3px var(--secondary);
+        margin: var(--spacer-large);
+
+        svg {
+            width: 100%;
+            height: 100%;
+
+            path, g {
+                fill: var(--secondary);
+            }
+        }
+    }
+
+    h2 {
+        margin: var(--spacer-medium);
+        text-align: center;
+    }
+
+    p {
+        margin: var(--spacer-medium) var(--spacer-large);
+        text-align: center;
+    }
+
+    button {
+        background: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
+        border-radius: 40px;
+        padding: var(--spacer-small) var(--spacer-medium);
+        border: none;
+        font-family: poppins;
+        font-weight: 700;
+        box-shadow: 0px 0px 21px -3px var(--secondary);
+        cursor: pointer;
+        margin: var(--spacer-large);
+    }
+}
+
 .cocktail-card {
     width: 100%;
     height: 100%;
-    position: relative;
     background-size: cover;
     background-image: url("../../../public/assets/images/background-pages.png");
     font-family: poppins;
@@ -24,50 +70,87 @@
 
     h1 {
         font-family: pacifico;
+        margin: var(--spacer-medium);
     }
 
-    img
-    {
-        &.favheart {
-        width: 30px;
-        }
-        &.cocktail-img{
-            width: 300px;
-        }
-        &.ingredient-img{
-            width: 50px;
-    }}
-}
+    // img
+    // {
+    //     &.ingredient-img{
+    //         width: 50px;
+    // }}
 
-.not-found {
-    .exclamationpoint {
-        width: 50px;
-        height: 50px;
-        border: 1px solid var(--secondary);
-        border-radius: 40px;
+    .cocktail-img-favheart {
+        position: relative;
+        display: inline-block;
+
+        img.cocktail-img{
+            width: 22rem;
+            border-radius: 5%;
+            margin: var(--spacer-large);
+        }
+
+        button.favheart {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 45px;
+            right: 45px;
+            border: 1px solid var(--secondary);
+            background: none;
+            border-radius: 50%;
+            padding: var(--spacer-small);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+
+            svg {
+                display: block;
+                width: 100%;
+                height: 100%;
+
+                path, g {
+                    fill: var(--secondary);
+                }
+            }
+        }
+    }
+
+    h2 {        
+        font-size: 2rem;
+        margin-bottom: var(--spacer-medium);
+    }
+
+    ul.cocktail-tags{        
         display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0px 0px 21px -3px var(--secondary);
-
+        li {
+            margin: 0 var(--spacer-small);
+            border: 3px solid #00E5D4;
+            border-radius: 40px;
+            padding: var(--spacer-small);
+            background-color: rgba(0, 229, 212, 0.2);
+            box-shadow: 0px 0px 21px -3px var(--tertiary);
+            backdrop-filter: blur(4px);            
+        }
     }
 
-    .icon {
-        width: 60%;
-        height: 60%;
-        background-color: var(--secondary);
-        mask: url("../../public/assets/icons/exclamationpoint.svg") no-repeat center / contain;
+    div.recipe-specs{
+        display: flex;
+        margin: var(--spacer-medium) 0;
+        p {
+            margin: 0 var(--spacer-small);
+        }
     }
 
-    button {        
-        background: -moz-linear-gradient(left, var(--secondary) 0%, var(--primary) 100%);
-        background: -webkit-linear-gradient(left, var(--secondary) 0%, var(--primary) 100%);
-        background: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
-        border-radius: 40px;
-        padding: var(--spacer-small) var(--spacer-medium);
-        border: none;
-        font-family: poppins;
-        font-weight: 700;
-        box-shadow: 0px 0px 21px -3px var(--secondary);
+    h3{
+        font-size: 1.5rem;
+        margin: var(--spacer-small) 0;
+    }
+    .ingredients {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: var(--spacer-small);
     }
 }
