@@ -38,6 +38,10 @@
         },
         "mySuggestions": {
             "title": "Cocktails suggérés •"
+        },
+        "cocktailSuggestion": {
+            "doable": "Réalisable",
+            "missingIngredient": "Manque : {missingCount}"
         }
     }
 }

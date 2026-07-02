@@ -21,7 +21,7 @@ function MyIngredients({
 					<span>{t.bar.myIngredients.title}</span>
 					{selectedIngredients.length > 0 && (
 						<span>
-							{selectedIngredients.length}
+							{selectedIngredients.length}&nbsp;
 							{selectedIngredients.length > 1 ? "ingrédients" : "ingrédient"}
 						</span>
 					)}
