@@ -5,11 +5,11 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.scss";
 
+import CocktailDetails from "./components/CocktailDetails/CocktailDetails";
 import Bar from "./pages/Bar/Bar";
 import Cocktails from "./pages/Cocktails/Cocktails";
 import Favorites from "./pages/Favorites/Favorites";
 import Home from "./pages/Home/Home";
-import CocktailDetails from "./components/CocktailDetails/CocktailDetails";
 
 const router = createBrowserRouter([
 	{
@@ -29,13 +29,12 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/cocktail/:id",
-				element: <CocktailDetails/>,
+				element: <CocktailDetails />,
 			},
 			{
 				path: "/favorites",
 				element: <Favorites />,
 			},
-
 		],
 	},
 ]);
