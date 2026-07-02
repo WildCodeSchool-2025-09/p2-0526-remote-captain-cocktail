@@ -73,8 +73,12 @@ function CocktailDetails() {
 			<h2>{cocktailDetails.strDrink}</h2>
 			<div className={styles["cocktail-tags"]}>
 				<ul>
-					<li>{cocktailDetails.strAlcoholic}</li>
-					<li>tag2</li>
+					<li className={styles.alcool}>
+						{cocktailDetails.strAlcoholic === "Alcoholic"
+							? "Alcoolisé"
+							: "Sans alcool"}
+					</li>
+					<li>{cocktailDetails.strCategory}</li>
 				</ul>
 			</div>
 			<div className="recipe-specs">
@@ -315,13 +319,28 @@ function CocktailDetails() {
 			<h3>INFORMATIONS</h3>
 			<ul>
 				<li>Type de Verre : {cocktailDetails.strGlass}</li>
-				<li>
-					<abbr title="International Bartenders Association : Catégorie du cocktail">
-						IBA
-					</abbr>{" "}
-					: {cocktailDetails.strIBA}
-				</li>
-				<li>Information3</li>
+
+				{!cocktailDetails.strIBA ? (
+					""
+				) : (
+					<li>
+						<abbr title="International Bartenders Association : Classement du cocktail selon sa popularité">
+							IBA
+						</abbr>{" "}
+						: {cocktailDetails.strIBA}
+					</li>
+				)}
+				{!cocktailDetails.strTags ? (
+					""
+				) : (
+					<li>
+						<ul>
+							{cocktailDetails.strTags.split(",").map((tag) => (
+								<li key={tag}>{tag}</li>
+							))}
+						</ul>
+					</li>
+				)}
 			</ul>
 		</article>
 	);
