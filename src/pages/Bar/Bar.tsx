@@ -47,21 +47,9 @@ function Bar() {
 		);
 	}
 
-	// async function getAllDrinks() {
-	// 	const letters = "abcdefghijklmnopqrstuvwxyz".split("");
-	// 	const results = await Promise.all(
-	// 		letters.map((letter) =>
-	// 			fetch(`${BASE}/search.php?f=${letter}`)
-	// 				.then((res) => res.json())
-	// 				.then((data) => data.drinks ?? []),
-	// 		),
-	// 	);
-	// 	return results.flat();
-	// }
-
-	// useEffect(() => {
-	// 	getAllDrinks().then((drinks) => setCocktails(drinks));
-	// }, []);
+	function handleClearIngredients() {
+		setSelectedIngredients([]);
+	}
 
 	return (
 		<div className={styles.page}>
@@ -92,6 +80,7 @@ function Bar() {
 				<MyIngredients
 					selectedIngredients={selectedIngredients}
 					onRemove={handleRemoveIngredient}
+					onClear={handleClearIngredients}
 				/>
 				<MySuggestions selectedIngredients={selectedIngredients} />
 			</div>

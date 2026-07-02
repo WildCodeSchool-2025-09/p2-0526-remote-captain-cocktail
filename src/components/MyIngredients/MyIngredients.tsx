@@ -8,21 +8,29 @@ import Icon from "../Icon/Icon";
 function MyIngredients({
 	selectedIngredients,
 	onRemove,
+	onClear,
 }: {
 	selectedIngredients: IngredientListItem[];
 	onRemove: (ingredient: IngredientListItem) => void;
+	onClear: () => void;
 }) {
 	return (
 		<section className={styles.ingredients}>
-			<h2>
-				<span>{t.bar.myIngredients.title}</span>
-				{selectedIngredients.length > 0 && (
-					<span>
-						{selectedIngredients.length}
-						{selectedIngredients.length > 1 ? "ingrédients" : "ingrédient"}
-					</span>
-				)}
-			</h2>
+			<div className={styles.title}>
+				<h2>
+					<span>{t.bar.myIngredients.title}</span>
+					{selectedIngredients.length > 0 && (
+						<span>
+							{selectedIngredients.length}
+							{selectedIngredients.length > 1 ? "ingrédients" : "ingrédient"}
+						</span>
+					)}
+				</h2>
+				<button type="button" onClick={onClear}>
+					<Icon name="trashcan" />
+					<span>{t.bar.myIngredients.empty}</span>
+				</button>
+			</div>
 			<ul>
 				{selectedIngredients.map((selectedIngredient) => (
 					<li key={selectedIngredient.strIngredient1}>

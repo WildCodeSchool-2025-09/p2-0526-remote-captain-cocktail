@@ -31,11 +31,11 @@
             "results": "Résultats • A→Z"
         },
         "myIngredients": {
-            "title": "Mon bar",
-            "ingredient": " • ingrédient"
+            "title": "Mon bar •",
+            "empty": "Vider le bar"
         },
         "mySuggestions": {
-            "title": "Cocktails suggérés • "
+            "title": "Cocktails suggérés •"
         }
     }
 }
