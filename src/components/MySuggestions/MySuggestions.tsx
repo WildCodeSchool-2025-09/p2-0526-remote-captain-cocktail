@@ -8,6 +8,7 @@ import CocktailSuggestion from "../CocktailSuggestion/CocktailSuggestion";
 
 import { BASE } from "../../config";
 import t from "../../data/fr_FR.json";
+import { getMissingCount } from "../../utils/cocktail";
 
 function MySuggestions({
 	selectedIngredients,
@@ -59,6 +60,7 @@ function MySuggestions({
 					<CocktailSuggestion
 						key={suggestion.strDrink}
 						suggestion={suggestion}
+						missingCount={getMissingCount(suggestion, selectedIngredients)}
 					/>
 				))}
 			</div>
