@@ -3,6 +3,14 @@ import { useParams } from "react-router";
 import type { Cocktails } from "../../types/types";
 import styles from "./CocktailDetails.module.scss";
 
+const excludeTags = [
+	"IBA",
+	"Alcoholic",
+	"Non alcoholic",
+	"Optionnal alcohol",
+	"ContemporaryClassic",
+];
+
 function CocktailDetails() {
 	const { id } = useParams();
 	const [cocktailDetails, setCocktailDetails] = useState<Cocktails | null>(
@@ -335,9 +343,12 @@ function CocktailDetails() {
 				) : (
 					<li>
 						<ul>
-							{cocktailDetails.strTags.split(",").map((tag) => (
-								<li key={tag}>{tag}</li>
-							))}
+							{cocktailDetails.strTags
+								.split(",")
+								.filter((tags) => !excludeTags.includes(tags))
+								.map((tag) => (
+									<li key={tag}>{tag}</li>
+								))}
 						</ul>
 					</li>
 				)}
