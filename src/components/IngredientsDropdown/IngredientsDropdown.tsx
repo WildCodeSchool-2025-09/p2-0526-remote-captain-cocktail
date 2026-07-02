@@ -8,9 +8,11 @@ import Icon from "../Icon/Icon";
 function IngredientsDropdown({
 	ingredients,
 	onSelect,
+	search,
 }: {
 	ingredients: IngredientListItem[];
 	onSelect: (ingredient: IngredientListItem) => void;
+	search: string;
 }) {
 	return (
 		<div className={styles.dropdown}>
@@ -31,7 +33,11 @@ function IngredientsDropdown({
 					))}
 				</ul>
 			) : (
-				<div>PLACEHOLDER TO DO</div>
+				<div>
+					<Icon name="search" />
+					<h4>{t.bar.dropdown.noIngredientFound}</h4>
+					<p>{t.bar.dropdown.noResult.replace("{search}", search)}</p>
+				</div>
 			)}
 		</div>
 	);

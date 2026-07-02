@@ -38,7 +38,11 @@ function Bar() {
 	>([]);
 
 	function handleSelectIngredient(ingredient: IngredientListItem) {
-		setSelectedIngredients((prev) => [...prev, ingredient]);
+		setSelectedIngredients((prev) => {
+			if (prev.some((i) => i.strIngredient1 === ingredient.strIngredient1))
+				return prev;
+			return [...prev, ingredient];
+		});
 	}
 
 	function handleRemoveIngredient(ingredient: IngredientListItem) {
@@ -76,6 +80,7 @@ function Bar() {
 				<IngredientsDropdown
 					ingredients={filteredIngredients}
 					onSelect={handleSelectIngredient}
+					search={search}
 				/>
 				<MyIngredients
 					selectedIngredients={selectedIngredients}

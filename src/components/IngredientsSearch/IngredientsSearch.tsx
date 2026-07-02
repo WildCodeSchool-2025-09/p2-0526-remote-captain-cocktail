@@ -1,6 +1,12 @@
 import styles from "./IngredientsSearch.module.scss";
 
-function IngredientsSearch({ search, setSearch }) {
+function IngredientsSearch({
+	search,
+	setSearch,
+}: {
+	search: string;
+	setSearch: (value: string) => void;
+}) {
 	return (
 		<div className={styles.search}>
 			<input

@@ -28,7 +28,9 @@
             ]
         },
         "dropdown": {
-            "results": "Résultats • A→Z"
+            "results": "Résultats • A→Z",
+            "noIngredientFound": "Aucun ingrédient trouvé",
+            "noResult": "Aucun résultat pour \"{search}\". Vérifiez l'orthographe ou essayez un autre terme."
         },
         "myIngredients": {
             "title": "Mon bar •",
