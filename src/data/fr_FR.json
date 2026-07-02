@@ -33,6 +33,9 @@
         "myIngredients": {
             "title": "Mon bar",
             "ingredient": " • ingrédient"
+        },
+        "mySuggestions": {
+            "title": "Cocktails suggérés • "
         }
     }
 }

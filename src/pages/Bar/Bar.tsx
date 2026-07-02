@@ -95,7 +95,7 @@ function Bar() {
 					selectedIngredients={selectedIngredients}
 					onRemove={handleRemoveIngredient}
 				/>
-				<MySuggestions />
+				<MySuggestions selectedIngredients={selectedIngredients} />
 			</div>
 		</div>
 	);

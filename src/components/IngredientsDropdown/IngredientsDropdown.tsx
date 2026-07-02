@@ -15,20 +15,24 @@ function IngredientsDropdown({
 	return (
 		<div className={styles.dropdown}>
 			<h2>{t.bar.dropdown.results}</h2>
-			<ul>
-				{ingredients.map((ingredient) => (
-					<li key={ingredient.strIngredient1}>
-						<img
-							src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}.png/small`}
-							alt={ingredient.strIngredient1}
-						/>
-						<span>{ingredient.strIngredient1}</span>
-						<button type="button" onClick={() => onSelect(ingredient)}>
-							<Icon name="add" />
-						</button>
-					</li>
-				))}
-			</ul>
+			{ingredients.length > 0 ? (
+				<ul>
+					{ingredients.map((ingredient) => (
+						<li key={ingredient.strIngredient1}>
+							<img
+								src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}.png/small`}
+								alt={ingredient.strIngredient1}
+							/>
+							<span>{ingredient.strIngredient1}</span>
+							<button type="button" onClick={() => onSelect(ingredient)}>
+								<Icon name="add" />
+							</button>
+						</li>
+					))}
+				</ul>
+			) : (
+				<div>PLACEHOLDER TO DO</div>
+			)}
 		</div>
 	);
 }
