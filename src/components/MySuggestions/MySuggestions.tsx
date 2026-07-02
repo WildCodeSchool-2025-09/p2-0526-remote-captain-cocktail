@@ -21,19 +21,21 @@ function MySuggestions({
 		}
 
 		Promise.all(
-				selectedIngredients.map((i) =>
-					fetch(`${BASE}/filter.php?i=${i.strIngredient1}`)
-						.then((res) => res.json())
-						.then((data) => (Array.isArray(data.drinks) ? data.drinks : [])),
-				),
-			)
+			selectedIngredients.map((i) =>
+				fetch(`${BASE}/filter.php?i=${i.strIngredient1}`)
+					.then((res) => res.json())
+					.then((data) => (Array.isArray(data.drinks) ? data.drinks : [])),
+			),
+		)
 			.then((results) => {
 				const all = results.flat() as Cocktails[];
 				const countById = new Map<string, number>();
-				for (const d of all) countById.set(d.idDrink, (countById.get(d.idDrink) ?? 0) + 1);
+				for (const d of all)
+					countById.set(d.idDrink, (countById.get(d.idDrink) ?? 0) + 1);
 
-				const unique = [...new Map(all.map((d) => [d.idDrink, d])).values()]
-					.filter((d) => (countById.get(d.idDrink) ?? 0) >= 2) as Cocktails[];
+				const unique = [
+					...new Map(all.map((d) => [d.idDrink, d])).values(),
+				].filter((d) => (countById.get(d.idDrink) ?? 0) >= 2) as Cocktails[];
 
 				return Promise.all(
 					unique.map((cocktail) =>
