@@ -1,8 +1,31 @@
 .suggestion {
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    gap: var(--spacer-small);
+    border: 1px solid currentColor;
+
+    &:global:not(.status-green) {
+        div {
+            span {
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: currentColor;
+                    margin-right: var(--spacer-small);
+                }
+            }
+        }
+    }
+
     img {
         width: 50px;
+    }
+
+
+    button {
+        margin-left: auto;
     }
 }

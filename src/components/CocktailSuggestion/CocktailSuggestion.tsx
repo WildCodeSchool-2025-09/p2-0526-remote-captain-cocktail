@@ -3,12 +3,13 @@ import type { Cocktails } from "../../types/types";
 import styles from "./CocktailSuggestion.module.scss";
 
 import t from "../../data/fr_FR.json";
+import Icon from "../Icon/Icon";
 
 function getMissingColor(missingCount: number) {
-	if (missingCount === 0) return styles["status-green"];
-	if (missingCount === 1) return styles["status-yellow"];
-	if (missingCount === 2) return styles["status-orange"];
-	return styles["status-red"];
+	if (missingCount === 0) return "status-green";
+	if (missingCount === 1) return "status-yellow";
+	if (missingCount === 2) return "status-orange";
+	return "status-red";
 }
 
 function CocktailSuggestion({
@@ -23,11 +24,20 @@ function CocktailSuggestion({
 			<div>
 				<h3>{suggestion.strDrink}</h3>
 				<span>
-					{t.bar.cocktailSuggestion.missingIngredient.replace(
-						"{missingCount}",
-						String(missingCount),
+					{missingCount === 0 ? (
+						<>
+							<Icon name="checkmark" />
+							{t.bar.cocktailSuggestion.doable}
+						</>
+					) : (
+						<>
+							{t.bar.cocktailSuggestion.missingIngredient.replace(
+								"{missingCount}",
+								String(missingCount),
+							)}
+							&nbsp;{missingCount > 1 ? "ingrédients" : "ingrédient"}
+						</>
 					)}
-					&nbsp;{missingCount > 1 ? "ingrédients" : "ingrédient"}
 				</span>
 			</div>
 			<button type="button">heart</button>
