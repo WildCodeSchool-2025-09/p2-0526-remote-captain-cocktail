@@ -9,6 +9,13 @@
                 width: 30px;
                 height: 30px;
             }
+            button {
+                padding: var(--spacer-small);
+                svg {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
         }
     }
 }

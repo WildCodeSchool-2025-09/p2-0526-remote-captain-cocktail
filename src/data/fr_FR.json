@@ -29,6 +29,10 @@
         },
         "dropdown": {
             "results": "Résultats • A→Z"
+        },
+        "myIngredients": {
+            "title": "Mon bar",
+            "ingredient": " • ingrédient"
         }
     }
 }

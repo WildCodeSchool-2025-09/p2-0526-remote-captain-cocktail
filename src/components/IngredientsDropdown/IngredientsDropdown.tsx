@@ -3,10 +3,15 @@ import type { IngredientListItem } from "../../types/types";
 import styles from "./IngredientsDropdown.module.scss";
 
 import t from "../../data/fr_FR.json";
+import Icon from "../Icon/Icon";
 
 function IngredientsDropdown({
 	ingredients,
-}: { ingredients: IngredientListItem[] }) {
+	onSelect,
+}: {
+	ingredients: IngredientListItem[];
+	onSelect: (ingredient: IngredientListItem) => void;
+}) {
 	return (
 		<div className={styles.dropdown}>
 			<h2>{t.bar.dropdown.results}</h2>
@@ -18,6 +23,9 @@ function IngredientsDropdown({
 							alt={ingredient.strIngredient1}
 						/>
 						<span>{ingredient.strIngredient1}</span>
+						<button type="button" onClick={() => onSelect(ingredient)}>
+							<Icon name="add" />
+						</button>
 					</li>
 				))}
 			</ul>

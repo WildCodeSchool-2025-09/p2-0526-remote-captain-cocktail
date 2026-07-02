@@ -1,0 +1,14 @@
+.ingredients {
+    ul {
+        display: flex;
+        gap: var(--spacer-small);
+        li {
+            border: 1px solid black;
+            padding: var(--spacer-small);
+            svg {
+                width: 30px;
+                height: 30px;  
+            }
+        }
+    }
+}

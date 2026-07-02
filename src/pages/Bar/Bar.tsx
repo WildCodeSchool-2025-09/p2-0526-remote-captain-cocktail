@@ -7,6 +7,7 @@ import MySuggestions from "../../components/MySuggestions/MySuggestions";
 
 import styles from "./Bar.module.scss";
 
+import Icon from "../../components/Icon/Icon";
 import t from "../../data/fr_FR.json";
 import type { IngredientListItem } from "../../types/types";
 
@@ -33,6 +34,21 @@ function Bar() {
 				)
 			: [];
 
+	// Ajouter/supprimer les ingrédients de mon bar
+	const [selectedIngredients, setSelectedIngredients] = useState<
+		IngredientListItem[]
+	>([]);
+
+	function handleSelectIngredient(ingredient: IngredientListItem) {
+		setSelectedIngredients((prev) => [...prev, ingredient]);
+	}
+
+	function handleRemoveIngredient(ingredient: IngredientListItem) {
+		setSelectedIngredients((prev) =>
+			prev.filter((i) => i.strIngredient1 !== ingredient.strIngredient1),
+		);
+	}
+
 	// async function getAllDrinks() {
 	// 	const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 	// 	const results = await Promise.all(
@@ -53,7 +69,7 @@ function Bar() {
 		<div className={styles.page}>
 			<h1 className={styles.title}>
 				<span>{t.bar.title}</span>
-				<img src="/assets/icons/palm.svg" alt="title icon" />
+				<Icon name="palm" />
 			</h1>
 			<IngredientsSearch search={search} setSearch={setSearch} />
 			<div className="how-to">
@@ -71,8 +87,14 @@ function Bar() {
 				</ul>
 			</div>
 			<div>
-				<IngredientsDropdown ingredients={filteredIngredients} />
-				<MyIngredients />
+				<IngredientsDropdown
+					ingredients={filteredIngredients}
+					onSelect={handleSelectIngredient}
+				/>
+				<MyIngredients
+					selectedIngredients={selectedIngredients}
+					onRemove={handleRemoveIngredient}
+				/>
 				<MySuggestions />
 			</div>
 		</div>

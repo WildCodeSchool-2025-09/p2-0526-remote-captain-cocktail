@@ -5,8 +5,9 @@
 .page {
     padding: var(--spacer-large);
     .title {
-        img {
+        svg {
             width: 20px;
+            height: 20px;
         }
     }
 }
