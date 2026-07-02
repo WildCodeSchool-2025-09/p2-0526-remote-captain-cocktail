@@ -8,11 +8,9 @@ import MySuggestions from "../../components/MySuggestions/MySuggestions";
 import styles from "./Bar.module.scss";
 
 import Icon from "../../components/Icon/Icon";
+import { BASE } from "../../config";
 import t from "../../data/fr_FR.json";
 import type { IngredientListItem } from "../../types/types";
-
-const API_KEY = import.meta.env.VITE_API_KEY;
-const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
 
 function Bar() {
 	// Récupérer la liste des ingrédients de l'API au chargement

@@ -13,7 +13,7 @@ function MyIngredients({
 	onRemove: (ingredient: IngredientListItem) => void;
 }) {
 	return (
-		<div className={styles.ingredients}>
+		<section className={styles.ingredients}>
 			<h2>
 				<span>{t.bar.myIngredients.title}</span>
 				{selectedIngredients.length > 0 && (
@@ -33,7 +33,7 @@ function MyIngredients({
 					</li>
 				))}
 			</ul>
-		</div>
+		</section>
 	);
 }
 

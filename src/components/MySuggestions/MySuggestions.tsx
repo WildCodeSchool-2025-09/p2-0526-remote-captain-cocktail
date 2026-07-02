@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 
-import type { IngredientListItem } from "../../types/types";
+import type { Cocktails, IngredientListItem } from "../../types/types";
+
+import styles from "./MySuggestions.module.scss";
 
 import CocktailSuggestion from "../CocktailSuggestion/CocktailSuggestion";
 
+import { BASE } from "../../config";
 import t from "../../data/fr_FR.json";
-
-const API_KEY = import.meta.env.VITE_API_KEY;
-const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
 
 function MySuggestions({
 	selectedIngredients,
 }: { selectedIngredients: IngredientListItem[] }) {
-	const [suggestions, setSuggestions] = useState<IngredientListItem[]>([]);
+	const [suggestions, setSuggestions] = useState<Cocktails[]>([]);
 
 	useEffect(() => {
 		if (selectedIngredients.length === 0) {
@@ -26,19 +26,39 @@ function MySuggestions({
 
 		fetch(`${BASE}/filter.php?i=${ingredientNames}`)
 			.then((res) => res.json())
-			.then((data) => setSuggestions(data.drinks));
+			.then((data) => {
+				const unique = [
+					...new Map(
+						data.drinks.map((d: Cocktails) => [d.idDrink, d]),
+					).values(),
+				] as Cocktails[];
+
+				return Promise.all(
+					unique.map((cocktail) =>
+						fetch(`${BASE}/lookup.php?i=${cocktail.idDrink}`)
+							.then((res) => res.json())
+							.then((data) => data.drinks[0] as Cocktails),
+					),
+				);
+			})
+			.then((fullCocktails) => setSuggestions(fullCocktails));
 	}, [selectedIngredients]);
 
 	return (
-		<div>
+		<section className={styles.suggestions}>
 			<h2>
 				<span>{t.bar.mySuggestions.title}</span>
 				<span>{suggestions.length}</span>
 			</h2>
-			<div>
-				<CocktailSuggestion />
+			<div className={styles["suggestions-container"]}>
+				{suggestions.map((suggestion) => (
+					<CocktailSuggestion
+						key={suggestion.strDrink}
+						suggestion={suggestion}
+					/>
+				))}
 			</div>
-		</div>
+		</section>
 	);
 }
 
