@@ -14,6 +14,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
 
 function Bar() {
+	// Récupérer la liste des ingrédients de l'API au chargement
 	const [ingredients, setIngredients] = useState<IngredientListItem[]>([]);
 
 	useEffect(() => {
@@ -23,6 +24,14 @@ function Bar() {
 	}, []);
 
 	const [search, setSearch] = useState("");
+	const filteredIngredients =
+		search.length >= 3
+			? ingredients.filter((ingredient) =>
+					ingredient.strIngredient1
+						.toLowerCase()
+						.includes(search.toLowerCase()),
+				)
+			: [];
 
 	// async function getAllDrinks() {
 	// 	const letters = "abcdefghijklmnopqrstuvwxyz".split("");
@@ -42,7 +51,6 @@ function Bar() {
 
 	return (
 		<div className={styles["bar-page"]}>
-			{console.log(ingredients)}
 			<h1 className={styles["bar-title"]}>
 				<span>{t.bar.title}</span>
 				<img src="/assets/icons/palm.svg" alt="title icon" />
@@ -63,7 +71,7 @@ function Bar() {
 				</ul>
 			</div>
 			<div>
-				<IngredientsDropdown />
+				<IngredientsDropdown ingredients={filteredIngredients} />
 				<MyIngredients />
 				<MySuggestions />
 			</div>

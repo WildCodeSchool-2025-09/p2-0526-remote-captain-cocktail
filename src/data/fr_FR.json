@@ -26,6 +26,9 @@
                     "line2": "pour voir la recette"                    
                 }
             ]
+        },
+        "dropdown": {
+            "results": "Résultats • A→Z"
         }
     }
 }
