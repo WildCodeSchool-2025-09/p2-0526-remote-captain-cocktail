@@ -50,8 +50,8 @@ function Bar() {
 	// }, []);
 
 	return (
-		<div className={styles["bar-page"]}>
-			<h1 className={styles["bar-title"]}>
+		<div className={styles.page}>
+			<h1 className={styles.title}>
 				<span>{t.bar.title}</span>
 				<img src="/assets/icons/palm.svg" alt="title icon" />
 			</h1>

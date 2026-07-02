@@ -1,12 +1,14 @@
 import type { IngredientListItem } from "../../types/types";
 
+import styles from "./IngredientsDropdown.module.scss";
+
 import t from "../../data/fr_FR.json";
 
 function IngredientsDropdown({
 	ingredients,
 }: { ingredients: IngredientListItem[] }) {
 	return (
-		<div>
+		<div className={styles.dropdown}>
 			<h2>{t.bar.dropdown.results}</h2>
 			<ul>
 				{ingredients.map((ingredient) => (

@@ -1,0 +1,14 @@
+.dropdown {
+    ul {
+        li {
+            display: flex;
+            align-items: center;
+            border: 1px solid black;
+            margin-bottom: var(--spacer-small);
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+}

@@ -2,8 +2,9 @@
     display: none;
 }
 
-.bar-page {
-    .bar-title {
+.page {
+    padding: var(--spacer-large);
+    .title {
         img {
             width: 20px;
         }

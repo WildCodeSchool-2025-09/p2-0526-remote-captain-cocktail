@@ -2,7 +2,7 @@ import styles from "./IngredientsSearch.module.scss";
 
 function IngredientsSearch({ search, setSearch }) {
 	return (
-		<div className={styles["search-bar"]}>
+		<div className={styles.search}>
 			<input
 				type="text"
 				placeholder="Sélectionner un ingrédient"
