@@ -50,6 +50,7 @@ export interface Cocktails {
 	strMeasure15?: string;
 	strTags?: string;
 	strVideo?: string;
+	[key: string]: string | undefined;
 }
 
 export interface Ingredients {

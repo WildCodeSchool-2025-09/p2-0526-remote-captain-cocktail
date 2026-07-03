@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import type { Cocktails } from "../../types/types";
-import styles from "./CocktailDetails.module.scss";
 import Icon from "../Icon/Icon";
 import IngredientItem from "../IngredientItem/IngredientItem";
+import styles from "./CocktailDetails.module.scss";
 
 const excludeTags = [
 	"IBA",

@@ -1,23 +1,28 @@
 import styles from "./IngredientItem.module.scss";
 
-function IngredientItem(props) {
+export interface IngredientProps {
+	strIngredient?: string;
+	strMeasure?: string;
+}
+
+function IngredientItem({ strIngredient, strMeasure }: IngredientProps) {
 	return (
 		<article>
-			{!props.strIngredient ? (
+			{!strIngredient ? (
 				""
 			) : (
 				<li className={styles["ingr-and-measure"]}>
 					<img
 						className={styles["ingredient-img"]}
-						src={`https://www.thecocktaildb.com/images/ingredients/${props.strIngredient}.png`}
+						src={`https://www.thecocktaildb.com/images/ingredients/${strIngredient}.png`}
 						alt=""
 					/>
 					<div className={styles["ing-txt"]}>
-						<span className={styles["ing-name"]}>{props.strIngredient}</span>
-						{!props.strMeasure ? (
+						<span className={styles["ing-name"]}>{strIngredient}</span>
+						{!strMeasure ? (
 							""
 						) : (
-							<span className={styles["ing-measure"]}>{props.strMeasure}</span>
+							<span className={styles["ing-measure"]}>{strMeasure}</span>
 						)}
 					</div>
 				</li>

@@ -4,8 +4,25 @@
     border-radius: 12px;
     margin: var(--spacer-small);
     border: 1px solid rgba(255, 255, 255, 0.14); 
+    display: flex;
+    justify-content: center;
     
     .ingredient-img{
         width: 50px;
+        margin: var(--spacer-small);
     } 
+    .ing-txt{
+        display: flex;
+        flex-direction: column;
+        margin: 0 var(--spacer-small);
+        justify-content: center;
+
+        .ing-name{
+            color: var(--grey-light);
+        }
+
+        .ing-measure{
+            color: var(--grey-medium);
+        }
+    }
 }
