@@ -7,6 +7,11 @@ import IngredientItem from "../IngredientItem/IngredientItem";
 import styles from "./CocktailDetails.module.scss";
 
 function CocktailDetails() {
+	const [fav, setFav] = useState(false);
+	function handleFav() {
+		setFav(!fav);
+	}
+
 	const { id } = useParams();
 	const [cocktailDetails, setCocktailDetails] = useState<Cocktails | null>(
 		null,
@@ -62,8 +67,8 @@ function CocktailDetails() {
 					src={cocktailDetails.strDrinkThumb}
 					alt="cocktail name"
 				/>
-				<button type="button" className={styles.favheart}>
-					<Icon name="heart" />
+				<button type="button" onClick={handleFav} className={styles.favheart}>
+					{!fav ? <Icon name="heart" /> : <Icon name="fullheart" />}
 				</button>
 			</div>
 			<h2>{cocktailDetails.strDrink}</h2>
