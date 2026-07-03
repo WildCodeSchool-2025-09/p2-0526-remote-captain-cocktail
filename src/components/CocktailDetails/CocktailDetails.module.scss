@@ -73,12 +73,6 @@
         margin: var(--spacer-medium);
     }
 
-    // img
-    // {
-    //     &.ingredient-img{
-    //         width: 50px;
-    // }}
-
     .cocktail-img-favheart {
         position: relative;
         display: inline-block;
@@ -148,9 +142,19 @@
         font-size: 1.5rem;
         margin: var(--spacer-small) 0;
     }
+
     .ingredients {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         margin: var(--spacer-small);
+
+        @include media-queries.breakpoint('sm') {
+            grid-template-columns: 1fr 1fr 1fr;
+        };
+    }
+
+    .preparation {
+        margin: 0 var(--spacer-large);
+        margin-bottom: var(--spacer-large);
     }
 }

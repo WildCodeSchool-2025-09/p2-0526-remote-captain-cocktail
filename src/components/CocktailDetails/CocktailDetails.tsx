@@ -4,16 +4,7 @@ import type { Cocktails } from "../../types/types";
 import Icon from "../Icon/Icon";
 import IngredientItem from "../IngredientItem/IngredientItem";
 import styles from "./CocktailDetails.module.scss";
-
-const excludeTags = [
-	"IBA",
-	"Alcoholic",
-	"Non alcoholic",
-	"Optionnal alcohol",
-	"ContemporaryClassic",
-	"NewEra",
-	"Unforgettables",
-];
+import CocktailTags from "../CocktailTags/CocktailTags";
 
 function CocktailDetails() {
 	const { id } = useParams();
@@ -90,7 +81,7 @@ function CocktailDetails() {
 			</ul>
 			<div className={styles["recipe-specs"]}>
 				<p>🕙 10 min</p>
-				<p>👩‍👦 2 pers.</p>
+				<p>👩‍👦 1 pers.</p>
 				<p>⭐ Facile</p>
 			</div>
 			<h3>INGREDIENTS</h3>
@@ -104,40 +95,19 @@ function CocktailDetails() {
 				))}
 			</ul>
 			<h3>PRÉPARATION</h3>
-			{!cocktailDetails.strInstructionsFR ? (
-				<p>(Français non disponible) {cocktailDetails.strInstructions}</p>
-			) : (
-				<p>{cocktailDetails.strInstructionsFR}</p>
-			)}
+			<div className={styles.preparation}>
+				{!cocktailDetails.strInstructionsFR ? (
+					<p>(Français non disponible) {cocktailDetails.strInstructions}</p>
+				) : (
+					<p>{cocktailDetails.strInstructionsFR}</p>
+				)}
+			</div>
 			<h3>INFORMATIONS</h3>
-			<ul>
-				<li>Type de Verre : {cocktailDetails.strGlass}</li>
-
-				{!cocktailDetails.strIBA ? (
-					""
-				) : (
-					<li>
-						<abbr title="International Bartenders Association : Classement du cocktail selon sa popularité">
-							IBA
-						</abbr>{" "}
-						: {cocktailDetails.strIBA}
-					</li>
-				)}
-				{!cocktailDetails.strTags ? (
-					""
-				) : (
-					<li>
-						<ul>
-							{cocktailDetails.strTags
-								.split(",")
-								.filter((tags) => !excludeTags.includes(tags))
-								.map((tag) => (
-									<li key={tag}>{tag}</li>
-								))}
-						</ul>
-					</li>
-				)}
-			</ul>
+			<CocktailTags
+				strIBA={cocktailDetails.strIBA}
+				strGlass={cocktailDetails.strGlass}
+				strTags={cocktailDetails.strTags}
+			/>
 		</article>
 	);
 }
