@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import type { Cocktails as CocktailCard } from "../../types/types";
+import CocktailCard from "../../components/CocktailCard/CocktailCard";
+import type { Cocktails as CocktailType } from "../../types/types";
 import styles from "./Cocktails.module.scss";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -18,7 +19,7 @@ async function getAllDrinks() {
 }
 
 function Cocktails() {
-	const [cocktails, setCocktails] = useState<CocktailCard[]>([]);
+	const [cocktails, setCocktails] = useState<CocktailType[]>([]);
 
 	useEffect(() => {
 		getAllDrinks().then((drinks) => setCocktails(drinks));
@@ -59,21 +60,7 @@ function Cocktails() {
 
 			<section className={styles["cocktails-grid"]}>
 				{cocktails.map((cocktail) => (
-					<article key={cocktail.idDrink}>
-						<button type="button">
-							<img
-								className={styles["icon-heart"]}
-								src="/assets/icons/heart.svg"
-								alt="ajouter aux favoris"
-							/>
-						</button>
-						<img
-							className={styles["card-img"]}
-							src={cocktail.strDrinkThumb}
-							alt={`${cocktail.strDrink}`}
-						/>
-						<p>{cocktail.strDrink}</p>
-					</article>
+					<CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
 				))}
 			</section>
 			<div className={styles["temp-bottom-bar"]} />
