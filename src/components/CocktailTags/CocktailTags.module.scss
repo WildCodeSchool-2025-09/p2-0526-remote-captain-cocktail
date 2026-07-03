@@ -27,6 +27,8 @@
     }
     .tagsBox {
         grid-column: span 2;
+        margin: var(--spacer-small) 0;
+        margin-bottom: var(--spacer-large);
         .typeTags{
             text-align: center;
         }
