@@ -1,11 +1,7 @@
 import { useState } from "react";
+import type { PaginationProps as Props } from "../../types/types";
 import Icon from "../Icon/Icon";
 import styles from "./Pagination.module.scss";
-
-interface Props {
-	totalPages: number;
-	onPageChange: (page: number) => void;
-}
 
 function Pagination({ totalPages, onPageChange }: Props) {
 	const [pagination, setPagination] = useState(1);

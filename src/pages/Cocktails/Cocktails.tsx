@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CocktailGrid from "../../components/CocktailGrid/CocktailGrid";
-import Icon from "../../components/Icon/Icon";
 import Pagination from "../../components/Pagination/Pagination";
+import SearchBar from "../../components/Searchbar/SearchBar";
 import type { Cocktails as CocktailType } from "../../types/types";
 import styles from "./Cocktails.module.scss";
 
@@ -25,40 +25,63 @@ async function getAllDrinks() {
 function Cocktails() {
 	const [cocktails, setCocktails] = useState<CocktailType[]>([]);
 	const [currentPage, setCurrentPage] = useState(1);
+	const [searchQuery, setSearchQuery] = useState<string>("");
+	const [selectedCategory, setSelectedCategory] = useState<string>("");
+	const [alcoholicFilter, setAlcoholicFilter] = useState<string>("");
 
 	useEffect(() => {
 		getAllDrinks().then((drinks) => setCocktails(drinks));
 	}, []);
 
-	const totalPages = Math.ceil(cocktails.length / CARDS_PER_PAGE);
+	const filteredCocktails = cocktails.filter((cocktail) => {
+		const cleanQuery = searchQuery.trim().toLowerCase();
+
+		let matchesText = true;
+		if (cleanQuery !== "") {
+			const matchesName = cocktail.strDrink.toLowerCase().includes(cleanQuery);
+			let matchesIngredient = false;
+			for (let i = 1; i <= 15; i++) {
+				const ingredient = cocktail[`strIngredient${i}`];
+				if (ingredient?.toLowerCase().includes(cleanQuery)) {
+					matchesIngredient = true;
+					break;
+				}
+			}
+			matchesText = matchesName || matchesIngredient;
+		}
+
+		const matchesCategory = selectedCategory
+			? cocktail.strCategory === selectedCategory
+			: true;
+		const matchesAlcoholic = alcoholicFilter
+			? cocktail.strAlcoholic === alcoholicFilter
+			: true;
+
+		return matchesText && matchesCategory && matchesAlcoholic;
+	});
+
+	// calcul de la pagination
+	const totalPages = Math.ceil(filteredCocktails.length / CARDS_PER_PAGE);
 	const debut = (currentPage - 1) * CARDS_PER_PAGE;
 	const fin = debut + CARDS_PER_PAGE;
-	const pageCards = cocktails.slice(debut, fin);
+	const pageCards = filteredCocktails.slice(debut, fin);
 
 	return (
 		<>
-			<h1>Tous les cocktails</h1>
-			<nav className={styles["search-nav"]}>
-				<div className={styles["search-row"]}>
-					<div className={styles["search-bar"]}>
-						<Icon name="search" className={styles["icon-search"]} />
-						<input type="text" placeholder="Rechercher un cocktail..." />
-					</div>
+			<h1>All cocktails</h1>
 
-					<button type="button">
-						<Icon name="sort" className={styles["icon-sort"]} />
-					</button>
-				</div>
+			<SearchBar
+				searchQuery={searchQuery}
+				setSearchQuery={setSearchQuery}
+				selectedCategory={selectedCategory}
+				setSelectedCategory={setSelectedCategory}
+				alcoholicFilter={alcoholicFilter}
+				setAlcoholicFilter={setAlcoholicFilter}
+			/>
 
-				<div className={styles["filter-row"]}>
-					<button type="button" className={styles["btn-active"]}>
-						Tous
-					</button>
-					<button type="button">Filtre 2</button>
-					<button type="button">Filtre 3</button>
-					<button type="button">Filtre 4</button>
-				</div>
-			</nav>
+			<p className={styles.numbers}>
+				{filteredCocktails.length} cocktail(s) found
+			</p>
 
 			<CocktailGrid cocktails={pageCards} />
 

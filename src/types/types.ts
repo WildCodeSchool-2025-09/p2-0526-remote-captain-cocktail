@@ -11,21 +11,21 @@ export interface Cocktails {
 	strIBA?: string;
 	strImageAttribution?: string;
 	strImageSource?: string;
-	stringredient1?: string;
-	stringredient2?: string;
-	stringredient3?: string;
-	stringredient4?: string;
-	stringredient5?: string;
-	stringredient6?: string;
-	stringredient7?: string;
-	stringredient8?: string;
-	stringredient9?: string;
-	stringredient10?: string;
-	stringredient11?: string;
-	stringredient12?: string;
-	stringredient13?: string;
-	stringredient14?: string;
-	stringredient15?: string;
+	strIngredient1?: string;
+	strIngredient2?: string;
+	strIngredient3?: string;
+	strIngredient4?: string;
+	strIngredient5?: string;
+	strIngredient6?: string;
+	strIngredient7?: string;
+	strIngredient8?: string;
+	strIngredient9?: string;
+	strIngredient10?: string;
+	strIngredient11?: string;
+	strIngredient12?: string;
+	strIngredient13?: string;
+	strIngredient14?: string;
+	strIngredient15?: string;
 	strInstructions?: string;
 	strInstructionsDE?: string;
 	strInstructionsES?: string;
@@ -50,6 +50,11 @@ export interface Cocktails {
 	strMeasure15?: string;
 	strTags?: string;
 	strVideo?: string;
+}
+
+export interface PaginationProps {
+	totalPages: number;
+	onPageChange: (page: number) => void;
 }
 
 export interface Ingredients {
