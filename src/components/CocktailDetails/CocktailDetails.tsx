@@ -12,6 +12,8 @@ function CocktailDetails() {
 		setFav(!fav);
 	}
 
+	const [translate, setTranslate] = useState(false);
+
 	const { id } = useParams();
 	const [cocktailDetails, setCocktailDetails] = useState<Cocktails | null>(
 		null,
@@ -24,7 +26,7 @@ function CocktailDetails() {
 		fetch(`${BASE}/lookup.php?i=${id}`)
 			.then((response) => {
 				if (!response.ok) {
-					throw new Error("Erreur réseau");
+					throw new Error("Network Error");
 				}
 				return response.json();
 			})
@@ -42,10 +44,10 @@ function CocktailDetails() {
 		return (
 			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
 				<Icon className={styles.exclamationpoint} name="exclamationpoint" />
-				<h2>Cocktail introuvable</h2>
-				<p>Une erreur est survenue. Vérifiez votre connexion et réessayez.</p>
+				<h2>Unfindable Cocktail</h2>
+				<p>An error occurred. Please check your connection and try again.</p>
 				<button type="reset" onClick={fetchCocktail}>
-					Réessayer
+					Try again
 				</button>
 			</article>
 		);
@@ -53,14 +55,13 @@ function CocktailDetails() {
 	if (!cocktailDetails) {
 		return (
 			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
-				<p>Chargement ...</p>
+				<p>Loading ...</p>
 			</article>
 		);
 	}
 
 	return (
 		<article className={styles["cocktail-card"]}>
-			<h1>Details et recette de {cocktailDetails.strDrink}</h1>
 			<div className={styles["cocktail-img-favheart"]}>
 				<img
 					className={styles["cocktail-img"]}
@@ -71,25 +72,24 @@ function CocktailDetails() {
 					{!fav ? <Icon name="heart" /> : <Icon name="fullheart" />}
 				</button>
 			</div>
-			<h2>{cocktailDetails.strDrink}</h2>
+			<h1>{cocktailDetails.strDrink}</h1>
 			<ul className={styles["cocktail-tags"]}>
-				<li className={styles.alcool}>
-					{cocktailDetails.strAlcoholic === "Alcoholic"
-						? "Alcoolisé"
-						: cocktailDetails.strAlcoholic === "Non alcoholic"
-							? "Sans alcool"
-							: cocktailDetails.strAlcoholic === "Optionnal alcohol"
-								? "Alcool optionnel"
-								: ""}
-				</li>
+				<li className={styles.alcool}>{cocktailDetails.strAlcoholic}</li>
 				<li>{cocktailDetails.strCategory}</li>
 			</ul>
 			<div className={styles["recipe-specs"]}>
 				<p>🕙 10 min</p>
 				<p>👩‍👦 1 pers.</p>
-				<p>⭐ Facile</p>
+				<p>
+					⭐ Difficulty :
+					{cocktailDetails.strIngredient6
+						? " Hard"
+						: cocktailDetails.strIngredient4
+							? " Medium"
+							: " Easy"}
+				</p>
 			</div>
-			<h3>INGREDIENTS</h3>
+			<h2>INGREDIENTS</h2>
 			<ul className={styles.ingredients}>
 				{Array.from({ length: 15 }, (_, index) => index + 1).map((value) => (
 					<IngredientItem
@@ -99,15 +99,21 @@ function CocktailDetails() {
 					/>
 				))}
 			</ul>
-			<h3>PRÉPARATION</h3>
+			<h2>PREPARATION</h2>
 			<div className={styles.preparation}>
 				{!cocktailDetails.strInstructionsFR ? (
-					<p>(Français non disponible) {cocktailDetails.strInstructions}</p>
+					<p>{cocktailDetails.strInstructions}</p>
 				) : (
-					<p>{cocktailDetails.strInstructionsFR}</p>
+					<>
+						<p>{cocktailDetails.strInstructions}</p>
+						<button type="button" onClick={() => setTranslate(!translate)}>
+							Translate to French
+						</button>
+						{translate && <p>{cocktailDetails.strInstructionsFR}</p>}
+					</>
 				)}
 			</div>
-			<h3>INFORMATIONS</h3>
+			<h2>INFORMATIONS</h2>
 			<CocktailTags
 				strIBA={cocktailDetails.strIBA}
 				strGlass={cocktailDetails.strGlass}

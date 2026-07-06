@@ -21,7 +21,7 @@ function CocktailTags({ strIBA, strGlass, strTags }: CocktailTagsProps) {
 		<>
 			<ul className={styles.info}>
 				<li className={styles.glass}>
-					<span className={styles.type}>Type de Verre</span>
+					<span className={styles.type}>Glass Type</span>
 					<span className={styles.property}>{strGlass}</span>
 				</li>
 
@@ -31,7 +31,7 @@ function CocktailTags({ strIBA, strGlass, strTags }: CocktailTagsProps) {
 					<li>
 						<abbr
 							className={styles.type}
-							title="International Bartenders Association : Classement du cocktail selon sa popularité"
+							title="International Bartenders Association"
 						>
 							IBA
 						</abbr>{" "}

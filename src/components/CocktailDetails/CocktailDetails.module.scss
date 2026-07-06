@@ -35,7 +35,7 @@
     }
 
     h2 {
-        margin: var(--spacer-medium);
+        margin: var(--spacer-small) 0;
         text-align: center;
     }
 
@@ -68,9 +68,21 @@
     flex-direction: column;
     align-items: center;
 
+    button {
+        background: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
+        border-radius: 40px;
+        padding: var(--spacer-small) var(--spacer-medium);
+        border: none;
+        font-family: poppins;
+        font-weight: 700;
+        box-shadow: 0px 0px 21px -3px var(--secondary);
+        cursor: pointer;
+        margin: var(--spacer-large);
+        text-align: center;
+    }
+
     h1 {
-        font-family: pacifico;
-        margin: var(--spacer-medium);
+        margin: var(--spacer-medium);         
     }
 
     .cocktail-img-favheart {
@@ -81,14 +93,15 @@
             width: 22rem;
             border-radius: 5%;
             margin: var(--spacer-large);
+            margin-bottom: 0px;
         }
 
         button.favheart {
             width: 60px;
             height: 60px;
             position: absolute;
-            top: 45px;
-            right: 45px;
+            top: 20px;
+            right: 20px;
             border: 1px solid var(--secondary);
             background: none;
             border-radius: 50%;
@@ -113,8 +126,8 @@
     }
 
     h2 {        
-        font-size: 2rem;
-        margin-bottom: var(--spacer-medium);
+        font-size: 1.5rem;
+        margin-bottom: var(--spacer-small);
     }
 
     ul.cocktail-tags{        
@@ -138,11 +151,6 @@
         }
     }
 
-    h3{
-        font-size: 1.5rem;
-        margin: var(--spacer-small) 0;
-    }
-
     .ingredients {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -156,5 +164,12 @@
     .preparation {
         margin: 0 var(--spacer-large);
         margin-bottom: var(--spacer-large);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button {
+            width: fit-content;            
+        }
     }
 }
