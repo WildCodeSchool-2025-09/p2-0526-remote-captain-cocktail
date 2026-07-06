@@ -1,60 +1,101 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import type { Cocktails } from "../../types/types";
+import { useEffect, useState } from "react";
+import type { Category } from "../../types/types";
+import styles from "./SearchBar.module.scss";
 
 interface SearchBarProps {
-	onFilteredData: (cocktails: Cocktails[]) => void;
+	searchQuery: string;
+	setSearchQuery: (query: string) => void;
+	setSelectedCategory: (category: string) => void;
+	selectedCategory: string;
+	alcoholicFilter: string;
+	setAlcoholicFilter: (filter: string) => void;
 }
 
-function SearchBar({ onFilteredData }: SearchBarProps) {
-	const [cocktails, setCocktails] = useState<Cocktails[]>([]);
-	const [searchTerm, setSearchTerm] = useState("");
+function SearchBar({
+	searchQuery, setSearchQuery, selectedCategory, setSelectedCategory, alcoholicFilter, setAlcoholicFilter }: SearchBarProps) {
+	const [categories, setCategories] = useState<Category[]>([]);
 
 	const API_KEY = import.meta.env.VITE_API_KEY;
 	const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
 
-	const getAllDrinks = useCallback(async () => {
-		const letters = "abcdefghijklmnopqrstuvwxyz".split("");
-		const results = await Promise.all(
-			letters.map((letter) =>
-				fetch(`${BASE}/search.php?f=${letter}`)
-					.then((res) => res.json())
-					.then((data) => (data.drinks as Cocktails[] | null) ?? []),
-			),
-		);
-		return results.flat();
+	useEffect(() => {
+		fetch(`${BASE}/list.php?c=list`)
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.drinks) {
+					setCategories(data.drinks);
+				}
+			})
+			.catch((error) => {
+				console.error("Error fetchging categories", error);
+			});
 	}, [BASE]);
 
-	useEffect(() => {
-		getAllDrinks().then((drinks) => setCocktails(drinks));
-	}, [getAllDrinks]);
-
-	const filteredCocktails = useMemo(() => {
-		if (!cocktails.length) return [];
-
-		if (!searchTerm.trim()) return cocktails;
-
-		const term = searchTerm.toLowerCase().trim();
-
-		return cocktails.filter((drink) => {
-			return drink.strDrink?.toLowerCase().includes(term) ?? false;
-		});
-	}, [cocktails, searchTerm]);
-
-	useEffect(() => {
-		onFilteredData(filteredCocktails);
-	}, [filteredCocktails, onFilteredData]);
-
 	return (
-		<div>
-			<input
-				type="text"
-				placeholder="Rechercher un cocktail..."
-				value={searchTerm}
-				onChange={(e) => setSearchTerm(e.target.value)}
-			/>
-			<p>{filteredCocktails.length} cocktail(s) trouvé(s)</p>
-		</div>
+		<>
+			<div className={styles.searchBarContainer}>
+				<div className={styles.inputwrapper}>
+					<input
+						className={styles.searchInput}
+						type="text"
+						placeholder="Search for a cocktail or an ingredient"
+						value={searchQuery}
+						onChange={(e) => setSearchQuery(e.target.value)}
+					/>
+					{searchQuery && (
+						<button
+							className={styles.clearButton}
+							onClick={() => setSearchQuery("")}
+						>
+							×
+						</button>
+					)}
+				</div>
+			</div>
+			<div className={styles.filterContainer}>
+				<div className={styles.badgeContainer}>
+					{[
+						{ label: "All", value: "" },
+						{ label: "With alcohol", value: "Alcoholic" },
+						{ label: "Without alcohol", value: "Non alcoholic" },
+						{ label: "Optionnal", value: "Optional alcohol" }
+
+					].map((type) => {
+						const isSelected = alcoholicFilter === type.value;
+						const badgeClass = `${styles.badge} ${isSelected ? styles.activeAlcool : ""}`;
+
+						return (
+							<button
+								key={type.value}
+								onClick={() => setAlcoholicFilter(type.value)}
+								className={badgeClass}
+							>
+								{type.label}
+							</button>
+						);
+					})}
+				</div>
+			</div>
+			<div className={styles.filterContainer}>
+				<div className={styles.badgeContainer}>
+					{categories.map((category) => {
+						const isSelected = selectedCategory === category.strCategory;
+						const badgeClass = `${styles.badge} ${isSelected ? styles.activeCategory : ""}`;
+
+						return (
+							<button
+								key={category.strCategory}
+								onClick={() => setSelectedCategory(isSelected ? "" : category.strCategory)}
+								className={badgeClass}
+							>
+								{category.strCategory}
+							</button>
+						);
+					})}
+				</div>
+			</div>
+		</>
 	);
 }
-
 export default SearchBar;
+

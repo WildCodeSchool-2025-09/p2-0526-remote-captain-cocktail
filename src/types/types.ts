@@ -61,8 +61,6 @@ export interface Ingredients {
 	strABV?: string;
 }
 
-export interface FilterState {
-	category: string;
-	alcoholic: string;
-	ingredient: string;
+export interface Category {
+	strCategory: string;
 }

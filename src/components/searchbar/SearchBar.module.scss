@@ -1,0 +1,119 @@
+// SearchBar.module.scss
+
+$bg-dark: #14101f;
+$bg-card: #1e1a2e;
+$bg-input: #221d33;
+$border-subtle: rgba(255, 255, 255, 0.08);
+$text-light: #f4f2f8;
+$text-muted: #9b95ab;
+$accent-coral: #ff6b81;
+$accent-coral-light: #ff9a8b;
+$gradient-active: linear-gradient(135deg, #{$accent-coral} 0%, #{$accent-coral-light} 100%);
+
+.searchBarContainer {
+	padding: 0.5rem 0 1rem;
+}
+
+.inputwrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.searchInput {
+	width: 100%;
+	padding: 1rem 2.75rem 1rem 1rem;
+	border-radius: 14px;
+	border: 1px solid var(--grey-light);
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(4px);
+	color: var(--grey-medium);
+	font-size: 0.95rem;
+	font-family: poppins, sans-serif;
+	outline: none;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+	&::placeholder {
+		color: var(--grey-light);
+	}
+
+	&:focus {
+		border-color: var(--secondary);
+		box-shadow: 0 50 50 50px var(--secondary);
+	}
+}
+
+.clearButton {
+	position: absolute;
+	right: 0.75rem;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 22px;
+	height: 22px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.08);
+	color: var(--grey-medium);
+	font-size: 1rem;
+	line-height: 1;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.16);
+	}
+}
+
+.filterContainer {
+	margin-bottom: 0.25rem;
+}
+
+.badgeContainer {
+	display: flex;
+	gap: 8px;
+	overflow-x: auto;
+	padding: 1rem;
+	white-space: nowrap;
+
+
+	&::-webkit-scrollbar {
+	display: none;
+  }
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+}
+
+.badge {
+	padding: 0.5rem 1.1rem;
+	border-radius: 999px;
+	border: 1px solid $border-subtle;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(4px);
+	color: var(--grey-light);
+	font-size: 0.85rem;
+	font-weight: 500;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	&:hover {
+		border-color: rgba(255, 255, 255, 0.2);
+		background-color: lighten(rgba(255, 255, 255, 0.1), 4%);
+	}
+}
+
+.activeAlcool,
+.activeCategory {
+	color: Black;
+    background: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
+    border-radius: 40px;
+    padding: var(--spacer-small) var(--spacer-medium);
+    border: none;
+    font-family: poppins, sans-serif;
+    font-weight: 700;
+    box-shadow: 0px 0px 21px -3px var(--secondary);
+}
