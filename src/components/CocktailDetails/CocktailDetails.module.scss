@@ -6,10 +6,6 @@
 @use '../../styles/media-queries.scss';
 
 
-:global nav {
-    display:none;
-}
-
 .not-found {
     .exclamationpoint {
         display: flex;
