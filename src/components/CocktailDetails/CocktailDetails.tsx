@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import type { Cocktails } from "../../types/types";
 import CocktailTags from "../CocktailTags/CocktailTags";
 import Icon from "../Icon/Icon";
@@ -7,6 +7,7 @@ import IngredientItem from "../IngredientItem/IngredientItem";
 import styles from "./CocktailDetails.module.scss";
 
 function CocktailDetails() {
+	const navigate = useNavigate();
 	const [fav, setFav] = useState(false);
 	function handleFav() {
 		setFav(!fav);
@@ -43,8 +44,11 @@ function CocktailDetails() {
 	if (error) {
 		return (
 			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
+				<button type="button" onClick={() => navigate(-1)}>
+					Return
+				</button>
 				<Icon className={styles.exclamationpoint} name="exclamationpoint" />
-				<h2>Unfindable Cocktail</h2>
+				<h2>Cocktail not found</h2>
 				<p>An error occurred. Please check your connection and try again.</p>
 				<button type="reset" onClick={fetchCocktail}>
 					Try again
@@ -55,6 +59,9 @@ function CocktailDetails() {
 	if (!cocktailDetails) {
 		return (
 			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
+				<button type="button" onClick={() => navigate(-1)}>
+					Return
+				</button>
 				<p>Loading ...</p>
 			</article>
 		);
@@ -62,6 +69,9 @@ function CocktailDetails() {
 
 	return (
 		<article className={styles["cocktail-card"]}>
+			<button type="button" onClick={() => navigate(-1)}>
+				Return
+			</button>
 			<div className={styles["cocktail-img-favheart"]}>
 				<img
 					className={styles["cocktail-img"]}
