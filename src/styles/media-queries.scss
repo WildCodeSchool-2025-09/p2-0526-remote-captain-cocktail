@@ -17,17 +17,8 @@ $breakpoints: (
     }
 }
 
-/*
-
-Call media-queries mixin into files like that :
-
-.selector {
-    color: red;
-
-    @include breakpoint('md') {
-         color: blue;
-    };
-
-};
-
-*/
+@mixin landscape {
+    @media screen and (orientation: landscape) {
+        @content;
+    }
+}

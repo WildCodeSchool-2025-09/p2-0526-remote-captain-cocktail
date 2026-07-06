@@ -7,8 +7,7 @@ import styles from "./Cocktails.module.scss";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
-
-const CARDS_PER_PAGE = 9;
+const CARDS_PER_PAGE = 12;
 
 async function getAllDrinks() {
 	const letters = "abcdefghijklmnopqrstuvwxyz".split("");
@@ -49,18 +48,15 @@ function Cocktails() {
 			}
 			matchesText = matchesName || matchesIngredient;
 		}
-
 		const matchesCategory = selectedCategory
 			? cocktail.strCategory === selectedCategory
 			: true;
 		const matchesAlcoholic = alcoholicFilter
 			? cocktail.strAlcoholic === alcoholicFilter
 			: true;
-
 		return matchesText && matchesCategory && matchesAlcoholic;
 	});
 
-	// calcul de la pagination
 	const totalPages = Math.ceil(filteredCocktails.length / CARDS_PER_PAGE);
 	const debut = (currentPage - 1) * CARDS_PER_PAGE;
 	const fin = debut + CARDS_PER_PAGE;
@@ -68,28 +64,34 @@ function Cocktails() {
 
 	return (
 		<>
-			<h1>All cocktails</h1>
+			<main className={styles["page-cards"]}>
+				<header className={styles.header}>
+					<h1>All cocktails</h1>
+					<SearchBar
+						searchQuery={searchQuery}
+						setSearchQuery={setSearchQuery}
+						selectedCategory={selectedCategory}
+						setSelectedCategory={setSelectedCategory}
+						alcoholicFilter={alcoholicFilter}
+						setAlcoholicFilter={setAlcoholicFilter}
+					/>
+				</header>
 
-			<SearchBar
-				searchQuery={searchQuery}
-				setSearchQuery={setSearchQuery}
-				selectedCategory={selectedCategory}
-				setSelectedCategory={setSelectedCategory}
-				alcoholicFilter={alcoholicFilter}
-				setAlcoholicFilter={setAlcoholicFilter}
-			/>
+				<section className={styles.cards}>
+					<p className={styles.numbers}>
+						{filteredCocktails.length} cocktail(s) found
+					</p>
+					<CocktailGrid cocktails={pageCards} />
+				</section>
 
-			<p className={styles.numbers}>
-				{filteredCocktails.length} cocktail(s) found
-			</p>
+				<footer className={styles.pagination}>
+					{totalPages > 1 && (
+						<Pagination totalPages={totalPages} onPageChange={setCurrentPage} />
+					)}
+				</footer>
 
-			<CocktailGrid cocktails={pageCards} />
-
-			{totalPages > 1 && (
-				<Pagination totalPages={totalPages} onPageChange={setCurrentPage} />
-			)}
-
-			<div className={styles["temp-bottom-bar"]} />
+				<div className={styles["temp-bottom-bar"]} />
+			</main>
 		</>
 	);
 }
