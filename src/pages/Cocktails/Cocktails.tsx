@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import CocktailCard from "../../components/CocktailCard/CocktailCard";
+import CocktailGrid from "../../components/CocktailGrid/CocktailGrid";
+import Icon from "../../components/Icon/Icon";
+import Pagination from "../../components/Pagination/Pagination";
 import type { Cocktails as CocktailType } from "../../types/types";
 import styles from "./Cocktails.module.scss";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
+
+const CARDS_PER_PAGE = 9;
 
 async function getAllDrinks() {
 	const letters = "abcdefghijklmnopqrstuvwxyz".split("");
@@ -20,10 +24,16 @@ async function getAllDrinks() {
 
 function Cocktails() {
 	const [cocktails, setCocktails] = useState<CocktailType[]>([]);
+	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
 		getAllDrinks().then((drinks) => setCocktails(drinks));
 	}, []);
+
+	const totalPages = Math.ceil(cocktails.length / CARDS_PER_PAGE);
+	const debut = (currentPage - 1) * CARDS_PER_PAGE;
+	const fin = debut + CARDS_PER_PAGE;
+	const pageCards = cocktails.slice(debut, fin);
 
 	return (
 		<>
@@ -31,20 +41,12 @@ function Cocktails() {
 			<nav className={styles["search-nav"]}>
 				<div className={styles["search-row"]}>
 					<div className={styles["search-bar"]}>
-						<img
-							className={styles["icon-search"]}
-							src="/assets/icons/search.svg"
-							alt="rechercher"
-						/>
+						<Icon name="search" className={styles["icon-search"]} />
 						<input type="text" placeholder="Rechercher un cocktail..." />
 					</div>
 
 					<button type="button">
-						<img
-							className={styles["icon-sort"]}
-							src="/assets/icons/sort.svg"
-							alt="trier"
-						/>
+						<Icon name="sort" className={styles["icon-sort"]} />
 					</button>
 				</div>
 
@@ -58,11 +60,12 @@ function Cocktails() {
 				</div>
 			</nav>
 
-			<section className={styles["cocktails-grid"]}>
-				{cocktails.map((cocktail) => (
-					<CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
-				))}
-			</section>
+			<CocktailGrid cocktails={pageCards} />
+
+			{totalPages > 1 && (
+				<Pagination totalPages={totalPages} onPageChange={setCurrentPage} />
+			)}
+
 			<div className={styles["temp-bottom-bar"]} />
 		</>
 	);

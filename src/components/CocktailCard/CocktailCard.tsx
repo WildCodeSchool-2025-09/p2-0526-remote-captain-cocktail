@@ -1,4 +1,5 @@
 import type { Cocktails } from "../../types/types";
+import Icon from "../Icon/Icon";
 import styles from "./CocktailCard.module.scss";
 
 interface Props {
@@ -8,12 +9,8 @@ interface Props {
 function CocktailCard({ cocktail }: Props) {
 	return (
 		<article>
-			<button type="button">
-				<img
-					className={styles["icon-heart"]}
-					src="/assets/icons/heart.svg"
-					alt="ajouter aux favoris"
-				/>
+			<button type="button" aria-label="ajouter aux favoris">
+				<Icon name="heart" className={styles["icon-heart"]} />
 			</button>
 			<img
 				className={styles["card-img"]}
