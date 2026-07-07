@@ -10,6 +10,7 @@ article {
 	background: linear-gradient(var(--background2), var(--background2)) padding-box, linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
 }
 
+
 .card-img {
 	width: 100%;
 	aspect-ratio: 1 / 1;
@@ -48,5 +49,4 @@ article button {
 .icon-heart {
 	width: 16px;
 	height: 16px;
-	filter: brightness(0) invert(1);
 }
