@@ -17,19 +17,21 @@ export default function MyIngredients({
 	return (
 		<section className={styles.ingredients}>
 			<div className={styles.title}>
-				<h2>
-					<span>{t.bar.myIngredients.title}</span>
-					{selectedIngredients.length > 0 && (
-						<span>
-							{selectedIngredients.length}&nbsp;
-							{selectedIngredients.length > 1 ? "ingrédients" : "ingrédient"}
-						</span>
-					)}
-				</h2>
-				<button type="button" onClick={onClear}>
-					<Icon name="trashcan" />
-					<span>{t.bar.myIngredients.empty}</span>
-				</button>
+				{selectedIngredients.length > 0 && (
+					<>
+						<h2>
+							<span>{t.bar.myIngredients.title}</span>
+							<span>
+								{selectedIngredients.length}&nbsp;
+								{selectedIngredients.length > 1 ? "ingrédients" : "ingrédient"}
+							</span>
+						</h2>
+						<button type="button" onClick={onClear}>
+							<Icon name="trashcan" />
+							<span>{t.bar.myIngredients.empty}</span>
+						</button>
+					</>
+				)}
 			</div>
 			<ul>
 				{selectedIngredients.map((selectedIngredient) => (

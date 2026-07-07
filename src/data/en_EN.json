@@ -27,6 +27,9 @@
                 }
             ]
         },
+        "search": {
+            "select": "Search ingredients"
+        },
         "dropdown": {
             "results": "Results • A→Z",
             "noIngredientFound": "No ingredient found",

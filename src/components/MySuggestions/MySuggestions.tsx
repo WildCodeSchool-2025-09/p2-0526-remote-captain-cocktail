@@ -57,20 +57,24 @@ export default function MySuggestions({
 	}, [selectedIngredients]);
 
 	return (
-		<section className={styles.suggestions}>
-			<h2>
-				<span>{t.bar.mySuggestions.title}</span>
-				<span>{suggestions.length}</span>
-			</h2>
-			<div className={styles["suggestions-container"]}>
-				{suggestions.map((suggestion) => (
-					<CocktailSuggestion
-						key={suggestion.strDrink}
-						suggestion={suggestion}
-						missingCount={getMissingCount(suggestion, selectedIngredients)}
-					/>
-				))}
-			</div>
-		</section>
+		<>
+			{suggestions.length > 0 && (
+				<section className={styles.suggestions}>
+					<h2>
+						<span>{t.bar.mySuggestions.title}</span>
+						<span>{suggestions.length}</span>
+					</h2>
+					<div className={styles["suggestions-container"]}>
+						{suggestions.map((suggestion) => (
+							<CocktailSuggestion
+								key={suggestion.strDrink}
+								suggestion={suggestion}
+								missingCount={getMissingCount(suggestion, selectedIngredients)}
+							/>
+						))}
+					</div>
+				</section>
+			)}
+		</>
 	);
 }

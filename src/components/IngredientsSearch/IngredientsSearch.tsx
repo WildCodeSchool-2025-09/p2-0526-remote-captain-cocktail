@@ -1,6 +1,8 @@
 import Icon from "../Icon/Icon";
 import styles from "./IngredientsSearch.module.scss";
 
+import t from "../../data/en_EN.json";
+
 export default function IngredientsSearch({
 	search,
 	setSearch,
@@ -14,7 +16,7 @@ export default function IngredientsSearch({
 				<Icon name="search" />
 				<input
 					type="text"
-					placeholder="Sélectionner un ingrédient"
+					placeholder={t.bar.search.select}
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
 				/>
