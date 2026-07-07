@@ -46,7 +46,14 @@ export default function MySuggestions({
 					),
 				);
 			})
-			.then((fullCocktails) => setSuggestions(fullCocktails));
+			.then((fullCocktails) => {
+				const sorted = fullCocktails.sort(
+					(a, b) =>
+						getMissingCount(a, selectedIngredients) -
+						getMissingCount(b, selectedIngredients),
+				);
+				setSuggestions(sorted);
+			});
 	}, [selectedIngredients]);
 
 	return (
