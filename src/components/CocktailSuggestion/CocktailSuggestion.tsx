@@ -2,6 +2,7 @@ import type { Cocktails } from "../../types/types";
 
 import styles from "./CocktailSuggestion.module.scss";
 
+import { Link } from "react-router-dom";
 import t from "../../data/en_EN.json";
 import Icon from "../Icon/Icon";
 
@@ -17,7 +18,8 @@ export default function CocktailSuggestion({
 	missingCount,
 }: { suggestion: Cocktails; missingCount: number }) {
 	return (
-		<article
+		<Link
+			to={`/cocktail/${suggestion.idDrink}`}
 			className={`${styles.suggestion} ${getMissingColor(missingCount)}`}
 		>
 			<img src={suggestion.strDrinkThumb} alt="" />
@@ -41,6 +43,6 @@ export default function CocktailSuggestion({
 				</span>
 			</div>
 			<button type="button">heart</button>
-		</article>
+		</Link>
 	);
 }

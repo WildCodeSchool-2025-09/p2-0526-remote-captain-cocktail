@@ -42,20 +42,22 @@ export default function Bar() {
 				<Icon name="palm" />
 			</h1>
 			<IngredientsSearch search={search} setSearch={setSearch} />
-			<div className="how-to">
-				<h3>{t.bar.howTo.title}</h3>
-				<ul>
-					{t.bar.howTo.steps.map((step, i) => (
-						<li key={step.id}>
-							<span>{i + 1}</span>
-							<div>
-								<span>{step.line1}</span>
-								<span>{step.line2}</span>
-							</div>
-						</li>
-					))}
-				</ul>
-			</div>
+			{myIngredients.length === 0 && search.length === 0 && (
+				<div className="how-to">
+					<h3>{t.bar.howTo.title}</h3>
+					<ul>
+						{t.bar.howTo.steps.map((step, i) => (
+							<li key={step.id}>
+								<span>{i + 1}</span>
+								<div>
+									<span>{step.line1}</span>
+									<span>{step.line2}</span>
+								</div>
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
 			<div>
 				<IngredientsDropdown
 					ingredients={filteredIngredients}
