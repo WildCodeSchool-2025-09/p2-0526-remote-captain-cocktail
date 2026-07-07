@@ -1,1 +1,48 @@
 // ----- UI COMPONENTS ---- //
+
+.neon-primary {
+    box-shadow: 0 0 10px var(--primary-dark);
+}
+
+.neon-secondary {
+    box-shadow: 0 0 10px var(--secondary-dark);
+}
+
+.neon-tertiary {
+    box-shadow: 0 0 10px var(--tertirary-dark);
+}
+
+.simple-glass-morphism {
+    background: rgba(224, 242, 254, 0.1);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 8px 24px 0 rgba(12, 74, 110, 0.15),
+        inset 0px 0px 4px 2px rgba(255, 255, 255, 0.2);
+}
+
+.full-glass-morphism {
+    background: rgba(224, 242, 254, 0.1);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 8px 24px 0 rgba(12, 74, 110, 0.15),
+        inset 0px 0px 4px 2px rgba(255, 255, 255, 0.2);
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        border-radius: inherit;
+        z-index: 1;
+    }
+    &:before {
+        background: linear-gradient(to left top, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+    }
+    &:after {
+        background: linear-gradient(to bottom, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 100%);
+    }
+}

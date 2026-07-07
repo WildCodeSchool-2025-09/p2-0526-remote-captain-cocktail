@@ -1,3 +1,44 @@
+@use '../../styles/components' as *;
+
 .search {
-    
+    padding: var(--spacer-medium) 0;
+    > div {
+        position: relative;
+        border-radius: 15px;
+        @extend .full-glass-morphism;
+        &:has(input:focus) i {
+            svg path {
+                stroke: var(--tertiary);
+                fill: var(--tertiary);
+            }
+        }
+        i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            translate: 0 -50%;
+            line-height: 0;
+            svg path {
+                stroke: var(--secondary);
+                stroke-width: 1px;
+                fill: var(--secondary);
+            }
+        }
+        input {
+            width: 100%;
+            min-height: 45px;
+            border: 1px solid var(--secondary);
+            border-radius: 15px;
+            background-color: transparent;
+            color: white;
+            caret-color: var(--tertiary);
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            padding: var(--spacer-small) var(--spacer-medium) var(--spacer-small) 40px;
+            @extend .neon-secondary;
+            &::placeholder {
+                color: var(--secondary-light)
+            }
+        }
+    }
 }

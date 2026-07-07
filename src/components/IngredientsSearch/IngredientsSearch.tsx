@@ -1,3 +1,4 @@
+import Icon from "../Icon/Icon";
 import styles from "./IngredientsSearch.module.scss";
 
 export default function IngredientsSearch({
@@ -9,12 +10,15 @@ export default function IngredientsSearch({
 }) {
 	return (
 		<div className={styles.search}>
-			<input
-				type="text"
-				placeholder="Sélectionner un ingrédient"
-				value={search}
-				onChange={(e) => setSearch(e.target.value)}
-			/>
+			<div>
+				<Icon name="search" />
+				<input
+					type="text"
+					placeholder="Sélectionner un ingrédient"
+					value={search}
+					onChange={(e) => setSearch(e.target.value)}
+				/>
+			</div>
 		</div>
 	);
 }
