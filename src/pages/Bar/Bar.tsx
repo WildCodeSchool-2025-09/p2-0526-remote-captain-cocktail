@@ -9,12 +9,16 @@ import styles from "./Bar.module.scss";
 
 import Icon from "../../components/Icon/Icon";
 import { BASE } from "../../config";
+import { useMyIngredients } from "../../contexts/MyIngredientsContext";
 import t from "../../data/en_EN.json";
 import type { IngredientListItem } from "../../types/types";
 
 export default function Bar() {
-	// Récupérer la liste des ingrédients de l'API au chargement
+	const { myIngredients, handleSelect, handleRemove, handleClear } =
+		useMyIngredients();
+
 	const [ingredients, setIngredients] = useState<IngredientListItem[]>([]);
+	const [search, setSearch] = useState("");
 
 	useEffect(() => {
 		fetch(`${BASE}/list.php?i=list`)
@@ -22,7 +26,6 @@ export default function Bar() {
 			.then((data) => setIngredients(data.drinks));
 	}, []);
 
-	const [search, setSearch] = useState("");
 	const filteredIngredients =
 		search.length >= 3
 			? ingredients.filter((ingredient) =>
@@ -31,29 +34,6 @@ export default function Bar() {
 						.includes(search.toLowerCase()),
 				)
 			: [];
-
-	// Ajouter/supprimer les ingrédients de mon bar
-	const [selectedIngredients, setSelectedIngredients] = useState<
-		IngredientListItem[]
-	>([]);
-
-	function handleSelectIngredient(ingredient: IngredientListItem) {
-		setSelectedIngredients((prev) => {
-			if (prev.some((i) => i.strIngredient1 === ingredient.strIngredient1))
-				return prev;
-			return [...prev, ingredient];
-		});
-	}
-
-	function handleRemoveIngredient(ingredient: IngredientListItem) {
-		setSelectedIngredients((prev) =>
-			prev.filter((i) => i.strIngredient1 !== ingredient.strIngredient1),
-		);
-	}
-
-	function handleClearIngredients() {
-		setSelectedIngredients([]);
-	}
 
 	return (
 		<div className={styles.page}>
@@ -79,15 +59,15 @@ export default function Bar() {
 			<div>
 				<IngredientsDropdown
 					ingredients={filteredIngredients}
-					onSelect={handleSelectIngredient}
+					onSelect={handleSelect}
 					search={search}
 				/>
 				<MyIngredients
-					selectedIngredients={selectedIngredients}
-					onRemove={handleRemoveIngredient}
-					onClear={handleClearIngredients}
+					selectedIngredients={myIngredients}
+					onRemove={handleRemove}
+					onClear={handleClear}
 				/>
-				<MySuggestions selectedIngredients={selectedIngredients} />
+				<MySuggestions selectedIngredients={myIngredients} />
 			</div>
 		</div>
 	);
