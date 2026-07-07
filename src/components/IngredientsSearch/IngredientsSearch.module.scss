@@ -5,7 +5,7 @@
     > div {
         position: relative;
         border-radius: 15px;
-        @extend .full-glass-morphism;
+        @extend .full-glassmorphism;
         &:has(input:focus) {
             i svg path {
                 stroke: var(--tertiary);
@@ -31,7 +31,7 @@
             width: 100%;
             min-height: 46px;
             border: 1px solid var(--secondary);
-            border-radius: 15px;
+            border-radius: var(--radius);
             background-color: transparent;
             color: white;
             caret-color: var(--tertiary);

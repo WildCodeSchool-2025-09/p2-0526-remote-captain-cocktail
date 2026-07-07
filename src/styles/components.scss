@@ -4,6 +4,8 @@ $neon-colors: (
   'primary':   var(--primary-dark),
   'secondary': var(--secondary-dark),
   'tertiary':  var(--tertiary-dark),
+  'done':  var(--done-dark),
+  'warning':  var(--warning-dark),
 );
 
 @each $name, $color in $neon-colors {
@@ -21,22 +23,22 @@ $neon-colors: (
 }
 
 
-.simple-glass-morphism {
+.simple-glassmorphism {
     background: rgba(224, 242, 254, 0.1);
     backdrop-filter: blur(12px) saturate(120%);
     -webkit-backdrop-filter: blur(12px) saturate(120%);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0px 8px 24px 0 rgba(12, 74, 110, 0.15),
-        inset 0px 0px 4px 2px rgba(255, 255, 255, 0.2);
+        inset 0px 0px 4px 0 rgba(255, 255, 255, 0.2);
 }
 
-.full-glass-morphism {
+.full-glassmorphism {
     background: rgba(224, 242, 254, 0.1);
     backdrop-filter: blur(12px) saturate(120%);
     -webkit-backdrop-filter: blur(12px) saturate(120%);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0px 8px 24px 0 rgba(12, 74, 110, 0.15),
-        inset 0px 0px 4px 2px rgba(255, 255, 255, 0.2);
+        inset 0px 0px 4px 0 rgba(255, 255, 255, 0.2);
     &:before, &:after {
         content: '';
         position: absolute;

@@ -47,7 +47,7 @@ export default function Bar() {
 					<h3>{t.bar.howTo.title}</h3>
 					<ul>
 						{t.bar.howTo.steps.map((step, i) => (
-							<li key={step.id}>
+							<li key={step.id} className={`${styles[step.id]}`}>
 								<span>{i + 1}</span>
 								<div>
 									<span>{step.line1}</span>

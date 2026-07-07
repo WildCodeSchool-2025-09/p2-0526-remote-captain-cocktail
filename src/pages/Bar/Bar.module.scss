@@ -68,4 +68,66 @@
             }
         }
     }
+    .how-to {
+        border-radius: var(--radius);
+        text-align: center;
+        padding: var(--spacer-medium);
+        @extend .full-glassmorphism;
+        h3 {
+            font-family: "Pacifico", cursive;
+            font-weight: 400;
+            font-size: 1.3rem;
+            color: var(--secondary-light);
+            margin-bottom: var(--spacer-small);
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: var(--spacer-medium);
+                &.add > span {
+                    border-color: var(--primary);
+                    @extend .neon-primary;
+                }
+                &.discover > span {
+                    border-color: var(--secondary);
+                    @extend .neon-secondary;
+                }
+                &.explore > span {
+                    border-color: var(--tertiary);
+                    @extend .neon-tertiary;
+                }
+                &.click > span {
+                    border-color: var(--done);
+                    @extend .neon-done;
+                }
+                > span {
+                    min-width: 36px;
+                    height: 36px;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-radius: 50%;
+                    line-height: 36px;
+                }
+                > div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    span {
+                        line-height: 1.1rem;
+                        font-weight: 600;
+                    }
+                    span + span {
+                        font-size: .8rem;
+                        font-weight: 500;
+                        color: var(--white-alpha);
+                    }
+                }
+            }
+        }
+    }
 }

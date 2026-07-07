@@ -12,12 +12,18 @@
     --tertiary-light: color-mix(in srgb, var(--tertiary) 50%, white);
     --tertiary-dark: color-mix(in srgb, var(--tertiary) 50%, black);
 
+    --done: #34F39D;
+    --done-light: color-mix(in srgb, var(--done) 50%, white);
+    --done-dark: color-mix(in srgb, var(--done) 50%, black);
+
+    --warning: #f8d641;
+    --warning-light: color-mix(in srgb, var(--warning) 50%, white);
+    --warning-dark: color-mix(in srgb, var(--warning) 50%, black);
+
     --background: #080E1A;
     --background2: #1A1033;
 
-    --done: #34F39D;
-    --warning: #f8d641;
-
     --grey-light: #cecece;
     --grey-medium: #858585;
+    --white-alpha: color-mix(in srgb, white 70%, transparent);
 }
