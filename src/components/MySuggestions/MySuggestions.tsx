@@ -7,7 +7,7 @@ import styles from "./MySuggestions.module.scss";
 import CocktailSuggestion from "../CocktailSuggestion/CocktailSuggestion";
 
 import { BASE } from "../../config";
-import t from "../../data/fr_FR.json";
+import t from "../../data/en_EN.json";
 import { getMissingCount } from "../../utils/cocktail";
 
 export default function MySuggestions({

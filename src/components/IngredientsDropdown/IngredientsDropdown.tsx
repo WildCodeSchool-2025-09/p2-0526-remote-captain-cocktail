@@ -2,7 +2,7 @@ import type { IngredientListItem } from "../../types/types";
 
 import styles from "./IngredientsDropdown.module.scss";
 
-import t from "../../data/fr_FR.json";
+import t from "../../data/en_EN.json";
 import Icon from "../Icon/Icon";
 
 export default function IngredientsDropdown({

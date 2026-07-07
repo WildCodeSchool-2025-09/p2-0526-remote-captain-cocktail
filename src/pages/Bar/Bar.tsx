@@ -9,7 +9,7 @@ import styles from "./Bar.module.scss";
 
 import Icon from "../../components/Icon/Icon";
 import { BASE } from "../../config";
-import t from "../../data/fr_FR.json";
+import t from "../../data/en_EN.json";
 import type { IngredientListItem } from "../../types/types";
 
 export default function Bar() {

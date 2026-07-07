@@ -2,7 +2,7 @@ import type { Cocktails } from "../../types/types";
 
 import styles from "./CocktailSuggestion.module.scss";
 
-import t from "../../data/fr_FR.json";
+import t from "../../data/en_EN.json";
 import Icon from "../Icon/Icon";
 
 function getMissingColor(missingCount: number) {
