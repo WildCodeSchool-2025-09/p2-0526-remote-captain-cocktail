@@ -6,10 +6,13 @@
         position: relative;
         border-radius: 15px;
         @extend .full-glass-morphism;
-        &:has(input:focus) i {
-            svg path {
+        &:has(input:focus) {
+            i svg path {
                 stroke: var(--tertiary);
                 fill: var(--tertiary);
+            }
+            input {
+                @extend .neon-glow-secondary;
             }
         }
         i {
@@ -26,7 +29,7 @@
         }
         input {
             width: 100%;
-            min-height: 45px;
+            min-height: 46px;
             border: 1px solid var(--secondary);
             border-radius: 15px;
             background-color: transparent;

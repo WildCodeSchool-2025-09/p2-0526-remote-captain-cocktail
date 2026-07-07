@@ -1,16 +1,25 @@
 // ----- UI COMPONENTS ---- //
 
-.neon-primary {
-    box-shadow: 0 0 10px var(--primary-dark);
+$neon-colors: (
+  'primary':   var(--primary-dark),
+  'secondary': var(--secondary-dark),
+  'tertiary':  var(--tertiary-dark),
+);
+
+@each $name, $color in $neon-colors {
+  @keyframes neon-glow-#{$name} {
+    from { box-shadow: 0 0 10px 0 $color; }
+    to   { box-shadow: 0 0 10px 5px $color; }
+  }
+
+  .neon-#{$name} {
+    box-shadow: 0 0 10px 0 $color;
+  }
+  .neon-glow-#{$name} {
+    animation: neon-glow-#{$name} 1s ease infinite alternate;
+  }
 }
 
-.neon-secondary {
-    box-shadow: 0 0 10px var(--secondary-dark);
-}
-
-.neon-tertiary {
-    box-shadow: 0 0 10px var(--tertirary-dark);
-}
 
 .simple-glass-morphism {
     background: rgba(224, 242, 254, 0.1);
