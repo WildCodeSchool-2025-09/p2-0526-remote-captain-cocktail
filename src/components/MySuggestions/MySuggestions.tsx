@@ -10,7 +10,7 @@ import { BASE } from "../../config";
 import t from "../../data/fr_FR.json";
 import { getMissingCount } from "../../utils/cocktail";
 
-function MySuggestions({
+export default function MySuggestions({
 	selectedIngredients,
 }: { selectedIngredients: IngredientListItem[] }) {
 	const [suggestions, setSuggestions] = useState<Cocktails[]>([]);
@@ -67,5 +67,3 @@ function MySuggestions({
 		</section>
 	);
 }
-
-export default MySuggestions;

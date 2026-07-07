@@ -5,7 +5,7 @@ import styles from "./IngredientsDropdown.module.scss";
 import t from "../../data/fr_FR.json";
 import Icon from "../Icon/Icon";
 
-function IngredientsDropdown({
+export default function IngredientsDropdown({
 	ingredients,
 	onSelect,
 	search,
@@ -42,5 +42,3 @@ function IngredientsDropdown({
 		</div>
 	);
 }
-
-export default IngredientsDropdown;

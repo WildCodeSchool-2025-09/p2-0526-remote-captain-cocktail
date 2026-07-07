@@ -12,7 +12,7 @@ function getMissingColor(missingCount: number) {
 	return "status-red";
 }
 
-function CocktailSuggestion({
+export default function CocktailSuggestion({
 	suggestion,
 	missingCount,
 }: { suggestion: Cocktails; missingCount: number }) {
@@ -44,5 +44,3 @@ function CocktailSuggestion({
 		</article>
 	);
 }
-
-export default CocktailSuggestion;

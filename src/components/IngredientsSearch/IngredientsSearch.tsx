@@ -1,6 +1,6 @@
 import styles from "./IngredientsSearch.module.scss";
 
-function IngredientsSearch({
+export default function IngredientsSearch({
 	search,
 	setSearch,
 }: {
@@ -18,5 +18,3 @@ function IngredientsSearch({
 		</div>
 	);
 }
-
-export default IngredientsSearch;

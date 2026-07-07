@@ -5,7 +5,7 @@ import styles from "./MyIngredients.module.scss";
 import t from "../../data/fr_FR.json";
 import Icon from "../Icon/Icon";
 
-function MyIngredients({
+export default function MyIngredients({
 	selectedIngredients,
 	onRemove,
 	onClear,
@@ -44,5 +44,3 @@ function MyIngredients({
 		</section>
 	);
 }
-
-export default MyIngredients;

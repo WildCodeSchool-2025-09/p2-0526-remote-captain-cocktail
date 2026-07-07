@@ -12,7 +12,7 @@ import { BASE } from "../../config";
 import t from "../../data/fr_FR.json";
 import type { IngredientListItem } from "../../types/types";
 
-function Bar() {
+export default function Bar() {
 	// Récupérer la liste des ingrédients de l'API au chargement
 	const [ingredients, setIngredients] = useState<IngredientListItem[]>([]);
 
@@ -92,5 +92,3 @@ function Bar() {
 		</div>
 	);
 }
-
-export default Bar;
