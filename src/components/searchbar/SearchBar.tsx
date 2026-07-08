@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import sortIcon from "../../assets/icons/sort.svg";
 import type { Category, SearchBarProps } from "../../types/types";
 import styles from "./SearchBar.module.scss";
+import Icon from "../Icon/Icon";
 
 function SearchBar({
 	searchQuery,
@@ -35,6 +36,7 @@ function SearchBar({
 		<>
 			<div className={styles["searchbar-container"]}>
 				<div className={styles["input-wrapper"]}>
+					<Icon name="search" />
 					<input
 						className={styles["search-input"]}
 						type="text"
