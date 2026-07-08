@@ -7,3 +7,10 @@
     60% { scale: 0.98; }
     80% { scale: 1; }
 }
+
+@keyframes popin {
+    from {scale: 0;}
+    60% {scale: 1.05;}
+    80% {scale: 0.98;}
+    to {scale: 1;}
+}

@@ -2,6 +2,7 @@
 @use '../../styles/components' as *;
 
 .dropdown {
+    margin-bottom: var(--spacer-small);
     ul {
         display: flex;
         flex-direction: column;

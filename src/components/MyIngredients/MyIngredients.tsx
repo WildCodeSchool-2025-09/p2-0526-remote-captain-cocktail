@@ -20,13 +20,13 @@ export default function MyIngredients({
 				{selectedIngredients.length > 0 && (
 					<>
 						<h2>
-							<span>{t.bar.myIngredients.title}</span>
+							<span>{t.bar.myIngredients.title}&nbsp;</span>
 							<span>
 								{selectedIngredients.length}&nbsp;
 								{selectedIngredients.length > 1 ? "ingrédients" : "ingrédient"}
 							</span>
 						</h2>
-						<button type="button" onClick={onClear}>
+						<button type="button" className={styles.clear} onClick={onClear}>
 							<Icon name="trashcan" />
 							<span>{t.bar.myIngredients.empty}</span>
 						</button>

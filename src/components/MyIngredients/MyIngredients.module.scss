@@ -1,17 +1,54 @@
+@use '../../styles/animations' as *;
+@use '../../styles/components' as *;
+
 .ingredients {
+    margin-bottom: var(--spacer-small);
     .title {
         display: flex;
         justify-content: space-between;
+        align-items: flex-start;
+        .clear {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            color: var(--secondary-light);
+            margin-top: 3px;
+            svg {
+                width: .8rem;
+                path {
+                    stroke: var(--secondary-light) !important;
+                    stroke-width: 50 !important;
+                }
+            }
+        }
     }
     ul {
         display: flex;
+        flex-wrap: wrap;
         gap: var(--spacer-small);
         li {
-            border: 1px solid black;
-            padding: var(--spacer-small);
-            svg {
-                width: 30px;
-                height: 30px;  
+            display: flex;
+            gap: var(--spacer-small);
+            border: 1px solid var(--tertiary);
+            border-radius: 30px;
+            font-size: .7rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            @extend .simple-glassmorphism;
+            @extend .neon-tertiary;
+            scale: 0;
+            animation: popin .5s ease 1 forwards;
+            button {
+                background: none;
+                border: none;
+                line-height: 0;
+                svg path {
+                    stroke: var(--tertiary);
+                    stroke-width: 2px;
+                    fill: var(--tertiary);
+                }
             }
         }
     }
