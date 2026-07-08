@@ -22,7 +22,11 @@ export default function IngredientsDropdown({
 					<ul>
 						{ingredients.map((ingredient) => (
 							<li key={ingredient.strIngredient1}>
-								<button type="button" onClick={() => onSelect(ingredient)}>
+								<button
+									type="button"
+									aria-label={t.bar.dropdown.add}
+									onClick={() => onSelect(ingredient)}
+								>
 									<img
 										src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}.png/small`}
 										alt={ingredient.strIngredient1}

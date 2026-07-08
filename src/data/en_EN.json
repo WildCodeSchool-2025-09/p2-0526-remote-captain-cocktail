@@ -32,19 +32,22 @@
         },
         "dropdown": {
             "results": "Results • A→Z",
+            "add": "Add ingredient",
             "noIngredientFound": "No ingredient found",
             "noResult": "No results for \"{search}\". Check the spelling or try another term."
         },
         "myIngredients": {
             "title": "My bar •",
-            "empty": "Clear bar"
+            "empty": "Clear bar",
+            "remove": "Remove"
         },
         "mySuggestions": {
             "title": "Suggested cocktails •"
         },
         "cocktailSuggestion": {
             "doable": "Doable",
-            "missingIngredient": "Missing: {missingCount}"
+            "missingIngredient": "Missing: {missingCount}",
+            "favorite": "Add to favorite"
         }
     }
 }

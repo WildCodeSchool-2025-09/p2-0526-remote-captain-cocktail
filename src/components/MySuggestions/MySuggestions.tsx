@@ -61,7 +61,7 @@ export default function MySuggestions({
 			{suggestions.length > 0 && (
 				<section className={styles.suggestions}>
 					<h2>
-						<span>{t.bar.mySuggestions.title}</span>
+						<span>{t.bar.mySuggestions.title}&nbsp;</span>
 						<span>{suggestions.length}</span>
 					</h2>
 					<div className={styles["suggestions-container"]}>

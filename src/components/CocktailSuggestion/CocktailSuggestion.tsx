@@ -22,13 +22,13 @@ export default function CocktailSuggestion({
 			to={`/cocktail/${suggestion.idDrink}`}
 			className={`${styles.suggestion} ${getMissingColor(missingCount)}`}
 		>
-			<img src={suggestion.strDrinkThumb} alt="" />
+			<img src={suggestion.strDrinkThumb} alt={suggestion.strDrink} />
 			<div>
-				<h3>{suggestion.strDrink}</h3>
+				<h5>{suggestion.strDrink}</h5>
 				<span>
 					{missingCount === 0 ? (
 						<>
-							<Icon name="checkmark" />
+							<Icon name="checkmark" className={styles.checkmark} />
 							{t.bar.cocktailSuggestion.doable}
 						</>
 					) : (
@@ -42,7 +42,9 @@ export default function CocktailSuggestion({
 					)}
 				</span>
 			</div>
-			<button type="button">heart</button>
+			<button type="button" aria-label={t.bar.cocktailSuggestion.favorite}>
+				<Icon name="heart" />
+			</button>
 		</Link>
 	);
 }
