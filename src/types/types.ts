@@ -61,3 +61,7 @@ export interface Ingredients {
 	strAlcohol?: string;
 	strABV?: string;
 }
+
+export interface CocktailDetailsProps {
+	idDrink: string;
+}

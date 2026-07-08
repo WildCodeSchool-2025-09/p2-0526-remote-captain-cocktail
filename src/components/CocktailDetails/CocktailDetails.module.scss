@@ -1,10 +1,4 @@
-@use '../../styles/reset.scss';
-@use '../../styles/colors.scss';
-@use '../../styles/variables.scss';
-@use '../../styles/fonts.scss';
-@use '../../styles/animations.scss';
-@use '../../styles/media-queries.scss';
-
+@use '../../styles/media-queries' as *;
 
 .not-found {
     .exclamationpoint {
@@ -38,18 +32,6 @@
     p {
         margin: var(--spacer-medium) var(--spacer-large);
         text-align: center;
-    }
-
-    button {
-        background: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
-        border-radius: 40px;
-        padding: var(--spacer-small) var(--spacer-medium);
-        border: none;
-        font-family: poppins;
-        font-weight: 700;
-        box-shadow: 0px 0px 21px -3px var(--secondary);
-        cursor: pointer;
-        margin: var(--spacer-large);
     }
 }
 
@@ -152,7 +134,7 @@
         grid-template-columns: 1fr 1fr;
         margin: var(--spacer-small);
 
-        @include media-queries.breakpoint('sm') {
+        @include breakpoint('sm') {
             grid-template-columns: 1fr 1fr 1fr;
         };
     }
@@ -165,7 +147,19 @@
         align-items: center;
 
         button {
-            width: fit-content;            
+            width: fit-content;
         }
+    }
+}
+
+button.arrow-left-button {
+    align-self: flex-start;
+    margin-bottom: 0;
+    padding: 8px;
+
+    i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     }
 }

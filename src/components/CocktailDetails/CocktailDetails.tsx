@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import type { Cocktails } from "../../types/types";
+import type { CocktailDetailsProps, Cocktails } from "../../types/types";
 import CocktailTags from "../CocktailTags/CocktailTags";
 import Icon from "../Icon/Icon";
 import IngredientItem from "../IngredientItem/IngredientItem";
 import styles from "./CocktailDetails.module.scss";
 
-function CocktailDetails() {
+function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	const navigate = useNavigate();
 	const [fav, setFav] = useState(false);
 	function handleFav() {
@@ -15,7 +15,7 @@ function CocktailDetails() {
 
 	const [translate, setTranslate] = useState(false);
 
-	const { id } = useParams();
+	// const { id } = useParams();
 	const [cocktailDetails, setCocktailDetails] = useState<Cocktails | null>(
 		null,
 	);
@@ -24,7 +24,7 @@ function CocktailDetails() {
 		setError(false);
 		const API_KEY = import.meta.env.VITE_API_KEY;
 		const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
-		fetch(`${BASE}/lookup.php?i=${id}`)
+		fetch(`${BASE}/lookup.php?i=${idDrink}`)
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error("Network Error");
@@ -37,15 +37,20 @@ function CocktailDetails() {
 			.catch(() => {
 				setError(true);
 			});
-	}, [id]);
+	}, [idDrink]);
 	useEffect(() => {
 		fetchCocktail();
 	}, [fetchCocktail]);
 	if (error) {
 		return (
 			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
-				<button type="button" onClick={() => navigate(-1)}>
-					Return
+				<button
+					type="button"
+					commandfor="my-dialog"
+					command="close"
+					className={styles["arrow-left-button"]}
+				>
+					<Icon name="arrowleft" />
 				</button>
 				<Icon className={styles.exclamationpoint} name="exclamationpoint" />
 				<h2>Cocktail not found</h2>
@@ -59,8 +64,13 @@ function CocktailDetails() {
 	if (!cocktailDetails) {
 		return (
 			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
-				<button type="button" onClick={() => navigate(-1)}>
-					Return
+				<button
+					type="button"
+					commandfor="my-dialog"
+					command="close"
+					className={styles["arrow-left-button"]}
+				>
+					<Icon name="arrowleft" />
 				</button>
 				<p>Loading ...</p>
 			</article>
@@ -69,8 +79,13 @@ function CocktailDetails() {
 
 	return (
 		<article className={styles["cocktail-card"]}>
-			<button type="button" onClick={() => navigate(-1)}>
-				Return
+			<button
+				type="button"
+				commandfor="my-dialog"
+				command="close"
+				className={styles["arrow-left-button"]}
+			>
+				<Icon name="arrowleft" />
 			</button>
 			<div className={styles["cocktail-img-favheart"]}>
 				<img
@@ -129,6 +144,9 @@ function CocktailDetails() {
 				strGlass={cocktailDetails.strGlass}
 				strTags={cocktailDetails.strTags}
 			/>
+			<button type="button" commandfor="my-dialog" command="close">
+				Close
+			</button>
 		</article>
 	);
 }
