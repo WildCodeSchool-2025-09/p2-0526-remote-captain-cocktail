@@ -1,1 +1,9 @@
 // ----- KEYFRAMES ---- //
+
+@keyframes thumb-pop {
+    0%, 100% { scale: 1; }
+    20% { scale: 0.95; }
+    40% { scale: 1.05; }
+    60% { scale: 0.98; }
+    80% { scale: 1; }
+}

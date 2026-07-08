@@ -71,45 +71,45 @@
     .how-to {
         border-radius: var(--radius);
         text-align: center;
-        padding: var(--spacer-medium);
+        padding: var(--spacer-medium) var(--spacer-large);
         @extend .full-glassmorphism;
         h3 {
             font-family: "Pacifico", cursive;
             font-weight: 400;
             font-size: 1.3rem;
             color: var(--secondary-light);
-            margin-bottom: var(--spacer-small);
+            margin-bottom: var(--spacer-medium);
         }
         ul {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: var(--spacer-medium);
             li {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
                 gap: var(--spacer-medium);
                 &.add > span {
-                    border-color: var(--primary);
+                    color: var(--primary);
                     @extend .neon-primary;
                 }
                 &.discover > span {
-                    border-color: var(--secondary);
+                    color: var(--secondary);
                     @extend .neon-secondary;
                 }
                 &.explore > span {
-                    border-color: var(--tertiary);
+                    color: var(--tertiary);
                     @extend .neon-tertiary;
                 }
                 &.click > span {
-                    border-color: var(--done);
+                    color: var(--done);
                     @extend .neon-done;
                 }
                 > span {
                     min-width: 36px;
                     height: 36px;
-                    border-width: 1px;
-                    border-style: solid;
+                    font-weight: 500;
+                    border: 1px solid currentColor;
                     border-radius: 50%;
                     line-height: 36px;
                 }

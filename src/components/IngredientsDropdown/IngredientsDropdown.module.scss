@@ -1,16 +1,54 @@
+@use '../../styles/animations' as *;
+@use '../../styles/components' as *;
+
 .dropdown {
     ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacer-small);
         li {
             display: flex;
             align-items: center;
+            width: 100%;
             border: 1px solid black;
-            margin-bottom: var(--spacer-small);
-            img {
-                width: 30px;
-                height: 30px;
-            }
             button {
+                display: flex;
+                align-items: center;
+                gap: var(--spacer-small);
+                width: 100%;
+                min-height: 64px;
+                border: 1px solid var(--primary-dark);
+                border-radius: var(--radius);
                 padding: var(--spacer-small);
+                @extend .simple-glassmorphism;
+                &:hover, &:focus {
+                    animation: thumb-pop 1s ease 1;
+                }
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+                span {
+                    font-family: "Poppins", sans-serif;
+                    font-weight: 700;
+                    color: white;
+                }
+                i {
+                    min-width: 36px;
+                    height: 36px;
+                    border: 1px solid var(--tertiary);
+                    border-radius: 50%;
+                    padding: 10px;
+                    margin-left: auto;
+                    @extend .neon-tertiary;
+                    svg {
+                        width: .8rem;
+                        height: .8rem;
+                        path {
+                            fill: var(--tertiary);
+                        }
+                    }
+                }
             }
         }
     }
