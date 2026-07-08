@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import sortIcon from "../../assets/icons/sort.svg";
 import type { Category, SearchBarProps } from "../../types/types";
-import styles from "./SearchBar.module.scss";
 import Icon from "../Icon/Icon";
+import styles from "./SearchBar.module.scss";
 
 function SearchBar({
 	searchQuery,
@@ -40,15 +40,17 @@ function SearchBar({
 					<input
 						className={styles["search-input"]}
 						type="text"
-						placeholder="Search..."
+						placeholder="Search cocktail or ingredient"
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}
+						aria-label="Rechercher un cocktail ou un ingrédient"
 					/>
 					{searchQuery && (
 						<button
 							type="button"
 							className={styles["clear-button"]}
 							onClick={() => setSearchQuery("")}
+							aria-label="Effacer la recherche"
 						>
 							×
 						</button>
@@ -63,7 +65,11 @@ function SearchBar({
 					}}
 					title={sortAscending ? "Trier Z→A" : "Trier A→Z"}
 				>
-					<img src={sortIcon} alt="Sort" className={styles["sort-icon"]} />
+					<img
+						src={sortIcon}
+						alt="Trier par ordre alphabétique"
+						className={styles["sort-icon"]}
+					/>
 				</button>
 			</div>
 			<div className={styles["filter-container"]}>
@@ -83,6 +89,8 @@ function SearchBar({
 								key={type.value}
 								onClick={() => setAlcoholicFilter(type.value)}
 								className={badgeClass}
+								aria-pressed={isSelected}
+								aria-label="Filtrer par ${type.label}"
 							>
 								{type.label}
 							</button>
@@ -104,6 +112,8 @@ function SearchBar({
 									setSelectedCategory(isSelected ? "" : category.strCategory)
 								}
 								className={badgeClass}
+								aria-pressed={isSelected}
+								aria-label="Filter par ${category.strCategory}"
 							>
 								{category.strCategory}
 							</button>
