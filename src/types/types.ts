@@ -1,4 +1,4 @@
-export interface Cocktails {
+export interface Cocktail {
 	dateModified?: string;
 	idDrink: string;
 	strAlcoholic?: string;
@@ -52,16 +52,29 @@ export interface Cocktails {
 	strVideo?: string;
 }
 
-export interface PaginationProps {
-	totalPages: number;
-	onPageChange: (page: number) => void;
-}
-
-export interface Ingredients {
+export interface Ingredient {
 	idIngredient: string;
 	strIngredient: string;
 	strDescription?: string;
 	strType?: string;
 	strAlcohol?: string;
 	strABV?: string;
+}
+
+export interface CocktailCardProps {
+	cocktail: Cocktail;
+}
+
+export interface CocktailGridProps {
+	cocktails: Cocktail[];
+}
+
+export interface PaginationProps {
+	totalPages: number;
+	currentPage: number;
+	onPageChange: (page: number) => void;
+}
+
+export interface CocktailDetailsProps {
+	idDrink: string;
 }

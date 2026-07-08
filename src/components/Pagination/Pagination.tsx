@@ -1,36 +1,31 @@
-import { useState } from "react";
 import type { PaginationProps as Props } from "../../types/types";
 import Icon from "../Icon/Icon";
 import styles from "./Pagination.module.scss";
 
-function Pagination({ totalPages, onPageChange }: Props) {
-	const [pagination, setPagination] = useState(1);
+function Pagination({ currentPage, totalPages, onPageChange }: Props) {
 	const NB_PAGES = 5;
-	let startPage = Math.max(1, pagination - Math.floor(NB_PAGES / 2));
+	let startPage = Math.max(1, currentPage - Math.floor(NB_PAGES / 2));
 	let endPage = startPage + NB_PAGES - 1;
 	if (endPage > totalPages) {
 		endPage = totalPages;
 		startPage = Math.max(1, endPage - NB_PAGES + 1);
 	}
 
-	const handlePage = (page: number) => {
-		setPagination(page);
-		onPageChange(page);
-	};
-
 	return (
-		<section className={styles.pagination}>
+		<nav aria-label="Pagination" className={styles.pagination}>
 			<button
 				type="button"
-				onClick={() => handlePage(1)}
-				disabled={pagination === 1}
+				aria-label="Première page"
+				onClick={() => onPageChange(1)}
+				disabled={currentPage === 1}
 			>
 				<Icon name="fullleft" className={styles["icon-arrow"]} />
 			</button>
 			<button
 				type="button"
-				onClick={() => handlePage(pagination - 1)}
-				disabled={pagination === 1}
+				aria-label="Page précédente"
+				onClick={() => onPageChange(currentPage - 1)}
+				disabled={currentPage === 1}
 			>
 				<Icon name="left" className={styles["icon-arrow"]} />
 			</button>
@@ -42,8 +37,9 @@ function Pagination({ totalPages, onPageChange }: Props) {
 				<button
 					key={page}
 					type="button"
-					onClick={() => handlePage(page)}
-					className={pagination === page ? styles.active : ""}
+					aria-label={`Page ${page}`}
+					onClick={() => onPageChange(page)}
+					className={currentPage === page ? styles.active : ""}
 				>
 					{page}
 				</button>
@@ -51,19 +47,21 @@ function Pagination({ totalPages, onPageChange }: Props) {
 
 			<button
 				type="button"
-				onClick={() => handlePage(pagination + 1)}
-				disabled={pagination === totalPages}
+				aria-label="Page suivante"
+				onClick={() => onPageChange(currentPage + 1)}
+				disabled={currentPage === totalPages}
 			>
 				<Icon name="right" className={styles["icon-arrow"]} />
 			</button>
 			<button
 				type="button"
-				onClick={() => handlePage(totalPages)}
-				disabled={pagination === totalPages}
+				aria-label="Dernière page"
+				onClick={() => onPageChange(totalPages)}
+				disabled={currentPage === totalPages}
 			>
 				<Icon name="fullright" className={styles["icon-arrow"]} />
 			</button>
-		</section>
+		</nav>
 	);
 }
 

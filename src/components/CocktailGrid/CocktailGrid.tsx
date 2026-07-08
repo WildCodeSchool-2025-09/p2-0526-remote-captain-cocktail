@@ -1,12 +1,8 @@
-import type { Cocktails } from "../../types/types";
+import type { CocktailGridProps } from "../../types/types";
 import CocktailCard from "../CocktailCard/CocktailCard";
 import styles from "./CocktailGrid.module.scss";
 
-interface Props {
-	cocktails: Cocktails[];
-}
-
-function CocktailGrid({ cocktails }: Props) {
+function CocktailGrid({ cocktails }: CocktailGridProps) {
 	return (
 		<section className={styles.grid}>
 			{cocktails.map((cocktail) => (

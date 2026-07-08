@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import CocktailGrid from "../../components/CocktailGrid/CocktailGrid";
 import Pagination from "../../components/Pagination/Pagination";
-import SearchBar from "../../components/Searchbar/SearchBar";
-import type { Cocktails as CocktailType } from "../../types/types";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import { API_BASE } from "../../config";
+import type { Cocktail } from "../../types/types";
 import styles from "./Cocktails.module.scss";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
-const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
 const CARDS_PER_PAGE = 12;
 
 async function getAllDrinks() {
 	const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 	const results = await Promise.all(
 		letters.map((letter) =>
-			fetch(`${BASE}/search.php?f=${letter}`)
+			fetch(`${API_BASE}/search.php?f=${letter}`)
 				.then((res) => res.json())
 				.then((data) => data.drinks ?? []),
 		),
@@ -22,7 +21,7 @@ async function getAllDrinks() {
 }
 
 function Cocktails() {
-	const [cocktails, setCocktails] = useState<CocktailType[]>([]);
+	const [cocktails, setCocktails] = useState<Cocktail[]>([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [searchQuery, setSearchQuery] = useState<string>("");
 	const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -58,14 +57,14 @@ function Cocktails() {
 	});
 
 	const totalPages = Math.ceil(filteredCocktails.length / CARDS_PER_PAGE);
-	const debut = (currentPage - 1) * CARDS_PER_PAGE;
-	const fin = debut + CARDS_PER_PAGE;
-	const pageCards = filteredCocktails.slice(debut, fin);
+	const start = (currentPage - 1) * CARDS_PER_PAGE;
+	const end = start + CARDS_PER_PAGE;
+	const pageCards = filteredCocktails.slice(start, end);
 
 	return (
 		<>
 			<main className={styles["page-cards"]}>
-				<header className={styles.header}>
+				<section className={styles.header}>
 					<h1>All cocktails</h1>
 					<SearchBar
 						searchQuery={searchQuery}
@@ -75,7 +74,7 @@ function Cocktails() {
 						alcoholicFilter={alcoholicFilter}
 						setAlcoholicFilter={setAlcoholicFilter}
 					/>
-				</header>
+				</section>
 
 				<section className={styles.cards}>
 					<p className={styles.numbers}>
@@ -84,13 +83,15 @@ function Cocktails() {
 					<CocktailGrid cocktails={pageCards} />
 				</section>
 
-				<footer className={styles.pagination}>
+				<div className={styles.pagination}>
 					{totalPages > 1 && (
-						<Pagination totalPages={totalPages} onPageChange={setCurrentPage} />
+						<Pagination
+							currentPage={currentPage}
+							totalPages={totalPages}
+							onPageChange={setCurrentPage}
+						/>
 					)}
-				</footer>
-
-				<div className={styles["temp-bottom-bar"]} />
+				</div>
 			</main>
 		</>
 	);

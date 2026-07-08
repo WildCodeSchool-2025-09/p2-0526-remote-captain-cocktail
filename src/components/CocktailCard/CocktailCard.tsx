@@ -1,27 +1,30 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import type { Cocktails } from "../../types/types";
+import type { CocktailCardProps } from "../../types/types";
+import CocktailDetails from "../CocktailDetails/CocktailDetails";
 import Icon from "../Icon/Icon";
 import styles from "./CocktailCard.module.scss";
 
-interface Props {
-	cocktail: Cocktails;
-}
-
-function CocktailCard({ cocktail }: Props) {
+function CocktailCard({ cocktail }: CocktailCardProps) {
 	const [isFavorite, setIsFavorite] = useState(false);
-
 	return (
 		<article>
-			<button type="button" onClick={() => setIsFavorite(!isFavorite)}>
+			<button
+				type="button"
+				className={styles["btn-favorite"]}
+				aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+				onClick={() => setIsFavorite(!isFavorite)}
+			>
 				<Icon
 					name={isFavorite ? "heart-filled" : "heart"}
 					className={styles["icon-heart"]}
 				/>
 			</button>
-			<Link
+			<button
+				type="button"
 				className={styles["card-details"]}
-				to={`/cocktail/${cocktail.idDrink}`}
+				// @ts-expect-error command/commandfor sont de nouveaux attributs HTML pas encore dans les types React
+				command="show-modal"
+				commandfor="my-dialog"
 			>
 				<img
 					className={styles["card-img"]}
@@ -29,7 +32,10 @@ function CocktailCard({ cocktail }: Props) {
 					alt={cocktail.strDrink}
 				/>
 				<p>{cocktail.strDrink}</p>
-			</Link>
+			</button>
+			<dialog id="my-dialog">
+				<CocktailDetails idDrink={cocktail.idDrink} />
+			</dialog>
 		</article>
 	);
 }
