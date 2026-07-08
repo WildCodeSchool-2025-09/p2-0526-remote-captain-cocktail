@@ -65,3 +65,10 @@ export interface Ingredients {
 export interface CocktailDetailsProps {
 	idDrink: string;
 }
+
+declare module "react" {
+	interface ButtonHTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+		commandfor?: string;
+		command?: string;
+	}
+}

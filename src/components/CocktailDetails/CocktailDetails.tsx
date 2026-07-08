@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
 import type { CocktailDetailsProps, Cocktails } from "../../types/types";
 import CocktailTags from "../CocktailTags/CocktailTags";
 import Icon from "../Icon/Icon";
@@ -7,7 +6,6 @@ import IngredientItem from "../IngredientItem/IngredientItem";
 import styles from "./CocktailDetails.module.scss";
 
 function CocktailDetails({ idDrink }: CocktailDetailsProps) {
-	const navigate = useNavigate();
 	const [fav, setFav] = useState(false);
 	function handleFav() {
 		setFav(!fav);
@@ -48,7 +46,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 					type="button"
 					commandfor="my-dialog"
 					command="close"
-					className={styles["arrow-left-button"]}
+					className={`${styles["arrow-left-button"]} ${styles["pink-button"]}`}
 				>
 					<Icon name="arrowleft" />
 				</button>
@@ -68,7 +66,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 					type="button"
 					commandfor="my-dialog"
 					command="close"
-					className={styles["arrow-left-button"]}
+					className={`${styles["arrow-left-button"]} ${styles["pink-button"]}`}
 				>
 					<Icon name="arrowleft" />
 				</button>
@@ -83,7 +81,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 				type="button"
 				commandfor="my-dialog"
 				command="close"
-				className={styles["arrow-left-button"]}
+				className={`${styles["arrow-left-button"]} ${styles["pink-button"]}`}
 			>
 				<Icon name="arrowleft" />
 			</button>
@@ -131,7 +129,11 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 				) : (
 					<>
 						<p>{cocktailDetails.strInstructions}</p>
-						<button type="button" onClick={() => setTranslate(!translate)}>
+						<button
+							type="button"
+							className={styles["pink-button"]}
+							onClick={() => setTranslate(!translate)}
+						>
 							Translate to French
 						</button>
 						{translate && <p>{cocktailDetails.strInstructionsFR}</p>}
@@ -144,7 +146,12 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 				strGlass={cocktailDetails.strGlass}
 				strTags={cocktailDetails.strTags}
 			/>
-			<button type="button" commandfor="my-dialog" command="close">
+			<button
+				type="button"
+				className={styles["pink-button"]}
+				commandfor="my-dialog"
+				command="close"
+			>
 				Close
 			</button>
 		</article>
