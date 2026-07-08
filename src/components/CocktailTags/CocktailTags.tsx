@@ -1,5 +1,5 @@
-import styles from "./CocktailTags.module.scss";
 import type { CocktailTagsProps } from "../../types/types";
+import styles from "./CocktailTags.module.scss";
 
 const excludeTags = [
 	"IBA",

@@ -5,7 +5,6 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.scss";
 
-import CocktailDetails from "./components/CocktailDetails/CocktailDetails";
 import Bar from "./pages/Bar/Bar";
 import Cocktails from "./pages/Cocktails/Cocktails";
 import Favorites from "./pages/Favorites/Favorites";
@@ -26,10 +25,6 @@ const router = createBrowserRouter([
 			{
 				path: "/cocktails",
 				element: <Cocktails />,
-			},
-			{
-				path: "/cocktail/:id",
-				element: <CocktailDetails />,
 			},
 			{
 				path: "/favorites",
