@@ -1,4 +1,5 @@
 import styles from "./CocktailTags.module.scss";
+import type { CocktailTagsProps } from "../../types/types";
 
 const excludeTags = [
 	"IBA",
@@ -9,12 +10,6 @@ const excludeTags = [
 	"NewEra",
 	"Unforgettables",
 ];
-
-interface CocktailTagsProps {
-	strGlass?: string;
-	strIBA?: string;
-	strTags?: string;
-}
 
 function CocktailTags({ strIBA, strGlass, strTags }: CocktailTagsProps) {
 	return (

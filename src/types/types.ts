@@ -72,3 +72,9 @@ declare module "react" {
 		command?: string;
 	}
 }
+
+export interface CocktailTagsProps {
+	strGlass?: string;
+	strIBA?: string;
+	strTags?: string;
+}
