@@ -64,3 +64,13 @@ export interface Ingredients {
 export interface Category {
 	strCategory: string;
 }
+
+export interface SearchBarProps {
+	searchQuery: string;
+	setSearchQuery: (query: string) => void;
+	setSelectedCategory: (category: string) => void;
+	selectedCategory: string;
+	alcoholicFilter: string;
+	setAlcoholicFilter: (filter: string) => void;
+	onSortChange?: (isAscending: boolean) => void;
+}

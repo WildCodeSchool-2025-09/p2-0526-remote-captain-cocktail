@@ -1,17 +1,7 @@
 import { useEffect, useState } from "react";
-import type { Category } from "../../types/types";
-import styles from "./SearchBar.module.scss";
 import sortIcon from "../../assets/icons/sort.svg";
-
-interface SearchBarProps {
-	searchQuery: string;
-	setSearchQuery: (query: string) => void;
-	setSelectedCategory: (category: string) => void;
-	selectedCategory: string;
-	alcoholicFilter: string;
-	setAlcoholicFilter: (filter: string) => void;
-	onSortChange?: (isAscending: boolean) => void,
-}
+import type { Category, SearchBarProps } from "../../types/types";
+import styles from "./SearchBar.module.scss";
 
 function SearchBar({
 	searchQuery,
@@ -20,7 +10,7 @@ function SearchBar({
 	setSelectedCategory,
 	alcoholicFilter,
 	setAlcoholicFilter,
-	onSortChange,	
+	onSortChange,
 }: SearchBarProps) {
 	const [categories, setCategories] = useState<Category[]>([]);
 	const [sortAscending, setSortAscending] = useState<boolean>(true);
@@ -64,16 +54,15 @@ function SearchBar({
 				</div>
 				<button
 					type="button"
-    				className={`${styles["sort-button"]} ${sortAscending ? styles["active-sort-asc"] : styles["active-sort-desc"]}`}
-    				onClick={() => {
-        				setSortAscending(!sortAscending);
-        				onSortChange?.(!sortAscending);
-    				}}
-    				title={sortAscending ? "Trier Z→A" : "Trier A→Z"}
+					className={`${styles["sort-button"]} ${sortAscending ? styles["active-sort-asc"] : styles["active-sort-desc"]}`}
+					onClick={() => {
+						setSortAscending(!sortAscending);
+						onSortChange?.(!sortAscending);
+					}}
+					title={sortAscending ? "Trier Z→A" : "Trier A→Z"}
 				>
-    			<img src={sortIcon} alt="Sort" className={styles["sort-icon"]} />
+					<img src={sortIcon} alt="Sort" className={styles["sort-icon"]} />
 				</button>
-				
 			</div>
 			<div className={styles["filter-container"]}>
 				<div className={styles["badge-container"]}>

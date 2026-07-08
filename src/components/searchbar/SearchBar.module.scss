@@ -1,3 +1,4 @@
+
 .searchbar-container {
 	padding: 0.5rem 0 1rem;
 	display: flex;
@@ -12,9 +13,21 @@
 	flex: 1;
 }
 
+.search-input::before {
+  content: url('../../src/assets/icons/search.svg');
+  position: absolute;
+  left: 0.75rem;
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+  display: block;
+  z-index: 2;
+  
+}
+
 .search-input {
 	width: 100%;
-	padding: 1rem 1rem 1rem 1rem;
+	padding: 1rem 1rem 1rem 2.5rem;
 	border-radius: 14px;
 	border: 1px solid var(--secondary);
 	background: rgba(255, 255, 255, 0.1);
@@ -25,7 +38,8 @@
 	transition: border-color 0.2s ease, box-shadow 0.2s ease;
 	backdrop-filter: blur(8px);
   	box-shadow: inset 0 0 5px var(--secondary), inset 0 0 10px rgba(255, 77, 182, 0.2);
-
+	z-index:1;
+	position: relative;
 	&::placeholder {
 		color: var(--grey-light);
 	}
@@ -73,6 +87,7 @@
     font-size: 2rem;
     cursor: pointer;
     transition: all 0.2s ease;
+	justify-self: center;
 
     &:hover {
         background-color: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
