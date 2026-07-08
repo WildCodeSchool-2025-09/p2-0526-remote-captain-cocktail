@@ -28,7 +28,7 @@ function SearchBar({
 				}
 			})
 			.catch((error) => {
-				console.error("Error fetchging categories", error);
+				console.error("Error fetching categories", error);
 			});
 	}, [BASE]);
 
@@ -78,7 +78,7 @@ function SearchBar({
 						{ label: "All", value: "" },
 						{ label: "With alcohol", value: "Alcoholic" },
 						{ label: "Without alcohol", value: "Non alcoholic" },
-						{ label: "Optionnal", value: "Optional alcohol" },
+						{ label: "Optional", value: "Optional alcohol" },
 					].map((type) => {
 						const isSelected = alcoholicFilter === type.value;
 						const badgeClass = `${styles.badge} ${isSelected ? styles["active-alcool"] : ""}`;
@@ -90,7 +90,7 @@ function SearchBar({
 								onClick={() => setAlcoholicFilter(type.value)}
 								className={badgeClass}
 								aria-pressed={isSelected}
-								aria-label="Filtrer par ${type.label}"
+								aria-label={"Filtrer par ${type.label}"}
 							>
 								{type.label}
 							</button>
@@ -113,7 +113,7 @@ function SearchBar({
 								}
 								className={badgeClass}
 								aria-pressed={isSelected}
-								aria-label="Filter par ${category.strCategory}"
+								aria-label={"Filter par ${category.strCategory}"}
 							>
 								{category.strCategory}
 							</button>
