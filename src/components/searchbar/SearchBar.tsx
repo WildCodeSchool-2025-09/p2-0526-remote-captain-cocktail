@@ -99,7 +99,6 @@ function SearchBar({
 				</div>
 			</div>
 			<div className={styles["filter-container"]}>
-				
 				<div className={styles["badge-container"]}>
 					{categories.map((category) => {
 						const isSelected = selectedCategory === category.strCategory;
