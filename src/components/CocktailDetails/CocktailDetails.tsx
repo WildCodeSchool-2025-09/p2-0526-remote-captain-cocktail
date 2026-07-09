@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
+import { API_BASE } from "../../config";
 import type { CocktailDetailsProps, Cocktails } from "../../types/types";
 import CocktailTags from "../CocktailTags/CocktailTags";
 import Icon from "../Icon/Icon";
 import IngredientItem from "../IngredientItem/IngredientItem";
 import styles from "./CocktailDetails.module.scss";
-import { API_BASE } from "../../config";
 
 function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	const [fav, setFav] = useState(false);

@@ -1,5 +1,5 @@
-import styles from "./IngredientItem.module.scss";
 import type { IngredientProps } from "../../types/types";
+import styles from "./IngredientItem.module.scss";
 
 function IngredientItem({ strIngredient, strMeasure }: IngredientProps) {
 	return (
