@@ -28,38 +28,42 @@
         }
     }
 
-    img {
+    > img {
         width: 50px;
         border-radius: var(--radius);
         overflow: hidden;
     }
 
-    h5 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: white;
-     }
+    > div {
 
-    div span {
-        display: flex;
-        align-items: center;
-        font-size: .8rem;
-        font-weight: 600;
-        .checkmark {
-            line-height: 0;
-            svg {
-                width: 1.5rem;
-                height: 1.5rem;
-                path {
-                    stroke: var(--done);
-                    fill: var(--done);
-                    stroke-width: 1px;
+        h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        span {
+            display: flex;
+            align-items: center;
+            font-size: .8rem;
+            font-weight: 600;
+            .checkmark {
+                line-height: 0;
+                svg {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    path {
+                        stroke: var(--done);
+                        fill: var(--done);
+                        stroke-width: 1px;
+                    }
                 }
             }
-        }
-    }    
+        }  
 
-    button {
+    }
+
+    > button {
         background: none;
         border: none;
         margin-left: auto;

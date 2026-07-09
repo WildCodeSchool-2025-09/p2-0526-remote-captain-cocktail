@@ -15,9 +15,9 @@ export default function IngredientsDropdown({
 	search: string;
 }) {
 	return (
-		<div className={styles.dropdown}>
+		<>
 			{ingredients.length > 0 ? (
-				<>
+				<div className={styles.dropdown}>
 					<h2>{t.bar.dropdown.results}</h2>
 					<ul>
 						{ingredients.map((ingredient) => (
@@ -37,14 +37,18 @@ export default function IngredientsDropdown({
 							</li>
 						))}
 					</ul>
-				</>
+				</div>
 			) : search.length > 0 ? (
-				<div>
+				<div className={styles.dropdown}>
 					<Icon name="search" />
 					<h4>{t.bar.dropdown.noIngredientFound}</h4>
-					<p>{t.bar.dropdown.noResult.replace("{search}", search)}</p>
+					<p>
+						{t.bar.dropdown.noResult.replace("{search}", search)}
+						<br />
+						{t.bar.dropdown.noResultHint}
+					</p>
 				</div>
 			) : null}
-		</div>
+		</>
 	);
 }

@@ -34,7 +34,8 @@
             "results": "Results • A→Z",
             "add": "Add ingredient",
             "noIngredientFound": "No ingredient found",
-            "noResult": "No results for \"{search}\". Check the spelling or try another term."
+            "noResult": "No results for « {search} ».",
+            "noResultHint": "Check the spelling or try another term."
         },
         "myIngredients": {
             "title": "My bar •",

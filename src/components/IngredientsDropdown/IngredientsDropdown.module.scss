@@ -2,23 +2,55 @@
 @use '../../styles/components' as *;
 
 .dropdown {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 361px;
+    border-radius: var(--radius);
+    z-index: 10;
+    padding: var(--spacer-small);
     margin-bottom: var(--spacer-small);
+    @extend .full-glassmorphism;
+    > i {
+        border: 2px dashed var(--white-alpha);
+        border-radius: var(--radius);
+        padding: var(--spacer-large);
+        margin-top: var(--spacer-large);
+        svg {
+            width: 3rem;
+            height: 3rem;
+            path {
+                fill: var(--white-alpha);
+            }
+        }
+    }
+    > h4 {
+        margin-top: var(--spacer-large);
+    }
+    > p {
+        color: var(--white-alpha);
+        text-align: center;
+        padding: var(--spacer-large);
+    }
     ul {
         display: flex;
         flex-direction: column;
         gap: var(--spacer-small);
+        width: 100%;
         li {
             display: flex;
             align-items: center;
             width: 100%;
-            border: 1px solid black;
             button {
                 display: flex;
                 align-items: center;
                 gap: var(--spacer-small);
                 width: 100%;
-                min-height: 64px;
-                border: 1px solid var(--primary-dark);
+                height: 64px;
                 border-radius: var(--radius);
                 padding: var(--spacer-small);
                 @extend .simple-glassmorphism;
@@ -39,7 +71,7 @@
                     height: 36px;
                     border: 1px solid var(--tertiary);
                     border-radius: 50%;
-                    padding: 10px;
+                    padding: 6px;
                     margin-left: auto;
                     @extend .neon-tertiary;
                     svg {
@@ -52,5 +84,9 @@
                 }
             }
         }
+    }
+    .no-found {
+        display: flex;
+        flex-direction: column;
     }
 }

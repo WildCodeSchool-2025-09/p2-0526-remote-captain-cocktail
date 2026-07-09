@@ -58,7 +58,7 @@ export default function Bar() {
 					</ul>
 				</div>
 			)}
-			<div>
+			<div className={styles.container}>
 				<IngredientsDropdown
 					ingredients={filteredIngredients}
 					onSelect={handleSelect}
