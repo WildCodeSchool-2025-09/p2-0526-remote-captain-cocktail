@@ -78,3 +78,8 @@ export interface CocktailTagsProps {
 	strIBA?: string;
 	strTags?: string;
 }
+
+export interface IngredientProps {
+	strIngredient?: string;
+	strMeasure?: string;
+}

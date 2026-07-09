@@ -4,6 +4,7 @@ import CocktailTags from "../CocktailTags/CocktailTags";
 import Icon from "../Icon/Icon";
 import IngredientItem from "../IngredientItem/IngredientItem";
 import styles from "./CocktailDetails.module.scss";
+import { API_BASE } from "../../config";
 
 function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	const [fav, setFav] = useState(false);
@@ -20,9 +21,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	const [error, setError] = useState(false);
 	const fetchCocktail = useCallback(() => {
 		setError(false);
-		const API_KEY = import.meta.env.VITE_API_KEY;
-		const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
-		fetch(`${BASE}/lookup.php?i=${idDrink}`)
+		fetch(`${API_BASE}/lookup.php?i=${idDrink}`)
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error("Network Error");

@@ -1,9 +1,5 @@
 import styles from "./IngredientItem.module.scss";
-
-export interface IngredientProps {
-	strIngredient?: string;
-	strMeasure?: string;
-}
+import type { IngredientProps } from "../../types/types";
 
 function IngredientItem({ strIngredient, strMeasure }: IngredientProps) {
 	return (
@@ -30,4 +26,5 @@ function IngredientItem({ strIngredient, strMeasure }: IngredientProps) {
 		</article>
 	);
 }
+
 export default IngredientItem;
