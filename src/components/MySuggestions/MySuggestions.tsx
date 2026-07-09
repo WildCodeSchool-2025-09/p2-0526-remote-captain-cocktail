@@ -6,7 +6,7 @@ import styles from "./MySuggestions.module.scss";
 
 import CocktailSuggestion from "../CocktailSuggestion/CocktailSuggestion";
 
-import { BASE } from "../../config";
+import { API_BASE } from "../../config";
 import t from "../../data/en_EN.json";
 import { getMissingCount } from "../../utils/cocktail";
 
@@ -23,7 +23,7 @@ export default function MySuggestions({
 
 		Promise.all(
 			selectedIngredients.map((i) =>
-				fetch(`${BASE}/filter.php?i=${i.strIngredient1}`)
+				fetch(`${API_BASE}/filter.php?i=${i.strIngredient1}`)
 					.then((res) => res.json())
 					.then((data) => (Array.isArray(data.drinks) ? data.drinks : [])),
 			),
@@ -40,7 +40,7 @@ export default function MySuggestions({
 
 				return Promise.all(
 					unique.map((cocktail) =>
-						fetch(`${BASE}/lookup.php?i=${cocktail.idDrink}`)
+						fetch(`${API_BASE}/lookup.php?i=${cocktail.idDrink}`)
 							.then((res) => res.json())
 							.then((data) => data.drinks[0] as Cocktails),
 					),

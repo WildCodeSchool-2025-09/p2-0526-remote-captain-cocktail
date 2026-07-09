@@ -8,7 +8,7 @@ import MySuggestions from "../../components/MySuggestions/MySuggestions";
 import styles from "./Bar.module.scss";
 
 import Icon from "../../components/Icon/Icon";
-import { BASE } from "../../config";
+import { API_BASE } from "../../config";
 import { useMyIngredients } from "../../contexts/MyIngredientsContext";
 import t from "../../data/en_EN.json";
 import type { IngredientListItem } from "../../types/types";
@@ -21,7 +21,7 @@ export default function Bar() {
 	const [search, setSearch] = useState("");
 
 	useEffect(() => {
-		fetch(`${BASE}/list.php?i=list`)
+		fetch(`${API_BASE}/list.php?i=list`)
 			.then((res) => res.json())
 			.then((data) => setIngredients(data.drinks));
 	}, []);
