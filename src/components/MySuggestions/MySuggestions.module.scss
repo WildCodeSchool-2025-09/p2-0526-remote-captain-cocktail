@@ -1,8 +1,13 @@
 .suggestions {
+    position: relative;
+    &.sticky {
+        mask-image: linear-gradient(to top, black calc(100% - 15vh), transparent);
+    }
     h2 {
         margin-bottom: var(--spacer-small);
     }
     .suggestions-container {
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: var(--spacer-small);

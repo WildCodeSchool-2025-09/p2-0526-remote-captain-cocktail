@@ -10,10 +10,12 @@
     align-items: center;
     width: 100%;
     min-height: 361px;
+    max-height: 450px;
     border-radius: var(--radius);
-    z-index: 10;
+    z-index: 20;
     padding: var(--spacer-small);
     margin-bottom: var(--spacer-small);
+    overflow-y: auto;
     @extend .full-glassmorphism;
     > i {
         border: 2px dashed var(--white-alpha);
@@ -62,6 +64,7 @@
                     height: 30px;
                 }
                 span {
+                    font-size: .9rem;
                     font-family: "Poppins", sans-serif;
                     font-weight: 700;
                     color: white;

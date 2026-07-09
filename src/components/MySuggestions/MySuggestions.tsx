@@ -4,6 +4,7 @@ import type { Cocktail, IngredientListItem } from "../../types/types";
 
 import styles from "./MySuggestions.module.scss";
 
+import { useIsSticky } from "../../hooks/useIsSticky";
 import CocktailSuggestion from "../CocktailSuggestion/CocktailSuggestion";
 
 import { API_BASE } from "../../config";
@@ -14,6 +15,7 @@ export default function MySuggestions({
 	selectedIngredients,
 }: { selectedIngredients: IngredientListItem[] }) {
 	const [suggestions, setSuggestions] = useState<Cocktail[]>([]);
+	const { ref, isSticky } = useIsSticky(0);
 
 	useEffect(() => {
 		if (selectedIngredients.length < 2) {
@@ -59,7 +61,10 @@ export default function MySuggestions({
 	return (
 		<>
 			{suggestions.length > 0 && (
-				<section className={styles.suggestions}>
+				<section
+					ref={ref}
+					className={`${styles.suggestions} ${isSticky ? styles.sticky : ""}`}
+				>
 					<h2>
 						<span>{t.bar.mySuggestions.title}&nbsp;</span>
 						<span>{suggestions.length}</span>

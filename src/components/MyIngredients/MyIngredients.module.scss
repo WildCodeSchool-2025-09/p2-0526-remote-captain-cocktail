@@ -2,24 +2,27 @@
 @use '../../styles/components' as *;
 
 .ingredients {
+    position: sticky;
+    top: 90px;
     margin-bottom: var(--spacer-small);
+    z-index: 10;
     .title {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         .clear {
             display: flex;
-            align-items: center;
             gap: 5px;
             background: none;
             border: none;
+            font-size: .8rem;
             color: var(--secondary-light);
             margin-top: 3px;
             svg {
-                width: .8rem;
+                width: .9rem;
                 path {
                     stroke: var(--secondary-light) !important;
-                    stroke-width: 50 !important;
+                    stroke-width: 40 !important;
                 }
             }
         }
@@ -27,17 +30,24 @@
     ul {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--spacer-small);
+        gap: 5px;
+        &.sticky {
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            overflow-x: auto;
+            transition: all .3s ease;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
         li {
             display: flex;
             gap: var(--spacer-small);
-            border: 1px solid var(--tertiary);
             border-radius: 30px;
             font-size: .7rem;
             font-weight: 600;
             padding: 6px 12px;
             @extend .simple-glassmorphism;
-            @extend .neon-tertiary;
             scale: 0;
             animation: popin .5s ease 1 forwards;
             button {

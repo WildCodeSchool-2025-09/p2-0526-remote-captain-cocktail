@@ -2,6 +2,8 @@ import type { IngredientListItem } from "../../types/types";
 
 import styles from "./MyIngredients.module.scss";
 
+import { useIsSticky } from "../../hooks/useIsSticky";
+
 import t from "../../data/en_EN.json";
 import Icon from "../Icon/Icon";
 
@@ -14,8 +16,10 @@ export default function MyIngredients({
 	onRemove: (ingredient: IngredientListItem) => void;
 	onClear: () => void;
 }) {
+	const { ref, isSticky } = useIsSticky(90);
+
 	return (
-		<section className={styles.ingredients}>
+		<section ref={ref} className={styles.ingredients}>
 			<div className={styles.title}>
 				{selectedIngredients.length > 0 && (
 					<>
@@ -38,7 +42,7 @@ export default function MyIngredients({
 					</>
 				)}
 			</div>
-			<ul>
+			<ul className={isSticky ? styles.sticky : ""}>
 				{selectedIngredients.map((selectedIngredient) => (
 					<li key={selectedIngredient.strIngredient1}>
 						<span>{selectedIngredient.strIngredient1}</span>
