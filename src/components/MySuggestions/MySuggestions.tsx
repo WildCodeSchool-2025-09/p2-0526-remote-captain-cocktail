@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import type { Cocktails, IngredientListItem } from "../../types/types";
+import type { Cocktail, IngredientListItem } from "../../types/types";
 
 import styles from "./MySuggestions.module.scss";
 
@@ -13,7 +13,7 @@ import { getMissingCount } from "../../utils/cocktail";
 export default function MySuggestions({
 	selectedIngredients,
 }: { selectedIngredients: IngredientListItem[] }) {
-	const [suggestions, setSuggestions] = useState<Cocktails[]>([]);
+	const [suggestions, setSuggestions] = useState<Cocktail[]>([]);
 
 	useEffect(() => {
 		if (selectedIngredients.length < 2) {
@@ -29,25 +29,25 @@ export default function MySuggestions({
 			),
 		)
 			.then((results) => {
-				const all = results.flat() as Cocktails[];
+				const all = results.flat() as Cocktail[];
 				const countById = new Map<string, number>();
 				for (const d of all)
 					countById.set(d.idDrink, (countById.get(d.idDrink) ?? 0) + 1);
 
 				const unique = [
 					...new Map(all.map((d) => [d.idDrink, d])).values(),
-				].filter((d) => (countById.get(d.idDrink) ?? 0) >= 2) as Cocktails[];
+				].filter((d) => (countById.get(d.idDrink) ?? 0) >= 2) as Cocktail[];
 
 				return Promise.all(
 					unique.map((cocktail) =>
 						fetch(`${API_BASE}/lookup.php?i=${cocktail.idDrink}`)
 							.then((res) => res.json())
-							.then((data) => data.drinks[0] as Cocktails),
+							.then((data) => data.drinks[0] as Cocktail),
 					),
 				);
 			})
-			.then((fullCocktails) => {
-				const sorted = fullCocktails.sort(
+			.then((fullCocktail) => {
+				const sorted = fullCocktail.sort(
 					(a, b) =>
 						getMissingCount(a, selectedIngredients) -
 						getMissingCount(b, selectedIngredients),

@@ -1,12 +1,12 @@
-import type { Cocktails, IngredientListItem } from "../types/types";
+import type { Cocktail, IngredientListItem } from "../types/types";
 
 export function getMissingCount(
-	cocktail: Cocktails,
+	cocktail: Cocktail,
 	selectedIngredients: IngredientListItem[],
 ): number {
 	const cocktailIngredients = Array.from(
 		{ length: 15 },
-		(_, i) => cocktail[`strIngredient${i + 1}` as keyof Cocktails],
+		(_, i) => cocktail[`strIngredient${i + 1}` as keyof Cocktail],
 	).filter(Boolean) as string[];
 
 	const selectedNames = selectedIngredients.map((i) =>

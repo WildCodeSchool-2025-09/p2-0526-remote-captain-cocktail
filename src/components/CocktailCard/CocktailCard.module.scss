@@ -1,0 +1,60 @@
+article {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1.5px solid transparent;
+	background: linear-gradient(var(--background2), var(--background2)) padding-box, linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
+}
+
+
+.card-img {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	border-radius: 0;
+}
+
+article p {
+	padding: 4px 8px;
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(8px);
+	border-radius: 0 0 12px 12px;
+	margin-top: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.btn-favorite {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	border: none;
+	border-radius: 50%;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(100, 100, 100, 0.4);
+	backdrop-filter: blur(4px);
+}
+
+.card-details {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	border: none;
+	padding: 0;
+	background: none;
+	cursor: pointer;
+}
+
+.icon-heart {
+	width: 16px;
+	height: 16px;
+}

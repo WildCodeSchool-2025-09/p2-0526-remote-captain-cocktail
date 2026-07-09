@@ -1,4 +1,4 @@
-import type { Cocktails } from "../../types/types";
+import type { Cocktail } from "../../types/types";
 
 import styles from "./CocktailSuggestion.module.scss";
 
@@ -16,7 +16,7 @@ function getMissingColor(missingCount: number) {
 export default function CocktailSuggestion({
 	suggestion,
 	missingCount,
-}: { suggestion: Cocktails; missingCount: number }) {
+}: { suggestion: Cocktail; missingCount: number }) {
 	return (
 		<Link
 			to={`/cocktail/${suggestion.idDrink}`}
