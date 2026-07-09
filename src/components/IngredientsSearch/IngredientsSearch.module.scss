@@ -20,14 +20,24 @@
         }
         i {
             position: absolute;
-            left: 15px;
+            line-height: 0;
             top: 50%;
             translate: 0 -50%;
-            line-height: 0;
+        }
+        i.search {
+            left: 15px;
             svg path {
                 stroke: var(--secondary);
                 stroke-width: 1px;
                 fill: var(--secondary);
+            }
+        }
+        i.cross {
+            right: 15px;
+            svg path {
+                stroke: var(--tertiary);
+                stroke-width: 1px;
+                fill: var(--tertiary);
             }
         }
         input {

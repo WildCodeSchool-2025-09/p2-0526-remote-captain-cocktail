@@ -1,7 +1,8 @@
 .suggestions {
     position: relative;
     &.sticky {
-        mask-image: linear-gradient(to top, black calc(100% - 15vh), transparent);
+        mask-image: linear-gradient(to top, black 70%, transparent);
+        transition: mask-image .3s ease;
     }
     h2 {
         margin-bottom: var(--spacer-small);

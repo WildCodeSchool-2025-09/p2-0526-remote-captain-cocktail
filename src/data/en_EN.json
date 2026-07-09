@@ -28,7 +28,8 @@
             ]
         },
         "search": {
-            "select": "Search ingredients"
+            "select": "Search ingredients",
+            "clear": "Clear search"
         },
         "dropdown": {
             "results": "Results • A→Z",
