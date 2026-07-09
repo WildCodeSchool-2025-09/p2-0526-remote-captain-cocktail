@@ -4,6 +4,7 @@ import type { Cocktail, CocktailDetailsProps } from "../../types/types";
 import CocktailTags from "../CocktailTags/CocktailTags";
 import Icon from "../Icon/Icon";
 import IngredientItem from "../IngredientItem/IngredientItem";
+import CloseButton from "./CloseButton/CloseButton";
 import styles from "./CocktailDetails.module.scss";
 
 function CocktailDetails({ idDrink }: CocktailDetailsProps) {
@@ -14,7 +15,6 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 
 	const [translate, setTranslate] = useState(false);
 
-	// const { id } = useParams();
 	const [cocktailDetails, setCocktailDetails] = useState<Cocktail | null>(null);
 	const [error, setError] = useState(false);
 	const fetchCocktail = useCallback(() => {
@@ -39,14 +39,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	if (error) {
 		return (
 			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
-				<button
-					type="button"
-					commandfor="my-dialog"
-					command="close"
-					className={`${styles["arrow-left-button"]} ${styles["pink-button"]}`}
-				>
-					<Icon name="arrowleft" />
-				</button>
+				<CloseButton />
 				<Icon className={styles.exclamationpoint} name="exclamationpoint" />
 				<h2>Cocktail not found</h2>
 				<p>An error occurred. Please check your connection and try again.</p>
@@ -59,14 +52,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	if (!cocktailDetails) {
 		return (
 			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
-				<button
-					type="button"
-					commandfor="my-dialog"
-					command="close"
-					className={`${styles["arrow-left-button"]} ${styles["pink-button"]}`}
-				>
-					<Icon name="arrowleft" />
-				</button>
+				<CloseButton />
 				<p>Loading ...</p>
 			</article>
 		);
@@ -74,21 +60,19 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 
 	return (
 		<article className={styles["cocktail-card"]}>
-			<button
-				type="button"
-				commandfor="my-dialog"
-				command="close"
-				className={`${styles["arrow-left-button"]} ${styles["pink-button"]}`}
-			>
-				<Icon name="arrowleft" />
-			</button>
+			<CloseButton />
 			<div className={styles["cocktail-img-favheart"]}>
 				<img
 					className={styles["cocktail-img"]}
 					src={cocktailDetails.strDrinkThumb}
-					alt="cocktail name"
+					alt={`${cocktailDetails.strDrink}`}
 				/>
-				<button type="button" onClick={handleFav} className={styles.favheart}>
+				<button
+					type="button"
+					onClick={handleFav}
+					className={styles.favheart}
+					aria-label={!fav ? "Set Favorite" : "Remove Favorite"}
+				>
 					{!fav ? <Icon name="heart" /> : <Icon name="fullheart" />}
 				</button>
 			</div>
@@ -143,14 +127,6 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 				strGlass={cocktailDetails.strGlass}
 				strTags={cocktailDetails.strTags}
 			/>
-			<button
-				type="button"
-				className={styles["pink-button"]}
-				commandfor="my-dialog"
-				command="close"
-			>
-				Close
-			</button>
 		</article>
 	);
 }

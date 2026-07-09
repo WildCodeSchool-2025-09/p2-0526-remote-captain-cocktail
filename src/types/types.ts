@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from "react";
+
 export interface Cocktail {
 	dateModified?: string;
 	idDrink: string;
@@ -62,10 +64,6 @@ export interface Ingredients {
 	strABV?: string;
 }
 
-export interface CocktailDetailsProps {
-	idDrink: string;
-}
-
 declare module "react" {
 	interface ButtonHTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
 		commandfor?: string;
@@ -98,5 +96,10 @@ export interface PaginationProps {
 }
 
 export interface CocktailDetailsProps {
-	idDrink: string;
+	idDrink: string | null;
+}
+
+export interface DetailsContext {
+	id: string | null;
+	setId: Dispatch<SetStateAction<string | null>>;
 }

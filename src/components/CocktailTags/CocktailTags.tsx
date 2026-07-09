@@ -20,9 +20,7 @@ function CocktailTags({ strIBA, strGlass, strTags }: CocktailTagsProps) {
 					<span className={styles.property}>{strGlass}</span>
 				</li>
 
-				{!strIBA ? (
-					""
-				) : (
+				{!strIBA ? null : (
 					<li>
 						<abbr
 							className={styles.type}
@@ -34,11 +32,11 @@ function CocktailTags({ strIBA, strGlass, strTags }: CocktailTagsProps) {
 					</li>
 				)}
 
-				{!strTags ? (
-					""
-				) : (
-					<li className={styles.tagsBox}>
-						<span className={`${styles.type} ${styles.typeTags}`}>Tags</span>
+				{!strTags ? null : (
+					<li className={styles["tags-box"]}>
+						<span className={`${styles.type} ${styles["type-tags"]}`}>
+							Tags
+						</span>
 						<ul className={styles["tags-list"]}>
 							{strTags
 								.split(",")
