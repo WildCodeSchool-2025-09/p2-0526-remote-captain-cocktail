@@ -25,7 +25,7 @@ export default function CocktailSuggestion({
 			command="show-modal"
 			commandfor="my-dialog"
 			onClick={() => {
-				setId(suggestion.idDrink);
+				// TODO (en attente du merge CocktailDetails) : setId(suggestion.idDrink);
 			}}
 		>
 			<img src={suggestion.strDrinkThumb} alt={suggestion.strDrink} />
