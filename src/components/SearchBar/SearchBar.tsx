@@ -3,6 +3,7 @@ import sortIcon from "../../assets/icons/sort.svg";
 import type { Category, SearchBarProps } from "../../types/types";
 import Icon from "../Icon/Icon";
 import styles from "./SearchBar.module.scss";
+import { API_BASE } from "../../config";
 
 function SearchBar({
 	searchQuery,
@@ -20,7 +21,7 @@ function SearchBar({
 	const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
 
 	useEffect(() => {
-		fetch(`${BASE}/list.php?c=list`)
+		fetch(`${API_BASE}/list.php?c=list`)
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.drinks) {
@@ -30,7 +31,7 @@ function SearchBar({
 			.catch((error) => {
 				console.error("Error fetching categories", error);
 			});
-	}, [BASE]);
+	}, []);
 
 	return (
 		<>
