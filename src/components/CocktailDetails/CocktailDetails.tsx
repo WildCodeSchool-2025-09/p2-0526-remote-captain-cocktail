@@ -36,6 +36,17 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	useEffect(() => {
 		fetchCocktail();
 	}, [fetchCocktail]);
+
+	function difficulty() {
+		if (cocktailDetails?.strIngredient6) {
+			return "Hard";
+		}
+		if (cocktailDetails?.strIngredient4) {
+			return "Medium";
+		}
+		return "Easy";
+	}
+
 	if (error) {
 		return (
 			<article className={`${styles["not-found"]} ${styles["cocktail-card"]}`}>
@@ -84,14 +95,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 			<div className={styles["recipe-specs"]}>
 				<p>🕙 10 min</p>
 				<p>👩‍👦 1 pers.</p>
-				<p>
-					⭐ Difficulty :
-					{cocktailDetails.strIngredient6
-						? " Hard"
-						: cocktailDetails.strIngredient4
-							? " Medium"
-							: " Easy"}
-				</p>
+				<p>⭐ Difficulty : {difficulty()}</p>
 			</div>
 			<h2>INGREDIENTS</h2>
 			<ul className={styles.ingredients}>

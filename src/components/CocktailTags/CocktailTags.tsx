@@ -1,11 +1,11 @@
 import type { CocktailTagsProps } from "../../types/types";
 import styles from "./CocktailTags.module.scss";
 
-const excludeTags = [
+const EXCLUDE_TAGS = [
 	"IBA",
 	"Alcoholic",
 	"Non alcoholic",
-	"Optionnal alcohol",
+	"Optional alcohol",
 	"ContemporaryClassic",
 	"NewEra",
 	"Unforgettables",
@@ -13,7 +13,7 @@ const excludeTags = [
 
 function CocktailTags({ strIBA, strGlass, strTags }: CocktailTagsProps) {
 	const filteredTags =
-		strTags?.split(",").filter((tag) => !excludeTags.includes(tag)) ?? [];
+		strTags?.split(",").filter((tag) => !EXCLUDE_TAGS.includes(tag)) ?? [];
 
 	return (
 		<>
