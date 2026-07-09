@@ -61,6 +61,13 @@ export interface Ingredient {
 	strABV?: string;
 }
 
+declare module "react" {
+	interface ButtonHTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+		commandfor?: string;
+		command?: string;
+	}
+}
+
 export interface IngredientListItem {
 	strIngredient1: string;
 }

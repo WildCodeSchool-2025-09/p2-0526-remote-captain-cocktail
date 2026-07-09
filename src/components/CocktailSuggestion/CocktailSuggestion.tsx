@@ -1,8 +1,8 @@
 import type { Cocktail } from "../../types/types";
+// TODO (en attente du merge CocktailDetails) : import { useId } from "../../contexts/CocktailDetailsContext";
 
 import styles from "./CocktailSuggestion.module.scss";
 
-import { Link } from "react-router-dom";
 import t from "../../data/en_EN.json";
 import Icon from "../Icon/Icon";
 
@@ -17,10 +17,16 @@ export default function CocktailSuggestion({
 	suggestion,
 	missingCount,
 }: { suggestion: Cocktail; missingCount: number }) {
+	// TODO (en attente du merge CocktailDetails) : const { setId } = useId();
 	return (
-		<Link
-			to={`/cocktail/${suggestion.idDrink}`}
+		<button
+			type="button"
 			className={`${styles.suggestion} ${getMissingColor(missingCount)}`}
+			command="show-modal"
+			commandfor="my-dialog"
+			onClick={() => {
+				setId(suggestion.idDrink);
+			}}
 		>
 			<img src={suggestion.strDrinkThumb} alt={suggestion.strDrink} />
 			<div>
@@ -45,6 +51,6 @@ export default function CocktailSuggestion({
 			<button type="button" aria-label={t.bar.cocktailSuggestion.favorite}>
 				<Icon name="heart" />
 			</button>
-		</Link>
+		</button>
 	);
 }
