@@ -17,9 +17,6 @@ function SearchBar({
 	const [categories, setCategories] = useState<Category[]>([]);
 	const [sortAscending, setSortAscending] = useState<boolean>(true);
 
-	const API_KEY = import.meta.env.VITE_API_KEY;
-	const BASE = `https://www.thecocktaildb.com/api/json/v2/${API_KEY}`;
-
 	useEffect(() => {
 		fetch(`${API_BASE}/list.php?c=list`)
 			.then((res) => res.json())
@@ -91,7 +88,7 @@ function SearchBar({
 								onClick={() => setAlcoholicFilter(type.value)}
 								className={badgeClass}
 								aria-pressed={isSelected}
-								aria-label={"Filtrer par ${type.label}"}
+								aria-label={`Filtrer par ${type.label}`}
 							>
 								{type.label}
 							</button>
@@ -114,7 +111,7 @@ function SearchBar({
 								}
 								className={badgeClass}
 								aria-pressed={isSelected}
-								aria-label={"Filter par ${category.strCategory}"}
+								aria-label={`Filter par ${category.strCategory}`}
 							>
 								{category.strCategory}
 							</button>
