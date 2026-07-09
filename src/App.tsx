@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
 
 import "./App.scss";
+import CocktailDetailsDialog from "./components/CocktailDetailsDialog/CocktailDetailsDialog";
 import { CocktailDetailsProvider } from "./contexts/CocktailDetailsContext";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 				<main>
 					<Outlet />
 				</main>
+				<CocktailDetailsDialog />
 			</CocktailDetailsProvider>
 		</>
 	);

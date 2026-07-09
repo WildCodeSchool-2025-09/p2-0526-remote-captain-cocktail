@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useId } from "../../contexts/CocktailDetailsContext";
 import type { CocktailCardProps } from "../../types/types";
-import CocktailDetails from "../CocktailDetails/CocktailDetails";
 import Icon from "../Icon/Icon";
 import styles from "./CocktailCard.module.scss";
 
 function CocktailCard({ cocktail }: CocktailCardProps) {
-	const { setId, id } = useId();
+	const { setId } = useId();
 	const [isFavorite, setIsFavorite] = useState(false);
+
 	return (
 		<article className={styles.article}>
 			<button
@@ -37,9 +37,6 @@ function CocktailCard({ cocktail }: CocktailCardProps) {
 				/>
 				<p>{cocktail.strDrink}</p>
 			</button>
-			<dialog id="my-dialog">
-				<CocktailDetails idDrink={id} />
-			</dialog>
 		</article>
 	);
 }
