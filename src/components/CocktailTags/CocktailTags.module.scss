@@ -14,6 +14,10 @@
         justify-content: center;
     }
 
+    .full {
+        grid-column: span 2;
+    }
+
     .type {
         display: block;
         font-size: 1rem;        

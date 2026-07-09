@@ -12,14 +12,16 @@ const excludeTags = [
 ];
 
 function CocktailTags({ strIBA, strGlass, strTags }: CocktailTagsProps) {
+	const filteredTags =
+		strTags?.split(",").filter((tag) => !excludeTags.includes(tag)) ?? [];
+
 	return (
 		<>
 			<ul className={styles.info}>
-				<li className={styles.glass}>
+				<li className={`${styles.glass} ${!strIBA ? styles.full : ""}`}>
 					<span className={styles.type}>Glass Type</span>
 					<span className={styles.property}>{strGlass}</span>
 				</li>
-
 				{!strIBA ? null : (
 					<li>
 						<abbr
@@ -31,21 +33,17 @@ function CocktailTags({ strIBA, strGlass, strTags }: CocktailTagsProps) {
 						<span className={styles.property}>{strIBA}</span>
 					</li>
 				)}
-
-				{!strTags ? null : (
+				{filteredTags.length === 0 ? null : (
 					<li className={styles["tags-box"]}>
 						<span className={`${styles.type} ${styles["type-tags"]}`}>
 							Tags
 						</span>
 						<ul className={styles["tags-list"]}>
-							{strTags
-								.split(",")
-								.filter((tags) => !excludeTags.includes(tags))
-								.map((tag) => (
-									<li key={tag} className={styles.tag}>
-										{tag}
-									</li>
-								))}
+							{filteredTags.map((tag) => (
+								<li key={tag} className={styles.tag}>
+									{tag}
+								</li>
+							))}
 						</ul>
 					</li>
 				)}
