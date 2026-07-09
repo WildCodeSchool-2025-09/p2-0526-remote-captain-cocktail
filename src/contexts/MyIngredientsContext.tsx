@@ -19,7 +19,9 @@ export function MyIngredientsProvider({ children }: { children: ReactNode }) {
 		setMyIngredients((prev) => {
 			if (prev.some((i) => i.strIngredient1 === ingredient.strIngredient1))
 				return prev;
-			return [...prev, ingredient];
+			return [...prev, ingredient].sort((a, b) =>
+				a.strIngredient1.localeCompare(b.strIngredient1),
+			);
 		});
 	}
 
