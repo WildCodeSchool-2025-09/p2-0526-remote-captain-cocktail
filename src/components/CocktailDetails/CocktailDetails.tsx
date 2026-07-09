@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { API_BASE } from "../../config";
-import type { CocktailDetailsProps, Cocktails } from "../../types/types";
+import type { Cocktail, CocktailDetailsProps } from "../../types/types";
 import CocktailTags from "../CocktailTags/CocktailTags";
 import Icon from "../Icon/Icon";
 import IngredientItem from "../IngredientItem/IngredientItem";
@@ -15,9 +15,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	const [translate, setTranslate] = useState(false);
 
 	// const { id } = useParams();
-	const [cocktailDetails, setCocktailDetails] = useState<Cocktails | null>(
-		null,
-	);
+	const [cocktailDetails, setCocktailDetails] = useState<Cocktail | null>(null);
 	const [error, setError] = useState(false);
 	const fetchCocktail = useCallback(() => {
 		setError(false);

@@ -1,4 +1,4 @@
-export interface Cocktails {
+export interface Cocktail {
 	dateModified?: string;
 	idDrink: string;
 	strAlcoholic?: string;
@@ -82,4 +82,21 @@ export interface CocktailTagsProps {
 export interface IngredientProps {
 	strIngredient?: string;
 	strMeasure?: string;
+}
+export interface CocktailCardProps {
+	cocktail: Cocktail;
+}
+
+export interface CocktailGridProps {
+	cocktails: Cocktail[];
+}
+
+export interface PaginationProps {
+	totalPages: number;
+	currentPage: number;
+	onPageChange: (page: number) => void;
+}
+
+export interface CocktailDetailsProps {
+	idDrink: string;
 }
