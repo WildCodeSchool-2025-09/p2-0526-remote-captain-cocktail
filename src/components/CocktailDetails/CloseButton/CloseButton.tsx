@@ -7,7 +7,7 @@ function CloseButton() {
 			type="button"
 			commandfor="my-dialog"
 			command="close"
-			className={`${styles["arrow-left-button"]} ${styles["pink-button"]}`}
+			className={`${styles["arrow-left-button"]} pink-button`}
 			aria-label="Close"
 		>
 			<Icon name="arrowleft" />

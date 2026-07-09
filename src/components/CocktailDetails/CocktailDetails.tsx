@@ -112,7 +112,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 						<p>{cocktailDetails.strInstructions}</p>
 						<button
 							type="button"
-							className={styles["pink-button"]}
+							className="pink-button"
 							onClick={() => setTranslate(!translate)}
 						>
 							Translate to French

@@ -3,7 +3,7 @@ import styles from "./IngredientItem.module.scss";
 
 function IngredientItem({ strIngredient, strMeasure }: IngredientProps) {
 	return (
-		<article>
+		<>
 			{!strIngredient ? null : (
 				<li className={styles["ingr-and-measure"]}>
 					<img
@@ -19,7 +19,7 @@ function IngredientItem({ strIngredient, strMeasure }: IngredientProps) {
 					</div>
 				</li>
 			)}
-		</article>
+		</>
 	);
 }
 
