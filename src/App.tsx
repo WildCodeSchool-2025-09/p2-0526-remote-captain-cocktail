@@ -1,18 +1,12 @@
 import { Outlet } from "react-router";
-import { Link } from "react-router-dom";
-
 import "./App.scss";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
 	return (
 		<>
-			<nav>
-				<Link to="/">Accueil</Link>
-				<Link to="/Bar">Bar</Link>
-				<Link to="/Cocktails">Cocktails</Link>
-				<Link to="/Favorites">Favoris</Link>
-			</nav>
-			<main>
+			<Navbar />
+			<main className="page-container">
 				<Outlet />
 			</main>
 		</>
