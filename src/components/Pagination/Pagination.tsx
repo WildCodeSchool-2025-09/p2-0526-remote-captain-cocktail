@@ -15,7 +15,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: Props) {
 		<nav aria-label="Pagination" className={styles.pagination}>
 			<button
 				type="button"
-				aria-label="Première page"
+				aria-label="First page"
 				onClick={() => onPageChange(1)}
 				disabled={currentPage === 1}
 			>
@@ -23,7 +23,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: Props) {
 			</button>
 			<button
 				type="button"
-				aria-label="Page précédente"
+				aria-label="Previous page"
 				onClick={() => onPageChange(currentPage - 1)}
 				disabled={currentPage === 1}
 			>
@@ -47,7 +47,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: Props) {
 
 			<button
 				type="button"
-				aria-label="Page suivante"
+				aria-label="Next page"
 				onClick={() => onPageChange(currentPage + 1)}
 				disabled={currentPage === totalPages}
 			>
@@ -55,7 +55,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: Props) {
 			</button>
 			<button
 				type="button"
-				aria-label="Dernière page"
+				aria-label="Last page"
 				onClick={() => onPageChange(totalPages)}
 				disabled={currentPage === totalPages}
 			>

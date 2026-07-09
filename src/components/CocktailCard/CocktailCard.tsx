@@ -22,7 +22,6 @@ function CocktailCard({ cocktail }: CocktailCardProps) {
 			<button
 				type="button"
 				className={styles["card-details"]}
-				// @ts-expect-error command/commandfor sont de nouveaux attributs HTML pas encore dans les types React
 				command="show-modal"
 				commandfor="my-dialog"
 			>

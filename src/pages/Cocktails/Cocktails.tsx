@@ -8,18 +8,6 @@ import styles from "./Cocktails.module.scss";
 
 const CARDS_PER_PAGE = 12;
 
-async function getAllDrinks() {
-	const letters = "abcdefghijklmnopqrstuvwxyz".split("");
-	const results = await Promise.all(
-		letters.map((letter) =>
-			fetch(`${API_BASE}/search.php?f=${letter}`)
-				.then((res) => res.json())
-				.then((data) => data.drinks ?? []),
-		),
-	);
-	return results.flat();
-}
-
 function Cocktails() {
 	const [cocktails, setCocktails] = useState<Cocktail[]>([]);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -27,8 +15,20 @@ function Cocktails() {
 	const [selectedCategory, setSelectedCategory] = useState<string>("");
 	const [alcoholicFilter, setAlcoholicFilter] = useState<string>("");
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: reset page when filters change
 	useEffect(() => {
-		getAllDrinks().then((drinks) => setCocktails(drinks));
+		setCurrentPage(1);
+	}, [searchQuery, selectedCategory, alcoholicFilter]);
+
+	useEffect(() => {
+		fetch(`${API_BASE}/search.php?s=`)
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.drinks) setCocktails(data.drinks);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
 	}, []);
 
 	const filteredCocktails = cocktails.filter((cocktail) => {
