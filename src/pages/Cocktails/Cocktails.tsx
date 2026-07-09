@@ -39,9 +39,7 @@ function Cocktails() {
 			const matchesName = cocktail.strDrink.toLowerCase().includes(cleanQuery);
 			let matchesIngredient = false;
 			for (let i = 1; i <= 15; i++) {
-				const ingredient = (
-					cocktail as unknown as Record<string, string | undefined>
-				)[`strIngredient${i}`];
+				const ingredient = cocktail[`strIngredient${i}`];
 				if (ingredient?.toLowerCase().includes(cleanQuery)) {
 					matchesIngredient = true;
 					break;
