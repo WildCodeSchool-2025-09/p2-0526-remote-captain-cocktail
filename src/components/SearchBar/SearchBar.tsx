@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import sortIcon from "../../assets/icons/sort.svg";
+import { API_BASE } from "../../config";
 import type { Category, SearchBarProps } from "../../types/types";
 import Icon from "../Icon/Icon";
 import styles from "./SearchBar.module.scss";
-import { API_BASE } from "../../config";
 
 function SearchBar({
 	searchQuery,
