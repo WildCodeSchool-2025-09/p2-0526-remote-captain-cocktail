@@ -100,6 +100,6 @@ export interface CocktailDetailsProps {
 }
 
 export interface DetailsContext {
-	id: string | null;
-	setId: Dispatch<SetStateAction<string | null>>;
+	cocktailId: string | null;
+	setCocktailId: Dispatch<SetStateAction<string | null>>;
 }

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useId } from "../../contexts/CocktailDetailsContext";
+import { useCocktailId } from "../../contexts/CocktailDetailsContext";
 import type { CocktailCardProps } from "../../types/types";
 import Icon from "../Icon/Icon";
 import styles from "./CocktailCard.module.scss";
 
 function CocktailCard({ cocktail }: CocktailCardProps) {
-	const { setId } = useId();
+	const { setCocktailId } = useCocktailId();
 	const [isFavorite, setIsFavorite] = useState(false);
 
 	return (
@@ -27,7 +27,7 @@ function CocktailCard({ cocktail }: CocktailCardProps) {
 				command="show-modal"
 				commandfor="my-dialog"
 				onClick={() => {
-					setId(cocktail.idDrink);
+					setCocktailId(cocktail.idDrink);
 				}}
 			>
 				<img

@@ -6,18 +6,20 @@ const CocktailDetailsContext = createContext<DetailsContext | null>(null);
 export function CocktailDetailsProvider({
 	children,
 }: { children: React.ReactNode }) {
-	const [id, setId] = useState<string | null>(null);
+	const [cocktailId, setCocktailId] = useState<string | null>(null);
 	return (
-		<CocktailDetailsContext.Provider value={{ id, setId }}>
+		<CocktailDetailsContext.Provider value={{ cocktailId, setCocktailId }}>
 			{children}
 		</CocktailDetailsContext.Provider>
 	);
 }
 
-export const useId = () => {
+export const useCocktailId = () => {
 	const value = useContext(CocktailDetailsContext);
 	if (value == null) {
-		throw new Error("useId has to be used within <CocktailDetailsProvider>");
+		throw new Error(
+			"useCocktailId has to be used within <CocktailDetailsProvider>",
+		);
 	}
 
 	return value;
