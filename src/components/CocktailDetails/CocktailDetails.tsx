@@ -8,12 +8,12 @@ import CloseButton from "./CloseButton/CloseButton";
 import styles from "./CocktailDetails.module.scss";
 
 function CocktailDetails({ idDrink }: CocktailDetailsProps) {
-	const [fav, setFav] = useState(false);
-	function handleFav() {
-		setFav(!fav);
+	const [IsFavorite, setIsFavorite] = useState(false);
+	function handleFavorite() {
+		setIsFavorite(!IsFavorite);
 	}
 
-	const [translate, setTranslate] = useState(false);
+	const [isTranslate, setIsTranslate] = useState(false);
 
 	const [cocktailDetails, setCocktailDetails] = useState<Cocktail | null>(null);
 	const [error, setError] = useState(false);
@@ -69,11 +69,11 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 				/>
 				<button
 					type="button"
-					onClick={handleFav}
+					onClick={handleFavorite}
 					className={styles.favheart}
-					aria-label={!fav ? "Set Favorite" : "Remove Favorite"}
+					aria-label={!IsFavorite ? "Set Favorite" : "Remove Favorite"}
 				>
-					{!fav ? <Icon name="heart" /> : <Icon name="fullheart" />}
+					{!IsFavorite ? <Icon name="heart" /> : <Icon name="fullheart" />}
 				</button>
 			</div>
 			<h1>{cocktailDetails.strDrink}</h1>
@@ -113,11 +113,11 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 						<button
 							type="button"
 							className="pink-button"
-							onClick={() => setTranslate(!translate)}
+							onClick={() => setIsTranslate(!isTranslate)}
 						>
 							Translate to French
 						</button>
-						{translate && <p>{cocktailDetails.strInstructionsFR}</p>}
+						{isTranslate && <p>{cocktailDetails.strInstructionsFR}</p>}
 					</>
 				)}
 			</div>
