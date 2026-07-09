@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import sortIcon from "../../assets/icons/sort.svg";
 import { API_BASE } from "../../config";
+import { useSort } from "../../contexts/SortContext";
 import type { Category, SearchBarProps } from "../../types/types";
 import Icon from "../Icon/Icon";
 import styles from "./SearchBar.module.scss";
@@ -16,6 +17,8 @@ function SearchBar({
 }: SearchBarProps) {
 	const [categories, setCategories] = useState<Category[]>([]);
 	const [sortAscending, setSortAscending] = useState<boolean>(true);
+	const sortContext = useSort();
+	const effectiveSortAscending = sortContext?.sortAscending ?? sortAscending;
 
 	useEffect(() => {
 		fetch(`${API_BASE}/list.php?c=list`)
@@ -56,12 +59,16 @@ function SearchBar({
 				</div>
 				<button
 					type="button"
-					className={`${styles["sort-button"]} ${sortAscending ? styles["active-sort-asc"] : styles["active-sort-desc"]}`}
+					className={`${styles["sort-button"]} ${effectiveSortAscending ? styles["active-sort-asc"] : styles["active-sort-desc"]}`}
 					onClick={() => {
-						setSortAscending(!sortAscending);
-						onSortChange?.(!sortAscending);
+						if (sortContext?.toggleSort) {
+							sortContext.toggleSort();
+						} else {
+							setSortAscending(!sortAscending);
+						}
+						onSortChange?.(!effectiveSortAscending);
 					}}
-					title={sortAscending ? "Trier Z→A" : "Trier A→Z"}
+					title={effectiveSortAscending ? "Trier Z→A" : "Trier A→Z"}
 				>
 					<img
 						src={sortIcon}

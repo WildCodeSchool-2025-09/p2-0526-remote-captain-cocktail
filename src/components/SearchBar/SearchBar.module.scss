@@ -11,16 +11,14 @@
 	display: flex;
 	align-items: center;
 	flex: 1;
-	
-}
-
-.input-wrapper svg{
-	position: absolute;
-	z-index:10;
-	translate: 50% -50%;
-	width: 16px;
-	height: 16px;
-	filter: brightness(0) invert(1);
+	svg{
+		position: absolute;
+		z-index:10;
+		translate: 50% -50%;
+		width: 16px;
+		height: 16px;
+		filter: brightness(0) invert(1);
+	}
 }
 
 .search-input {
