@@ -1,4 +1,4 @@
-article {
+.article {
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -8,7 +8,6 @@ article {
 	background: linear-gradient(var(--background2), var(--background2)) padding-box, linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
 }
 
-
 .card-img {
 	width: 100%;
 	aspect-ratio: 1 / 1;
@@ -16,7 +15,7 @@ article {
 	border-radius: 0;
 }
 
-article p {
+.article>button>p {
 	padding: 4px 8px;
 	font-family: "Poppins", sans-serif;
 	font-weight: 500;
@@ -34,7 +33,7 @@ article p {
 	position: absolute;
 	top: 8px;
 	right: 8px;
-	border: none;
+	border: 1px solid var(--secondary);
 	border-radius: 50%;
 	padding: 5px;
 	display: flex;
@@ -57,4 +56,13 @@ article p {
 .icon-heart {
 	width: 16px;
 	height: 16px;
+svg {
+                display: block;
+                width: 100%;
+                height: 100%;
+
+                path, g {
+                    fill: var(--secondary);
+                }
+            }
 }
