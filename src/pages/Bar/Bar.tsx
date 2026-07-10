@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import Icon from "../../components/Icon/Icon";
 import IngredientsDropdown from "../../components/IngredientsDropdown/IngredientsDropdown";
 import IngredientsSearch from "../../components/IngredientsSearch/IngredientsSearch";
 import MyIngredients from "../../components/MyIngredients/MyIngredients";
@@ -7,7 +8,6 @@ import MySuggestions from "../../components/MySuggestions/MySuggestions";
 
 import styles from "./Bar.module.scss";
 
-import Icon from "../../components/Icon/Icon";
 import { API_BASE } from "../../config";
 import { useMyIngredients } from "../../contexts/MyIngredientsContext";
 import t from "../../data/en_EN.json";
