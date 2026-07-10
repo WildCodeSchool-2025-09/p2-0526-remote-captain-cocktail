@@ -3,9 +3,9 @@ import type { IngredientListItem } from "../types/types";
 
 interface MyIngredientsContextType {
 	myIngredients: IngredientListItem[];
-	handleSelect: (ingredient: IngredientListItem) => void;
-	handleRemove: (ingredient: IngredientListItem) => void;
-	handleClear: () => void;
+	addIngredient: (ingredient: IngredientListItem) => void;
+	removeIngredient: (ingredient: IngredientListItem) => void;
+	clearIngredients: () => void;
 }
 
 const MyIngredientsContext = createContext<MyIngredientsContextType | null>(
@@ -15,7 +15,7 @@ const MyIngredientsContext = createContext<MyIngredientsContextType | null>(
 export function MyIngredientsProvider({ children }: { children: ReactNode }) {
 	const [myIngredients, setMyIngredients] = useState<IngredientListItem[]>([]);
 
-	function handleSelect(ingredient: IngredientListItem) {
+	function addIngredient(ingredient: IngredientListItem) {
 		setMyIngredients((prev) => {
 			if (prev.some((i) => i.strIngredient1 === ingredient.strIngredient1))
 				return prev;
@@ -25,19 +25,24 @@ export function MyIngredientsProvider({ children }: { children: ReactNode }) {
 		});
 	}
 
-	function handleRemove(ingredient: IngredientListItem) {
+	function removeIngredient(ingredient: IngredientListItem) {
 		setMyIngredients((prev) =>
 			prev.filter((i) => i.strIngredient1 !== ingredient.strIngredient1),
 		);
 	}
 
-	function handleClear() {
+	function clearIngredients() {
 		setMyIngredients([]);
 	}
 
 	return (
 		<MyIngredientsContext.Provider
-			value={{ myIngredients, handleSelect, handleRemove, handleClear }}
+			value={{
+				myIngredients,
+				addIngredient,
+				removeIngredient,
+				clearIngredients,
+			}}
 		>
 			{children}
 		</MyIngredientsContext.Provider>

@@ -14,7 +14,7 @@ import t from "../../data/en_EN.json";
 import type { IngredientListItem } from "../../types/types";
 
 export default function Bar() {
-	const { myIngredients, handleSelect, handleRemove, handleClear } =
+	const { myIngredients, addIngredient, removeIngredient, clearIngredients } =
 		useMyIngredients();
 
 	const [ingredients, setIngredients] = useState<IngredientListItem[]>([]);
@@ -61,13 +61,13 @@ export default function Bar() {
 			<div className={styles.container}>
 				<IngredientsDropdown
 					ingredients={filteredIngredients}
-					onSelect={handleSelect}
+					onSelect={addIngredient}
 					search={search}
 				/>
 				<MyIngredients
 					selectedIngredients={myIngredients}
-					onRemove={handleRemove}
-					onClear={handleClear}
+					onRemove={removeIngredient}
+					onClear={clearIngredients}
 				/>
 				<MySuggestions selectedIngredients={myIngredients} />
 			</div>
