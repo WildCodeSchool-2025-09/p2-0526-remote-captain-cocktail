@@ -1,0 +1,16 @@
+.home {
+.logo {
+    width: 200px;
+}
+article{
+    i {
+        svg {
+            width: 100px;
+            height: 100px;
+            path {
+                fill: var(--primary);
+            }
+        }
+    }
+}
+}
