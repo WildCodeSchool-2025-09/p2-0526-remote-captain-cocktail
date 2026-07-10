@@ -5,6 +5,7 @@ import styles from "./MyIngredients.module.scss";
 import { useIsSticky } from "../../hooks/useIsSticky";
 
 import t from "../../data/en_EN.json";
+import { pluralize } from "../../utils/pluralize";
 import Icon from "../Icon/Icon";
 
 export default function MyIngredients({
@@ -27,7 +28,11 @@ export default function MyIngredients({
 							<span>{t.bar.myIngredients.title}&nbsp;</span>
 							<span>
 								{selectedIngredients.length}&nbsp;
-								{selectedIngredients.length > 1 ? "ingrédients" : "ingrédient"}
+								{pluralize(
+									selectedIngredients.length,
+									t.bar.ingredient,
+									t.bar.ingredients,
+								)}
 							</span>
 						</h2>
 						<button type="button" className={styles.clear} onClick={onClear}>

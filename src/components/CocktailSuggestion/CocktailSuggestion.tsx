@@ -5,6 +5,7 @@ import styles from "./CocktailSuggestion.module.scss";
 
 import t from "../../data/en_EN.json";
 import { getMissingColor } from "../../utils/cocktail";
+import { pluralize } from "../../utils/pluralize";
 import Icon from "../Icon/Icon";
 
 export default function CocktailSuggestion({
@@ -37,7 +38,8 @@ export default function CocktailSuggestion({
 								"{missingCount}",
 								String(missingCount),
 							)}
-							&nbsp;{missingCount > 1 ? "ingrédients" : "ingrédient"}
+							&nbsp;
+							{pluralize(missingCount, t.bar.ingredient, t.bar.ingredients)}
 						</>
 					)}
 				</span>
