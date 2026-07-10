@@ -30,12 +30,7 @@ export default function MyIngredients({
 								{selectedIngredients.length > 1 ? "ingrédients" : "ingrédient"}
 							</span>
 						</h2>
-						<button
-							type="button"
-							aria-label={t.bar.myIngredients.empty}
-							className={styles.clear}
-							onClick={onClear}
-						>
+						<button type="button" className={styles.clear} onClick={onClear}>
 							<Icon name="trashcan" />
 							<span>{t.bar.myIngredients.empty}</span>
 						</button>
@@ -48,7 +43,7 @@ export default function MyIngredients({
 						<span>{selectedIngredient.strIngredient1}</span>
 						<button
 							type="button"
-							aria-label={t.bar.myIngredients.remove}
+							aria-label={`${t.bar.myIngredients.remove} ${selectedIngredient.strIngredient1}`}
 							onClick={() => onRemove(selectedIngredient)}
 						>
 							<Icon name="cross" />

@@ -14,7 +14,8 @@ export function useIsSticky(offset = 90) {
 				window.scrollY >= naturalOffsetRef.current - offset;
 			setIsSticky((prev) => (stuck !== prev ? stuck : prev));
 		}
-		window.addEventListener("scroll", handleScroll);
+		handleScroll();
+		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [offset]);
 

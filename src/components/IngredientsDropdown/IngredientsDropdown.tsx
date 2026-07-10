@@ -24,7 +24,7 @@ export default function IngredientsDropdown({
 							<li key={ingredient.strIngredient1}>
 								<button
 									type="button"
-									aria-label={t.bar.dropdown.add}
+									aria-label={`${t.bar.dropdown.add} ${ingredient.strIngredient1}`}
 									onClick={() => onSelect(ingredient)}
 								>
 									<img
