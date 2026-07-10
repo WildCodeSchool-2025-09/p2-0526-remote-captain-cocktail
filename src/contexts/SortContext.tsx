@@ -1,10 +1,6 @@
-import type react from "react";
+import type { ReactNode } from "react";
 import { createContext, useContext, useState } from "react";
-
-type SortContextType = {
-	sortAscending: boolean;
-	toggleSort: () => void;
-};
+import type { SortContextType } from "../../types/types";
 
 const SortContext = createContext<SortContextType | undefined>(undefined);
 

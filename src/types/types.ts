@@ -117,3 +117,8 @@ export interface DetailsContext {
 	cocktailId: string | null;
 	setCocktailId: Dispatch<SetStateAction<string | null>>;
 }
+
+export interface SortContextType {
+	sortAscending: boolean;
+	toggleSort: () => void;
+};

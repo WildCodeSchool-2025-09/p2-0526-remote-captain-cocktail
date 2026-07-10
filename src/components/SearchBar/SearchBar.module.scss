@@ -27,7 +27,7 @@
 	border-radius: 14px;
 	border: 1px solid var(--secondary);
 	background: rgba(255, 255, 255, 0.1);
-	color: var(--grey-medium);
+	color: var(--grey-light);
 	font-size: 0.80rem;
 	font-family: poppins, sans-serif;
 	outline: none;
@@ -37,7 +37,7 @@
 	z-index:1;
 	position: relative;
 	&::placeholder {
-		color: var(--grey-light);
+		color: var(--grey-medium);
 	}
 
 	&:focus {
@@ -145,7 +145,7 @@
 	font-family: poppins, sans-serif;
 	white-space: nowrap;
 	cursor: pointer;
-	transition: all 1s ease;
+	transition: all 0.3s ease;
 	backdrop-filter: blur(8px);
   	box-shadow: inset 0 0 5px var(--secondary), inset 0 0 10px rgba(255, 77, 182, 0.2);
 
