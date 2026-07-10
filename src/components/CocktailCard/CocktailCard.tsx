@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useCocktailId } from "../../contexts/CocktailDetailsContext";
 import type { CocktailCardProps } from "../../types/types";
-import CocktailDetails from "../CocktailDetails/CocktailDetails";
 import Icon from "../Icon/Icon";
 import styles from "./CocktailCard.module.scss";
 
 function CocktailCard({ cocktail }: CocktailCardProps) {
+	const { setCocktailId } = useCocktailId();
 	const [isFavorite, setIsFavorite] = useState(false);
+
 	return (
-		<article>
+		<article className={styles.article}>
 			<button
 				type="button"
 				className={styles["btn-favorite"]}
@@ -15,7 +17,7 @@ function CocktailCard({ cocktail }: CocktailCardProps) {
 				onClick={() => setIsFavorite(!isFavorite)}
 			>
 				<Icon
-					name={isFavorite ? "heart-filled" : "heart"}
+					name={isFavorite ? "fullheart" : "heart"}
 					className={styles["icon-heart"]}
 				/>
 			</button>
@@ -24,6 +26,9 @@ function CocktailCard({ cocktail }: CocktailCardProps) {
 				className={styles["card-details"]}
 				command="show-modal"
 				commandfor="my-dialog"
+				onClick={() => {
+					setCocktailId(cocktail.idDrink);
+				}}
 			>
 				<img
 					className={styles["card-img"]}
@@ -32,9 +37,6 @@ function CocktailCard({ cocktail }: CocktailCardProps) {
 				/>
 				<p>{cocktail.strDrink}</p>
 			</button>
-			<dialog id="my-dialog">
-				<CocktailDetails idDrink={cocktail.idDrink} />
-			</dialog>
 		</article>
 	);
 }

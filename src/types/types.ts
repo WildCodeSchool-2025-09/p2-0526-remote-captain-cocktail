@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from "react";
+
 export interface Cocktail {
 	dateModified?: string;
 	idDrink: string;
@@ -50,9 +52,10 @@ export interface Cocktail {
 	strMeasure15?: string;
 	strTags?: string;
 	strVideo?: string;
+	[key: string]: string | undefined;
 }
 
-export interface Ingredient {
+export interface Ingredients {
 	idIngredient: string;
 	strIngredient: string;
 	strDescription?: string;
@@ -61,6 +64,23 @@ export interface Ingredient {
 	strABV?: string;
 }
 
+declare module "react" {
+	interface ButtonHTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+		commandfor?: string;
+		command?: string;
+	}
+}
+
+export interface CocktailTagsProps {
+	strGlass?: string;
+	strIBA?: string;
+	strTags?: string;
+}
+
+export interface IngredientProps {
+	strIngredient?: string;
+	strMeasure?: string;
+}
 export interface CocktailCardProps {
 	cocktail: Cocktail;
 }
@@ -76,5 +96,10 @@ export interface PaginationProps {
 }
 
 export interface CocktailDetailsProps {
-	idDrink: string;
+	idDrink: string | null;
+}
+
+export interface DetailsContext {
+	cocktailId: string | null;
+	setCocktailId: Dispatch<SetStateAction<string | null>>;
 }

@@ -1,0 +1,13 @@
+button.arrow-left-button {
+    align-self: flex-start;
+    margin-bottom: 0;
+    padding: 8px;
+    position: fixed;
+    z-index: 20;
+
+    i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+}
