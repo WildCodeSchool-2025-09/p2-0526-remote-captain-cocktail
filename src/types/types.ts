@@ -64,6 +64,20 @@ export interface Ingredients {
 	strABV?: string;
 }
 
+export interface Category {
+	strCategory: string;
+}
+
+export interface SearchBarProps {
+	searchQuery: string;
+	setSearchQuery: (query: string) => void;
+	setSelectedCategory: (category: string) => void;
+	selectedCategory: string;
+	alcoholicFilter: string;
+	setAlcoholicFilter: (filter: string) => void;
+	onSortChange?: (isAscending: boolean) => void;
+}
+
 declare module "react" {
 	interface ButtonHTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
 		commandfor?: string;
