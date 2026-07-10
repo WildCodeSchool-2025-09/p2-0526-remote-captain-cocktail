@@ -36,12 +36,12 @@ export default function MySuggestions({
 				for (const d of all)
 					countById.set(d.idDrink, (countById.get(d.idDrink) ?? 0) + 1);
 
-				const unique = [
+				const matchingCocktails = [
 					...new Map(all.map((d) => [d.idDrink, d])).values(),
 				].filter((d) => (countById.get(d.idDrink) ?? 0) >= 2) as Cocktail[];
 
 				return Promise.all(
-					unique.map((cocktail) =>
+					matchingCocktails.map((cocktail) =>
 						fetch(`${API_BASE}/lookup.php?i=${cocktail.idDrink}`)
 							.then((res) => res.json())
 							.then((data) => data.drinks[0] as Cocktail),
@@ -49,12 +49,13 @@ export default function MySuggestions({
 				);
 			})
 			.then((fullCocktail) => {
-				const sorted = fullCocktail.sort(
-					(a, b) =>
-						getMissingCount(a, selectedIngredients) -
-						getMissingCount(b, selectedIngredients),
+				setSuggestions(
+					fullCocktail.sort(
+						(a, b) =>
+							getMissingCount(a, selectedIngredients) -
+							getMissingCount(b, selectedIngredients),
+					),
 				);
-				setSuggestions(sorted);
 			});
 	}, [selectedIngredients]);
 

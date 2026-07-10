@@ -1,5 +1,5 @@
+import { useCocktailId } from "../../contexts/CocktailDetailsContext";
 import type { Cocktail } from "../../types/types";
-// TODO (en attente du merge CocktailDetails) : import { useId } from "../../contexts/CocktailDetailsContext";
 
 import styles from "./CocktailSuggestion.module.scss";
 
@@ -11,7 +11,7 @@ export default function CocktailSuggestion({
 	suggestion,
 	missingCount,
 }: { suggestion: Cocktail; missingCount: number }) {
-	// TODO (en attente du merge CocktailDetails) : const { setId } = useId();
+	const { setCocktailId } = useCocktailId();
 	return (
 		<button
 			type="button"
@@ -19,7 +19,7 @@ export default function CocktailSuggestion({
 			command="show-modal"
 			commandfor="my-dialog"
 			onClick={() => {
-				// TODO (en attente du merge CocktailDetails) : setId(suggestion.idDrink);
+				setCocktailId(suggestion.idDrink);
 			}}
 		>
 			<img src={suggestion.strDrinkThumb} alt={suggestion.strDrink} />
