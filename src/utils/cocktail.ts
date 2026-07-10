@@ -1,5 +1,12 @@
 import type { Cocktail, IngredientListItem } from "../types/types";
 
+export function getMissingColor(missingCount: number): string {
+	if (missingCount === 0) return "status-green";
+	if (missingCount === 1) return "status-yellow";
+	if (missingCount === 2) return "status-orange";
+	return "status-red";
+}
+
 export function getMissingCount(
 	cocktail: Cocktail,
 	selectedIngredients: IngredientListItem[],

@@ -4,14 +4,8 @@ import type { Cocktail } from "../../types/types";
 import styles from "./CocktailSuggestion.module.scss";
 
 import t from "../../data/en_EN.json";
+import { getMissingColor } from "../../utils/cocktail";
 import Icon from "../Icon/Icon";
-
-function getMissingColor(missingCount: number) {
-	if (missingCount === 0) return "status-green";
-	if (missingCount === 1) return "status-yellow";
-	if (missingCount === 2) return "status-orange";
-	return "status-red";
-}
 
 export default function CocktailSuggestion({
 	suggestion,
