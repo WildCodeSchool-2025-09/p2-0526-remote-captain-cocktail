@@ -44,14 +44,14 @@ function SearchBar({
 						placeholder="Search cocktail or ingredient"
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}
-						aria-label="Rechercher un cocktail ou un ingrédient"
+						aria-label="Search"
 					/>
 					{searchQuery && (
 						<button
 							type="button"
 							className={styles["clear-button"]}
 							onClick={() => setSearchQuery("")}
-							aria-label="Effacer la recherche"
+							aria-label="Delete research"
 						>
 							×
 						</button>
@@ -68,11 +68,11 @@ function SearchBar({
 						}
 						onSortChange?.(!effectiveSortAscending);
 					}}
-					title={effectiveSortAscending ? "Trier Z→A" : "Trier A→Z"}
+					title={effectiveSortAscending ? "Sort Z→A" : "Sort A→Z"}
 				>
 					<img
 						src={sortIcon}
-						alt="Trier par ordre alphabétique"
+						alt="Sort in alphabetical order"
 						className={styles["sort-icon"]}
 					/>
 				</button>
@@ -95,7 +95,7 @@ function SearchBar({
 								onClick={() => setAlcoholicFilter(type.value)}
 								className={badgeClass}
 								aria-pressed={isSelected}
-								aria-label={`Filtrer par ${type.label}`}
+								aria-label={`Filer by ${type.label}`}
 							>
 								{type.label}
 							</button>
@@ -118,7 +118,7 @@ function SearchBar({
 								}
 								className={badgeClass}
 								aria-pressed={isSelected}
-								aria-label={`Filter par ${category.strCategory}`}
+								aria-label={`Filter by ${category.strCategory}`}
 							>
 								{category.strCategory}
 							</button>

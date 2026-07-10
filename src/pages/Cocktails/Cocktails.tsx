@@ -3,9 +3,10 @@ import CocktailGrid from "../../components/CocktailGrid/CocktailGrid";
 import Pagination from "../../components/Pagination/Pagination";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { API_BASE } from "../../config";
+import { useSort } from "../../contexts/SortContext";
 import type { Cocktail } from "../../types/types";
 import styles from "./Cocktails.module.scss";
-import { useSort } from "../../contexts/SortContext"
+
 const CARDS_PER_PAGE = 12;
 
 function Cocktails() {
@@ -63,7 +64,7 @@ function Cocktails() {
 	const sortedCocktails = [...filteredCocktails].sort((a, b) =>
 		sortAscending
 			? a.strDrink.localeCompare(b.strDrink)
-			: b.strDrink.localeCompare(a.strDrink)
+			: b.strDrink.localeCompare(a.strDrink),
 	);
 	const pageCards = sortedCocktails.slice(start, end);
 

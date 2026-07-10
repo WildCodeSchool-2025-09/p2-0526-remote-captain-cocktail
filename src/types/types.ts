@@ -121,4 +121,4 @@ export interface DetailsContext {
 export interface SortContextType {
 	sortAscending: boolean;
 	toggleSort: () => void;
-};
+}
