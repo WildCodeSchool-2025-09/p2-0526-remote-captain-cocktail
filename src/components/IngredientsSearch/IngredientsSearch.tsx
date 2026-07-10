@@ -5,10 +5,10 @@ import t from "../../data/en_EN.json";
 
 export default function IngredientsSearch({
 	search,
-	setSearch,
+	onSearchChange,
 }: {
 	search: string;
-	setSearch: (value: string) => void;
+	onSearchChange: (value: string) => void;
 }) {
 	return (
 		<div className={styles.search}>
@@ -18,13 +18,13 @@ export default function IngredientsSearch({
 					type="text"
 					placeholder={t.bar.search.select}
 					value={search}
-					onChange={(e) => setSearch(e.target.value)}
+					onChange={(e) => onSearchChange(e.target.value)}
 				/>
 				{search && (
 					<button
 						type="button"
 						aria-label={t.bar.search.clear}
-						onClick={() => setSearch("")}
+						onClick={() => onSearchChange("")}
 					>
 						<Icon name="cross" className={styles.cross} />
 					</button>

@@ -41,7 +41,7 @@ export default function Bar() {
 				<span>{t.bar.title}</span>
 				<Icon name="palm" />
 			</h1>
-			<IngredientsSearch search={search} setSearch={setSearch} />
+			<IngredientsSearch search={search} onSearchChange={setSearch} />
 			{myIngredients.length === 0 && search.length === 0 && (
 				<div className={styles["how-to"]}>
 					<h3>{t.bar.howTo.title}</h3>
