@@ -28,7 +28,7 @@
         padding: var(--spacer-large) var(--spacer-small);
         backdrop-filter: blur(12px);
         background: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));         
-        border-radius: 12px;
+        border-radius: 25px;
         margin: var(--spacer-small);
         border: 1px solid rgba(255, 255, 255, 0.14); 
         display: flex;
@@ -77,45 +77,63 @@
         flex-direction: column;
         align-items: stretch;
         margin: var(--spacer-small);
-
-        .cocktail-moment {
-        backdrop-filter: blur(12px);
-        background: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));         
-        border-radius: 12px;
-        margin: var(--spacer-small);
-        border: 1px solid rgba(255, 255, 255, 0.14); 
-        }
     }
 
     article.all-cocktails {
         backdrop-filter: blur(12px);
         background: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));         
-        border-radius: 12px;
+        border-radius: 25px;
         margin: var(--spacer-small);
         border: 1px solid rgba(255, 255, 255, 0.14); 
+        padding: var(--spacer-medium);
+
+        h3 {
+            margin-bottom: 3px;
+        }
+
+        p {
+            color: var(--grey-light);
+            font-size: small;
+            margin-bottom: var(--spacer-small);
+        }
+
+        button.browse-all {
+            display: inline-flex;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));         
+            border-radius: 20px;
+            margin: var(--spacer-small);
+            border: 1px solid var(--tertiary); 
+            padding: var(--spacer-small) var(--spacer-medium);
+            font-weight: 600;
+
+            a {
+                display: inline-flex;
+                align-items: center;
+                gap: var(--spacer-small);
+            }
+
+            i {
+                display: flex;
+                align-items: center;
+                svg {
+                    width: 16px;
+                    height: 16px;
+                    display: block;
+                    path {
+                        fill: var(--tertiary);
+                    }
+                }
+            }
+        }
     }
 
-    .cocktail-realisable {
-        backdrop-filter: blur(12px);
-        background: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));         
-        border-radius: 12px;
-        margin: var(--spacer-small);
-        border: 1px solid rgba(255, 255, 255, 0.14); 
-    }
-    
-    .cocktail-suggests {
-    backdrop-filter: blur(12px);
-    background: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));         
-    border-radius: 12px;
-    margin: var(--spacer-small);
-    border: 1px solid rgba(255, 255, 255, 0.14); 
-}
     .cocktail-favorites {
-    backdrop-filter: blur(12px);
-    background: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));         
-    border-radius: 12px;
-    margin: var(--spacer-small);
-    border: 1px solid rgba(255, 255, 255, 0.14); 
-
+        padding: var(--spacer-medium);
+        .favorites {
+        display: flex;
+        justify-content: space-between;
+        }
     }
 }

@@ -31,57 +31,21 @@ function Home() {
 				</p>
 			</article>
 			<article className={styles.moment}>
-				<h2>COCKTAIL OF THE MOMENT</h2>
-				<div className={styles["cocktail-moment"]}>
-					display world cup cocktail and things <br />
-					because we're worthit <br />
-					and VOILA <br />
-					test <br />
-					test <br />
-					test
-				</div>
+				{/* TODO : Ajouter le composant CocktailTrending à l'intérieur de l'article */}
 			</article>
 			<article className={styles["all-cocktails"]}>
 				<h3>All cocktails</h3>
-				<p>test</p>
-				<button type="button" className="pink-button">
-					<Link to="/cocktails">Browse</Link>
+				<p>Browse our complete collection for inspiration.</p>
+				<button type="button" className={styles["browse-all"]}>
+					<Link to="/cocktails">
+						Browse cocktails <Icon name="arrowright" />
+					</Link>
 				</button>
 			</article>
-			<article> nbRealisable </article>
-			<article>
-				<h2>Realisables maintenant</h2>
-				<div className={styles["cocktail-realisable"]}>
-					display some things really beautifull <br />
-					because we're worthit <br />
-					and VOILA <br />
-					test <br />
-					test <br />
-					test
-				</div>
-			</article>
-			<article>
-				<h2>Suggestions for you</h2>
-				<div className={styles["cocktail-suggests"]}>
-					display some things really beautifull you can do <br />
-					because we're worthit <br />
-					and VOILA <br />
-					test <br />
-					test <br />
-					test
-				</div>
-			</article>
-			<article>
-				<h2>Recents favorites</h2>
-				<Link to="/favorites">See all</Link>
-				<div className={styles["cocktail-favorites"]}>
-					display some things really beautifull you liked
-					<br />
-					because we're worthit <br />
-					and VOILA <br />
-					test <br />
-					test <br />
-					test
+			<article className={styles["cocktail-favorites"]}>
+				<div className={styles.favorites}>
+					<h2>Recents favorites</h2>
+					<Link to="/favorites">See all &rsaquo;</Link>
 				</div>
 			</article>
 		</section>
