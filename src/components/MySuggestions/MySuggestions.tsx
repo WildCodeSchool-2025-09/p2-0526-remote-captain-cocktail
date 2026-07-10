@@ -73,7 +73,7 @@ export default function MySuggestions({
 					<div className={styles["suggestions-container"]}>
 						{suggestions.map((suggestion) => (
 							<CocktailSuggestion
-								key={suggestion.strDrink}
+								key={suggestion.idDrink}
 								suggestion={suggestion}
 								missingCount={getMissingCount(suggestion, selectedIngredients)}
 							/>
