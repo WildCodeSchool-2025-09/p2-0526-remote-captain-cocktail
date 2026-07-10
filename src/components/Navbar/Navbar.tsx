@@ -4,7 +4,7 @@ import styles from "./Navbar.module.scss";
 
 function Navbar() {
 	return (
-		<nav aria-label="Main navigation">
+		<nav className={styles["nav-main"]} aria-label="Main navigation">
 			<ul className={styles["nav-list"]}>
 				<li>
 					<NavLink

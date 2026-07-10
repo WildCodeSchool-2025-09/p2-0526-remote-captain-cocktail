@@ -1,9 +1,12 @@
-.nav-list {
+.nav-main {
 	position: fixed;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	z-index: 10;
+	z-index: 100;
+}
+
+.nav-list {
 	display: flex;
 	justify-content: center;
 	align-items: center;
