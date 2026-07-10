@@ -1,4 +1,6 @@
-export interface Cocktails {
+import type { Dispatch, SetStateAction } from "react";
+
+export interface Cocktail {
 	dateModified?: string;
 	idDrink: string;
 	strAlcoholic?: string;
@@ -50,6 +52,7 @@ export interface Cocktails {
 	strMeasure15?: string;
 	strTags?: string;
 	strVideo?: string;
+	[key: string]: string | undefined;
 }
 
 export interface Ingredients {
@@ -73,4 +76,44 @@ export interface SearchBarProps {
 	alcoholicFilter: string;
 	setAlcoholicFilter: (filter: string) => void;
 	onSortChange?: (isAscending: boolean) => void;
+}
+
+declare module "react" {
+	interface ButtonHTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+		commandfor?: string;
+		command?: string;
+	}
+}
+
+export interface CocktailTagsProps {
+	strGlass?: string;
+	strIBA?: string;
+	strTags?: string;
+}
+
+export interface IngredientProps {
+	strIngredient?: string;
+	strMeasure?: string;
+}
+export interface CocktailCardProps {
+	cocktail: Cocktail;
+}
+
+export interface CocktailGridProps {
+	cocktails: Cocktail[];
+}
+
+export interface PaginationProps {
+	totalPages: number;
+	currentPage: number;
+	onPageChange: (page: number) => void;
+}
+
+export interface CocktailDetailsProps {
+	idDrink: string | null;
+}
+
+export interface DetailsContext {
+	cocktailId: string | null;
+	setCocktailId: Dispatch<SetStateAction<string | null>>;
 }
