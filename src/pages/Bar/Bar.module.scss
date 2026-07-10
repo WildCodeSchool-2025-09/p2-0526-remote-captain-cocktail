@@ -1,9 +1,5 @@
 @use '../../styles/components' as *;
 
-:global nav {
-    display: none;
-}
-
 :global(body) {
     width: 100dvw;
     height: 100dvh;
