@@ -44,9 +44,6 @@ export default function CocktailSuggestion({
 					)}
 				</span>
 			</div>
-			<button type="button" aria-label={t.bar.cocktailSuggestion.favorite}>
-				<Icon name="heart" />
-			</button>
 		</button>
 	);
 }
