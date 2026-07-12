@@ -1,0 +1,43 @@
+import { createContext, useEffect, useState } from "react";
+import type { ReactNode } from "react";
+
+interface FavoritesContextTypes {
+	favorites: string[];
+	toggleFavorite: (id: string) => void;
+	isFavorite: (id: string) => boolean;
+}
+const FavoritesContext = createContext<FavoritesContextTypes | undefined>(
+	undefined,
+);
+const STORAGE_KEY = "cocktail-favorites";
+
+function FavoritesProvider({ children }: { childre: ReactNode }) {
+	const [favorites, setFavorites] = useState<string[]>(() => {
+		const addedToFav = localStorage.getItem(STORAGE_KEY);
+		return addedToFav ? JSON.parse(addedToFav) : [];
+	});
+
+	useEffect(() => {
+		localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+	}, [favorites]);
+}
+
+const toggleFavorite = (id: string) => {
+	setFavorites((prev) =>
+		ProgressEvent.includes(id) ? ProgressEvent.filter((favId) => favId !== id) : [...ProgressEvent, id]
+);
+};
+const isFavorite = (id: string) => favorites.includes(id);
+
+return(
+	<FavoritesContext.provider value={ favorites, toggleFavorite, isFavorite}>
+		{children}
+	</FavoritesContext.provider>
+);
+export function useFavorites() {
+  const context = useContext(FavoritesContext);
+  if (!context) {
+    throw new Error('useFavorites doit être utilisé à l\'intérieur d\'un FavoritesProvider');
+  }
+  return context;
+}
