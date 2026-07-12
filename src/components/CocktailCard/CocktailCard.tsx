@@ -13,7 +13,7 @@ function CocktailCard({ cocktail }: CocktailCardProps) {
 			<button
 				type="button"
 				className={styles["btn-favorite"]}
-				aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+				aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
 				onClick={() => setIsFavorite(!isFavorite)}
 			>
 				<Icon
