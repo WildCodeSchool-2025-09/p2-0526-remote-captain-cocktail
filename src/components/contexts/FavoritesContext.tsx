@@ -20,24 +20,28 @@ function FavoritesProvider({ children }: { childre: ReactNode }) {
 	useEffect(() => {
 		localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
 	}, [favorites]);
+
+	const toggleFavorite = (id: string) => {
+		setFavorites((prev) =>
+			ProgressEvent.includes(id)
+				? ProgressEvent.filter((favId) => favId !== id)
+				: [...ProgressEvent, id],
+		);
+	};
+	const isFavorite = (id: string) => favorites.includes(id);
+
+	return (
+		<FavoritesContext.Provider
+			value={{ favorites, toggleFavorite, isFavorite }}
+		>
+			{children}
+		</FavoritesContext.Provider>
+	);
 }
-
-const toggleFavorite = (id: string) => {
-	setFavorites((prev) =>
-		ProgressEvent.includes(id) ? ProgressEvent.filter((favId) => favId !== id) : [...ProgressEvent, id]
-);
-};
-const isFavorite = (id: string) => favorites.includes(id);
-
-return(
-	<FavoritesContext.provider value={ favorites, toggleFavorite, isFavorite}>
-		{children}
-	</FavoritesContext.provider>
-);
 export function useFavorites() {
-  const context = useContext(FavoritesContext);
-  if (!context) {
-    throw new Error('useFavorites doit être utilisé à l\'intérieur d\'un FavoritesProvider');
-  }
-  return context;
+	const context = useContext(FavoritesContext);
+	if (!context) {
+		throw new Error("useFavorites must be used in FavoritesProvider");
+	}
+	return context;
 }
