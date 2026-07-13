@@ -11,7 +11,7 @@ const FavoritesContext = createContext<FavoritesContextTypes | undefined>(
 );
 const STORAGE_KEY = "cocktail-favorites";
 
-function FavoritesProvider({ children }: { childre: ReactNode }) {
+export function FavoritesProvider({ children }: { children: ReactNode }) {
 	const [favorites, setFavorites] = useState<string[]>(() => {
 		const addedToFav = localStorage.getItem(STORAGE_KEY);
 		return addedToFav ? JSON.parse(addedToFav) : [];
