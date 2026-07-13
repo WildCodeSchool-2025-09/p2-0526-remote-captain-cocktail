@@ -1,0 +1,136 @@
+@use '../../styles/components' as *;
+
+:global nav {
+    display: none;
+}
+
+:global(body) {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: black;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    margin: 0;
+    &:before, &:after {
+        content: '';
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        background-size: cover;
+        background-position: center bottom;
+        z-index: -1;
+        pointer-events: none;
+        opacity: .9;
+        transition: all .3s ease;
+    }
+    &:before {
+        background-image: url('/assets/images/background-home-animated.webp');
+        right: 100%;
+    }
+    &:after {
+        background-image: url('/assets/images/background-pages-animated.webp');
+        left: 0;
+    }
+    &:has(.how-to) {
+        &:before {
+            right: 0;
+        }
+        &:after {
+            left: 100%;
+        }
+    }
+}
+
+.page {
+    padding: var(--spacer-large);
+    .title {
+        span {
+            font-family: "Pacifico", cursive;
+            font-weight: 400;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px var(--secondary));
+        }
+        i {
+            margin-left: var(--spacer-small);
+            svg {
+                width: 2rem;
+                height: 2rem;
+                path {
+                    fill: var(--tertiary-light);
+                    filter: drop-shadow(0 0 10px var(--tertiary));               
+                }
+            }
+        }
+    }
+    .how-to {
+        border-radius: var(--radius);
+        text-align: center;
+        padding: var(--spacer-medium) var(--spacer-large);
+        @extend .full-glassmorphism;
+        h3 {
+            font-family: "Pacifico", cursive;
+            font-weight: 400;
+            font-size: 1.3rem;
+            color: var(--secondary-light);
+            margin-bottom: var(--spacer-medium);
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacer-medium);
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: var(--spacer-medium);
+                &.add > span {
+                    color: var(--primary);
+                    @extend .neon-primary;
+                }
+                &.discover > span {
+                    color: var(--secondary);
+                    @extend .neon-secondary;
+                }
+                &.explore > span {
+                    color: var(--tertiary);
+                    @extend .neon-tertiary;
+                }
+                &.click > span {
+                    color: var(--done);
+                    @extend .neon-done;
+                }
+                > span {
+                    min-width: 36px;
+                    height: 36px;
+                    font-weight: 500;
+                    border: 1px solid currentColor;
+                    border-radius: 50%;
+                    line-height: 36px;
+                }
+                > div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    span {
+                        line-height: 1.1rem;
+                        font-weight: 600;
+                    }
+                    span + span {
+                        font-size: .8rem;
+                        font-weight: 500;
+                        color: var(--white-alpha);
+                    }
+                }
+            }
+        }
+    }
+    .container {
+        position: relative;
+    }
+}

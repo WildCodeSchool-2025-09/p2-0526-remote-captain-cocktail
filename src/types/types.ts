@@ -85,6 +85,10 @@ declare module "react" {
 	}
 }
 
+export interface IngredientListItem {
+	strIngredient1: string;
+}
+
 export interface CocktailTagsProps {
 	strGlass?: string;
 	strIBA?: string;
