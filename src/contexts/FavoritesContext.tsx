@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 interface FavoritesContextTypes {
@@ -23,9 +23,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
 
 	const toggleFavorite = (id: string) => {
 		setFavorites((prev) =>
-			ProgressEvent.includes(id)
-				? ProgressEvent.filter((favId) => favId !== id)
-				: [...ProgressEvent, id],
+			prev.includes(id) ? prev.filter((favId) => favId !== id) : [...prev, id],
 		);
 	};
 	const isFavorite = (id: string) => favorites.includes(id);
