@@ -4,6 +4,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import type { Cocktail } from "../../types/types";
+import { getCocktailById } from "../../utils/getCocktailById";
 import styles from "./Favorites.modules.scss";
 
 const CARDS_PER_PAGE = 12;
