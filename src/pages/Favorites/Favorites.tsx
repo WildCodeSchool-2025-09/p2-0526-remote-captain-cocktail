@@ -3,6 +3,7 @@ import CocktailGrid from "../../components/CocktailGrid/CocktailGrid";
 import Pagination from "../../components/Pagination/Pagination";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { useFavorites } from "../../contexts/FavoritesContext";
+import { useSort } from "../../contexts/SortContext";
 import type { Cocktail } from "../../types/types";
 import { getCocktailById } from "../../utils/getCocktailById";
 import styles from "./Favorites.module.scss";
@@ -17,6 +18,8 @@ function Favorites() {
 	const [searchQuery, setSearchQuery] = useState<string>("");
 	const [selectedCategory, setSelectedCategory] = useState<string>("");
 	const [alcoholicFilter, setAlcoholicFilter] = useState<string>("");
+	const sortContext = useSort();
+	const sortAscending = sortContext?.sortAscending ?? true;
 
 	useEffect(() => {
 		async function fetchFavorites() {
@@ -66,7 +69,12 @@ function Favorites() {
 	const totalPages = Math.ceil(filteredCocktails.length / CARDS_PER_PAGE);
 	const start = (currentPage - 1) * CARDS_PER_PAGE;
 	const end = start + CARDS_PER_PAGE;
-	const pageCards = filteredCocktails.slice(start, end);
+	const sortedCocktails = [...filteredCocktails].sort((a, b) =>
+		sortAscending
+			? a.strDrink.localeCompare(b.strDrink)
+			: b.strDrink.localeCompare(a.strDrink),
+	);
+	const pageCards = sortedCocktails.slice(start, end);
 
 	return (
 		<>
