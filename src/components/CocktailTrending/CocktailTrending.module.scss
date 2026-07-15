@@ -1,0 +1,74 @@
+.cocktail-trending {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	aspect-ratio: 2 / 1;
+	margin: 5px;
+	padding-right: 35px;
+	border-radius: 16px;
+	backdrop-filter: blur(12px);
+	  background: linear-gradient(
+		150deg,
+		rgba(255, 255, 255, 0.14),
+		rgba(255, 255, 255, 0.05)
+	);
+	font-family: "Poppins", sans-serif;
+	box-shadow: 0px 0px 20px 0px rgba(155, 155, 155, 0.7), 0 0 30px rgba(255, 30, 30, 0.4);
+}
+
+.cocktail-trending::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	padding: 2px;
+	border-radius: 16px;
+	mask-composite: exclude;
+	pointer-events: none;
+}
+
+.cocktail-info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	z-index: 1;
+    margin-left: 25px;
+	margin-top: 15px;
+}
+
+.cocktail-name {
+	margin: 0;
+	color: white;
+	font-size: 22px;
+	font-weight: 800;
+	white-space: nowrap;
+	text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.cocktail-tagline {
+	margin: 4px 0 14px;
+	color: #dbdbdb;
+	font-size: 12px;
+	font-weight: 500;
+	text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.cocktail-img {
+	height: 150px;
+
+}
+
+.btn-recipe {
+	background: linear-gradient(160deg, var(--primary) 0%, var(--secondary) 100%);
+	box-shadow: 0px 0px 16px -2px var(--secondary);
+	margin-left: 60px;
+	margin-top: 8px;
+	padding: 5px 15px;		
+	border-radius: 8px;
+	color: white;
+	font-family: "Poppins", sans-serif;
+    font-size: 10px;
+	font-weight: 600;
+	cursor: pointer;
+}

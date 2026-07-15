@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { API_BASE } from "../../config";
+import { blueSignature } from "../../data/blueSignature";
 import type { Cocktail, CocktailDetailsProps } from "../../types/types";
 import CocktailTags from "../CocktailTags/CocktailTags";
 import Icon from "../Icon/Icon";
@@ -19,6 +20,12 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	const [error, setError] = useState(false);
 	const fetchCocktail = useCallback(() => {
 		setError(false);
+
+		if (idDrink === blueSignature.idDrink) {
+			setCocktailDetails(blueSignature);
+			return;
+		}
+
 		fetch(`${API_BASE}/lookup.php?i=${idDrink}`)
 			.then((response) => {
 				if (!response.ok) {
