@@ -10,7 +10,7 @@ function App() {
 	return (
 		<>
 			<FavoritesProvider>
-				<MyIngredientsProvider>	
+				<MyIngredientsProvider>
 					<CocktailDetailsProvider>
 						<SortProvider>
 							<Navbar />
