@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useCocktailId } from "../../contexts/CocktailDetailsContext";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import type { CocktailCardProps } from "../../types/types";
@@ -8,18 +7,20 @@ import styles from "./CocktailCard.module.scss";
 function CocktailCard({ cocktail }: CocktailCardProps) {
 	const { setCocktailId } = useCocktailId();
 	const { isFavorite, toggleFavorite } = useFavorites();
-	const favorite = isFavorite(cocktail.idDrink);
+	const isCurrentFavorite = isFavorite(cocktail.idDrink);
 
 	return (
 		<article className={styles.article}>
 			<button
 				type="button"
 				className={styles["btn-favorite"]}
-				aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+				aria-label={
+					isCurrentFavorite ? "Remove from favorites" : "Add to favorites"
+				}
 				onClick={() => toggleFavorite(cocktail.idDrink)}
 			>
 				<Icon
-					name={favorite ? "fullheart" : "heart"}
+					name={isCurrentFavorite ? "fullheart" : "heart"}
 					className={styles["icon-heart"]}
 				/>
 			</button>
