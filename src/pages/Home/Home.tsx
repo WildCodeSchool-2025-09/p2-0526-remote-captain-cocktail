@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CocktailCard from "../../components/CocktailCard/CocktailCard";
+import CocktailSuggestHome from "../../components/CocktailSuggestHome/CocktailSuggestHome";
 import CocktailTrending from "../../components/CocktailTrending/CocktailTrending";
 import Icon from "../../components/Icon/Icon";
 import { useFavorites } from "../../contexts/FavoritesContext";
@@ -92,6 +93,9 @@ function Home() {
 							You have no favorites at the moment.
 						</p>
 					)}
+				</div>
+				<div>
+					<CocktailSuggestHome />
 				</div>
 			</article>
 		</section>
