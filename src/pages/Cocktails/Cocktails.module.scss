@@ -1,16 +1,5 @@
 @use '../../styles/media-queries.scss' as *;
 
-/* ======== ECRAN COMPLET =========*/
-:global(body) {
-  margin: 0;
-  background-image: url('/assets/images/background-pages.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: white;
-}
-
-
 /* ======== HEADER =========*/
 
 h1 {

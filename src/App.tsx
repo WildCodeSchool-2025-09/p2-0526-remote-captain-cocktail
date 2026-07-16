@@ -4,17 +4,22 @@ import CocktailDetailsDialog from "./components/CocktailDetailsDialog/CocktailDe
 import Navbar from "./components/Navbar/Navbar";
 import { CocktailDetailsProvider } from "./contexts/CocktailDetailsContext";
 import { MyIngredientsProvider } from "./contexts/MyIngredientsContext";
+import { SortProvider } from "./contexts/SortContext";
 
 function App() {
 	return (
 		<>
-			<CocktailDetailsProvider>
-				<Navbar />
-				<main className="page-container">
-					<Outlet />
-				</main>
-				<CocktailDetailsDialog />
-			</CocktailDetailsProvider>
+			<MyIngredientsProvider>
+				<CocktailDetailsProvider>
+					<SortProvider>
+						<Navbar />
+						<main className="page-container">
+							<Outlet />
+						</main>
+						<CocktailDetailsDialog />
+					</SortProvider>
+				</CocktailDetailsProvider>
+			</MyIngredientsProvider>
 		</>
 	);
 }
