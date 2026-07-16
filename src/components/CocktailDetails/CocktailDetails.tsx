@@ -8,6 +8,14 @@ import IngredientItem from "../IngredientItem/IngredientItem";
 import CloseButton from "./CloseButton/CloseButton";
 import styles from "./CocktailDetails.module.scss";
 
+function splitInstructionSteps(instructions?: string): string[] {
+	if (!instructions) return [];
+	return instructions
+		.split(".")
+		.map((step) => step.trim())
+		.filter(Boolean);
+}
+
 function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	const [IsFavorite, setIsFavorite] = useState(false);
 	function handleFavorite() {
@@ -116,11 +124,16 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 			</ul>
 			<h2>PREPARATION</h2>
 			<div className={styles.preparation}>
-				<p>
-					{isTranslate
-						? cocktailDetails.strInstructionsFR
-						: cocktailDetails.strInstructions}
-				</p>
+				<ol className={styles.steps}>
+					{splitInstructionSteps(
+						isTranslate
+							? cocktailDetails.strInstructionsFR
+							: cocktailDetails.strInstructions,
+					).map((step, index) => (
+						// biome-ignore lint/suspicious/noArrayIndexKey: liste statique dérivée du texte, ne se réordonne jamais
+						<li key={index}>{step}</li>
+					))}
+				</ol>
 				{cocktailDetails.strInstructionsFR && (
 					<button
 						type="button"

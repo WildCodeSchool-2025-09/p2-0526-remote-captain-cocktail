@@ -103,5 +103,33 @@
             width: fit-content;
             margin-top: var(--spacer-small);
         }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacer-small);
+            counter-reset: step;
+
+            li {
+                display: flex;
+                align-items: center;
+                gap: var(--spacer-small);
+                counter-increment: step;
+
+                &::before {
+                    content: counter(step);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                    width: 24px;
+                    height: 24px;
+                    border: 1px solid var(--tertiary);
+                    border-radius: 50%;
+                    color: var(--tertiary);
+                    font-weight: 700;
+                }
+            }
+        }
     }
 }

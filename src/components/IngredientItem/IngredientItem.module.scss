@@ -1,6 +1,7 @@
 .ingr-and-measure{
     display: flex;
     align-items: center;
+    white-space: nowrap;
     gap: var(--spacer-small);
     
     .status {
@@ -39,6 +40,7 @@
     }
 
     .badge {
+        white-space: nowrap;
         font-size: .6rem;
         color: var(--secondary-light);
         border: 1px solid var(--secondary);
