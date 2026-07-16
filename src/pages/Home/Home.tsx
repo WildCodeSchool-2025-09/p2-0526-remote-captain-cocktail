@@ -35,7 +35,7 @@ function Home() {
 	}, [favorites]);
 
 	return (
-		<section className={styles.home}>
+		<section className={`${styles.home} home`}>
 			<img
 				src="../../assets/images/logotransp.png"
 				alt="Captain Cocktail's logo"

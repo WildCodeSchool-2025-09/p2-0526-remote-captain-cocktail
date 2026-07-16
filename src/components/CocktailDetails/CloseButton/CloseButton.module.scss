@@ -1,13 +1,8 @@
-button.arrow-left-button {
-    align-self: flex-start;
-    margin-bottom: 0;
-    padding: 8px;
-    position: fixed;
-    z-index: 20;
+@use '../../../styles/components' as *;
 
-    i {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    }
+.close-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    @extend .round-button;
 }

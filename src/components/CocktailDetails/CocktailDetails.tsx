@@ -9,6 +9,14 @@ import IngredientItem from "../IngredientItem/IngredientItem";
 import CloseButton from "./CloseButton/CloseButton";
 import styles from "./CocktailDetails.module.scss";
 
+function splitInstructionSteps(instructions?: string): string[] {
+	if (!instructions) return [];
+	return instructions
+		.split(".")
+		.map((step) => step.trim())
+		.filter(Boolean);
+}
+
 function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 	const { isFavorite, toggleFavorite } = useFavorites();
 
@@ -80,8 +88,8 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 
 	return (
 		<article className={styles["cocktail-card"]}>
-			<CloseButton />
-			<div className={styles["cocktail-img-favheart"]}>
+			<div className={styles["image-header"]}>
+				<CloseButton />
 				<img
 					className={styles["cocktail-img"]}
 					src={cocktailDetails.strDrinkThumb}
@@ -90,7 +98,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 				<button
 					type="button"
 					onClick={handleFavorite}
-					className={styles.favheart}
+					className={`${styles.favorite} ${isFavorite(cocktailDetails.idDrink) ? styles["is-active"] : ""}`}
 					aria-label={
 						!isFavorite(cocktailDetails.idDrink)
 							? "Set Favorite"
@@ -105,14 +113,14 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 				</button>
 			</div>
 			<h1>{cocktailDetails.strDrink}</h1>
-			<ul className={styles["cocktail-tags"]}>
+			<ul className={styles["tags-container"]}>
 				<li className={styles.alcool}>{cocktailDetails.strAlcoholic}</li>
 				<li>{cocktailDetails.strCategory}</li>
 			</ul>
 			<div className={styles["recipe-specs"]}>
-				<p>🕙 10 min</p>
-				<p>👩‍👦 1 pers.</p>
-				<p>⭐ Difficulty : {difficulty()}</p>
+				<span>🕙&nbsp;&nbsp;10 min</span>
+				<span>👩‍👦&nbsp;&nbsp;1 pers.</span>
+				<span>⭐&nbsp;&nbsp;{difficulty()}</span>
 			</div>
 			<h2>INGREDIENTS</h2>
 			<ul className={styles.ingredients}>
@@ -126,20 +134,24 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 			</ul>
 			<h2>PREPARATION</h2>
 			<div className={styles.preparation}>
-				{!cocktailDetails.strInstructionsFR ? (
-					<p>{cocktailDetails.strInstructions}</p>
-				) : (
-					<>
-						<p>{cocktailDetails.strInstructions}</p>
-						<button
-							type="button"
-							className="pink-button"
-							onClick={() => setIsTranslate(!isTranslate)}
-						>
-							Translate to French
-						</button>
-						{isTranslate && <p>{cocktailDetails.strInstructionsFR}</p>}
-					</>
+				<ol className={styles.steps}>
+					{splitInstructionSteps(
+						isTranslate
+							? cocktailDetails.strInstructionsFR
+							: cocktailDetails.strInstructions,
+					).map((step, index) => (
+						// biome-ignore lint/suspicious/noArrayIndexKey: liste statique dérivée du texte, ne se réordonne jamais
+						<li key={index}>{step}</li>
+					))}
+				</ol>
+				{cocktailDetails.strInstructionsFR && (
+					<button
+						type="button"
+						className="pink-button"
+						onClick={() => setIsTranslate(!isTranslate)}
+					>
+						{isTranslate ? "Translate to English" : "Translate to French"}
+					</button>
 				)}
 			</div>
 			<h2>INFORMATIONS</h2>

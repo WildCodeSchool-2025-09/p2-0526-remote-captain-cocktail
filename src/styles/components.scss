@@ -1,3 +1,5 @@
+@use './animations.scss';
+
 // ----- UI COMPONENTS ---- //
 
 $neon-colors: (
@@ -58,10 +60,31 @@ $neon-colors: (
 .pink-button {
     background: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
     border-radius: 40px;
-    padding: var(--spacer-small) var(--spacer-medium);
     border: none;
-    font-family: poppins;
     font-weight: 700;
     box-shadow: 0px 0px 21px -3px var(--secondary);
+    padding: var(--spacer-small) var(--spacer-medium);
     cursor: pointer;
+}
+
+.round-button {
+    width: 42px;
+    height: 42px;
+    background-color: var(--background);
+    border: 1px solid var(--white-alpha);
+    border-radius: 50%;
+    padding-top: 5px;
+    &.is-active {
+        border-color: var(--secondary);
+        animation: thumb-pop .3s ease 1;
+        svg path {
+            fill: var(--secondary);
+            stroke: var(--secondary);
+        }
+    }
+    svg path {
+        stroke-width: 2px;
+        fill: white;
+        stroke: white;
+    }
 }
