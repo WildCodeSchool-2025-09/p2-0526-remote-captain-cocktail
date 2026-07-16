@@ -70,11 +70,7 @@ function SearchBar({
 					}}
 					title={effectiveSortAscending ? "Sort Z→A" : "Sort A→Z"}
 				>
-					<img
-						src={sortIcon}
-						alt="Sort in alphabetical order"
-						className={styles["sort-icon"]}
-					/>
+					{effectiveSortAscending ? "A > Z" : "Z > A"}
 				</button>
 			</div>
 			<div className={styles["filter-container"]}>
