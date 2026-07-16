@@ -71,7 +71,7 @@ $neon-colors: (
     width: 42px;
     height: 42px;
     background-color: var(--background);
-    border: 2px solid var(--white-alpha);
+    border: 1px solid var(--white-alpha);
     border-radius: 50%;
     padding-top: 5px;
     &.is-active {
