@@ -116,20 +116,19 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 			</ul>
 			<h2>PREPARATION</h2>
 			<div className={styles.preparation}>
-				{!cocktailDetails.strInstructionsFR ? (
-					<p>{cocktailDetails.strInstructions}</p>
-				) : (
-					<>
-						<p>{cocktailDetails.strInstructions}</p>
-						<button
-							type="button"
-							className="pink-button"
-							onClick={() => setIsTranslate(!isTranslate)}
-						>
-							Translate to French
-						</button>
-						{isTranslate && <p>{cocktailDetails.strInstructionsFR}</p>}
-					</>
+				<p>
+					{isTranslate
+						? cocktailDetails.strInstructionsFR
+						: cocktailDetails.strInstructions}
+				</p>
+				{cocktailDetails.strInstructionsFR && (
+					<button
+						type="button"
+						className="pink-button"
+						onClick={() => setIsTranslate(!isTranslate)}
+					>
+						{isTranslate ? "Translate to English" : "Translate to French"}
+					</button>
 				)}
 			</div>
 			<h2>INFORMATIONS</h2>
