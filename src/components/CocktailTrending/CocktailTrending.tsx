@@ -1,9 +1,15 @@
 import { useCocktailId } from "../../contexts/CocktailDetailsContext";
+import { useFavorites } from "../../contexts/FavoritesContext";
 import { blueSignature } from "../../data/blueSignature";
+import type { CocktailCardProps } from "../../types/types";
+import Icon from "../Icon/Icon";
 import styles from "./CocktailTrending.module.scss";
 
-function CocktailTrending() {
+function CocktailTrending({ cocktail }: CocktailCardProps) {
 	const { setCocktailId } = useCocktailId();
+	const { isFavorite, toggleFavorite } = useFavorites();
+	const isCurrentFavorite = isFavorite(cocktail.idDrink);
+
 	return (
 		<section
 			className={styles["cocktail-trending"]}
@@ -27,6 +33,19 @@ function CocktailTrending() {
 				src="/assets/images/cocktails/blue-signature-cut.png"
 				alt=""
 			/>
+			<button
+				type="button"
+				className={styles["btn-favorite"]}
+				aria-label={
+					isCurrentFavorite ? "Remove from favorites" : "Add to favorites"
+				}
+				onClick={() => toggleFavorite(cocktail.idDrink)}
+			>
+				<Icon
+					name={isCurrentFavorite ? "fullheart" : "heart"}
+					className={styles["icon-heart"]}
+				/>
+			</button>
 		</section>
 	);
 }
