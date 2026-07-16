@@ -136,3 +136,44 @@
         }
     }
 }
+
+.cocktail-favorites {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacer-medium);
+
+    .favorites {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            font-size: 1.4rem;
+            color: white;
+        }
+
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+
+        }
+    }
+}
+
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); // S'adapte sur mobile et écran large
+    gap: var(--spacer-medium);
+    width: 100%;
+}
+
+.loading, .no-favorites {
+    color: var(--grey-light);
+    text-align: center;
+    width: 100%;
+    padding: var(--spacer-medium) 0;
+    font-style: italic;
+}

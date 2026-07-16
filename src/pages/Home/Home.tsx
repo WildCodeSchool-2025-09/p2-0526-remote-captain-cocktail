@@ -1,9 +1,39 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CocktailCard from "../../components/CocktailCard/CocktailCard";
 import CocktailTrending from "../../components/CocktailTrending/CocktailTrending";
 import Icon from "../../components/Icon/Icon";
+import { useFavorites } from "../../contexts/FavoritesContext";
+import type { Cocktail } from "../../types/types";
+import { getCocktailById } from "../../utils/getCocktailById";
 import styles from "./Home.module.scss";
 
 function Home() {
+	const { favorites } = useFavorites();
+	const [recentCocktails, setRecentCocktails] = useState<Cocktail[]>([]);
+	const [loading, setLoading] = useState<boolean>(false);
+
+	useEffect(() => {
+		async function fetchRecentFavorites() {
+			setLoading(true);
+
+			const lastTwoIds = favorites.slice(-2).reverse();
+
+			const results = await Promise.all(
+				lastTwoIds.map((id) => getCocktailById(id)),
+			);
+
+			setRecentCocktails(results.filter((c): c is Cocktail => c !== null));
+			setLoading(false);
+		}
+
+		if (favorites.length > 0) {
+			fetchRecentFavorites();
+		} else {
+			setRecentCocktails([]);
+		}
+	}, [favorites]);
+
 	return (
 		<section className={`${styles.home} home`}>
 			<img
@@ -47,6 +77,21 @@ function Home() {
 				<div className={styles.favorites}>
 					<h2>Recents favorites</h2>
 					<Link to="/favorites">See all &rsaquo;</Link>
+				</div>
+				<div className={styles["favorites-list"]}>
+					{loading ? (
+						<p className={styles.loading}>Loading your favorites...</p>
+					) : recentCocktails.length > 0 ? (
+						<div className={styles["suggestions-grid"]}>
+							{recentCocktails.map((cocktail) => (
+								<CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
+							))}
+						</div>
+					) : (
+						<p className={styles["no-favorites"]}>
+							You have no favorites at the moment.
+						</p>
+					)}
 				</div>
 			</article>
 		</section>

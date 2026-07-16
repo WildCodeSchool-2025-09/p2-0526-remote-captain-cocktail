@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { API_BASE } from "../../config";
+import { useFavorites } from "../../contexts/FavoritesContext";
 import { blueSignature } from "../../data/blueSignature";
 import type { Cocktail, CocktailDetailsProps } from "../../types/types";
 import CocktailTags from "../CocktailTags/CocktailTags";
@@ -17,9 +18,10 @@ function splitInstructionSteps(instructions?: string): string[] {
 }
 
 function CocktailDetails({ idDrink }: CocktailDetailsProps) {
-	const [IsFavorite, setIsFavorite] = useState(false);
+	const { isFavorite, toggleFavorite } = useFavorites();
+
 	function handleFavorite() {
-		setIsFavorite(!IsFavorite);
+		toggleFavorite(cocktailDetails?.idDrink || "");
 	}
 
 	const [isTranslate, setIsTranslate] = useState(false);
@@ -96,10 +98,18 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 				<button
 					type="button"
 					onClick={handleFavorite}
-					className={`${styles.favorite} ${IsFavorite ? styles["is-active"] : ""}`}
-					aria-label={!IsFavorite ? "Set Favorite" : "Remove Favorite"}
+					className={`${styles.favorite} ${isFavorite(cocktailDetails.idDrink) ? styles["is-active"] : ""}`}
+					aria-label={
+						!isFavorite(cocktailDetails.idDrink)
+							? "Set Favorite"
+							: "Remove Favorite"
+					}
 				>
-					{!IsFavorite ? <Icon name="heart" /> : <Icon name="fullheart" />}
+					{!isFavorite(cocktailDetails.idDrink) ? (
+						<Icon name="heart" />
+					) : (
+						<Icon name="fullheart" />
+					)}
 				</button>
 			</div>
 			<h1>{cocktailDetails.strDrink}</h1>
