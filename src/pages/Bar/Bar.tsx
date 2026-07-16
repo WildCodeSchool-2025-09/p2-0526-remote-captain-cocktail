@@ -43,7 +43,7 @@ export default function Bar() {
 			</h1>
 			<IngredientsSearch search={search} onSearchChange={setSearch} />
 			{myIngredients.length === 0 && search.length === 0 && (
-				<div className="how-to">
+				<div className={`${styles["how-to"]} how-to`}>
 					<h3>{t.bar.howTo.title}</h3>
 					<ul>
 						{t.bar.howTo.steps.map((step, i) => (

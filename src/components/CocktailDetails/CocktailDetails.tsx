@@ -78,8 +78,8 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 
 	return (
 		<article className={styles["cocktail-card"]}>
-			<CloseButton />
-			<div className={styles["cocktail-img-favheart"]}>
+			<div className={styles["image-header"]}>
+				<CloseButton />
 				<img
 					className={styles["cocktail-img"]}
 					src={cocktailDetails.strDrinkThumb}
@@ -88,7 +88,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 				<button
 					type="button"
 					onClick={handleFavorite}
-					className={styles.favheart}
+					className={`${styles.favorite} ${IsFavorite ? styles["is-active"] : ""}`}
 					aria-label={!IsFavorite ? "Set Favorite" : "Remove Favorite"}
 				>
 					{!IsFavorite ? <Icon name="heart" /> : <Icon name="fullheart" />}
@@ -102,7 +102,7 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 			<div className={styles["recipe-specs"]}>
 				<p>🕙 10 min</p>
 				<p>👩‍👦 1 pers.</p>
-				<p>⭐ Difficulty : {difficulty()}</p>
+				<p>⭐ {difficulty()}</p>
 			</div>
 			<h2>INGREDIENTS</h2>
 			<ul className={styles.ingredients}>

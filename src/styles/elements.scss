@@ -12,6 +12,9 @@ body {
     font-weight: 400;
     overflow-x: hidden;
     margin: 0;
+    &:has(#my-dialog[open]) {
+        overflow: hidden;
+    }
     &:before, &:after {
         content: '';
         position: fixed;
