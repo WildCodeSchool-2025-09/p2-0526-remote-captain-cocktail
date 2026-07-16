@@ -39,7 +39,7 @@ function Favorites() {
 	}, [favorites]);
 	if (loading) return <p>Favorites loading</p>;
 	if (favorites.length === 0)
-		return <p>You have no favorites at the moment.</p>;
+		return <p className={styles.error}>You have no favorites at the moment.</p>;
 
 	const filteredCocktails = cocktails.filter((cocktail) => {
 		const cleanQuery = searchQuery.trim().toLowerCase();
