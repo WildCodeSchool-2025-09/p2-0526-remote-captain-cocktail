@@ -1,3 +1,5 @@
+@use '../../styles/components.scss' as *;
+
 .article {
 	display: flex;
 	flex-direction: column;
@@ -31,16 +33,11 @@
 
 .btn-favorite {
 	position: absolute;
-	top: 8px;
-	right: 8px;
-	border: 1px solid var(--secondary);
-	border-radius: 50%;
-	padding: 5px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: rgba(100, 100, 100, 0.4);
-	backdrop-filter: blur(4px);
+    top: 5px;
+    right: 5px;
+    @extend .round-button;
+	width: 30px;
+    height: 30px;
 }
 
 .card-details {
@@ -53,16 +50,3 @@
 	cursor: pointer;
 }
 
-.icon-heart {
-	width: 16px;
-	height: 16px;
-svg {
-                display: block;
-                width: 100%;
-                height: 100%;
-
-                path, g {
-                    fill: var(--secondary);
-                }
-            }
-}
