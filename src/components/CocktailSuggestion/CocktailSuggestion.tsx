@@ -18,49 +18,54 @@ export default function CocktailSuggestion({
 	const isCurrentFavorite = isFavorite(suggestion.idDrink);
 
 	return (
-		<button
-			type="button"
-			className={`${styles.suggestion} ${getMissingColor(missingCount)}`}
-			command="show-modal"
-			commandfor="my-dialog"
-			onClick={() => {
-				setCocktailId(suggestion.idDrink);
-			}}
-		>
-			<img src={suggestion.strDrinkThumb} alt={suggestion.strDrink} />
-			<div>
-				<h5>{suggestion.strDrink}</h5>
-				<span>
-					{missingCount === 0 ? (
-						<>
-							<Icon name="checkmark" className={styles.checkmark} />
-							{t.bar.cocktailSuggestion.doable}
-						</>
-					) : (
-						<>
-							{t.bar.cocktailSuggestion.missingIngredient.replace(
-								"{missingCount}",
-								String(missingCount),
-							)}
-							&nbsp;
-							{pluralize(missingCount, t.bar.ingredient, t.bar.ingredients)}
-						</>
-					)}
-				</span>
-			</div>
+		<div className={styles.wrapper}>
+			<button
+				type="button"
+				className={`${styles.suggestion} ${getMissingColor(missingCount)}`}
+				command="show-modal"
+				commandfor="my-dialog"
+				onClick={() => {
+					setCocktailId(suggestion.idDrink);
+				}}
+			>
+				<img src={suggestion.strDrinkThumb} alt={suggestion.strDrink} />
+				<div>
+					<h5>{suggestion.strDrink}</h5>
+					<span>
+						{missingCount === 0 ? (
+							<>
+								<Icon name="checkmark" className={styles.checkmark} />
+								{t.bar.cocktailSuggestion.doable}
+							</>
+						) : (
+							<>
+								{t.bar.cocktailSuggestion.missingIngredient.replace(
+									"{missingCount}",
+									String(missingCount),
+								)}
+								&nbsp;
+								{pluralize(missingCount, t.bar.ingredient, t.bar.ingredients)}
+							</>
+						)}
+					</span>
+				</div>
+			</button>
 			<button
 				type="button"
 				className={styles["btn-favorite"]}
 				aria-label={
 					isCurrentFavorite ? "Remove from favorites" : "Add to favorites"
 				}
-				onClick={() => toggleFavorite(suggestion.idDrink)}
+				onClick={(e) => {
+					e.stopPropagation();
+					toggleFavorite(suggestion.idDrink);
+				}}
 			>
 				<Icon
 					name={isCurrentFavorite ? "fullheart" : "heart"}
 					className={styles["icon-heart"]}
 				/>
 			</button>
-		</button>
+		</div>
 	);
 }

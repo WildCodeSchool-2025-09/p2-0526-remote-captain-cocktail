@@ -1,5 +1,10 @@
 @use '../../styles/components' as *;
 
+.wrapper {
+  position: relative;
+  display: flex;
+}
+
 .suggestion {
     position:relative;
     display: flex;
@@ -83,6 +88,7 @@
 
 .btn-favorite {
 	position: absolute;
+    z-index:2;
 	top: 8px;
 	right: 8px;
 	border: 1px solid var(--secondary);
@@ -96,7 +102,6 @@
 }
 
 .icon-heart {
-    translate: 0 -3px;
 	width: 16px;
 	height: 16px;
 svg {
