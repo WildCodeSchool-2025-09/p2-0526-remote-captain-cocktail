@@ -1,6 +1,7 @@
 @use '../../styles/components' as *;
 
 .suggestion {
+    position:relative;
     display: flex;
     align-items: center;
     gap: var(--spacer-medium);
@@ -95,6 +96,7 @@
 }
 
 .icon-heart {
+    translate: 0 -3px;
 	width: 16px;
 	height: 16px;
 svg {
@@ -103,7 +105,8 @@ svg {
                 height: 100%;
 
                 path, g {
-                    fill: var(--secondary);
+                    fill: var(--secondary) !important;
+                    z-index:100;
                 }
             }
 }
