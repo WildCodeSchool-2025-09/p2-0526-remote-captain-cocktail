@@ -6,23 +6,6 @@ import { CocktailDetailsProvider } from "./contexts/CocktailDetailsContext";
 import { FavoritesProvider } from "./contexts/FavoritesContext";
 import { MyIngredientsProvider } from "./contexts/MyIngredientsContext";
 import { SortProvider } from "./contexts/SortContext";
-<<<<<<< HEAD
-
-function App() {
-	return (
-		<>
-			<MyIngredientsProvider>
-				<CocktailDetailsProvider>
-					<SortProvider>
-						<Navbar />
-						<main className="page-container">
-							<Outlet />
-						</main>
-						<CocktailDetailsDialog />
-					</SortProvider>
-				</CocktailDetailsProvider>
-			</MyIngredientsProvider>
-=======
 function App() {
 	return (
 		<>
@@ -39,7 +22,6 @@ function App() {
 					</CocktailDetailsProvider>
 				</MyIngredientsProvider>
 			</FavoritesProvider>
->>>>>>> dev
 		</>
 	);
 }
