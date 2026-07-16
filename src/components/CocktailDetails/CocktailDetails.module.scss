@@ -72,6 +72,7 @@
             font-size: .7rem;
             font-weight: 600;
             padding: 6px 12px;
+            border: 1px solid var(--white-alpha);
             @extend .simple-glassmorphism;            
         }
     }
@@ -86,13 +87,10 @@
     }
 
     .ingredients {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacer-small);
         margin: var(--spacer-medium) 0;
-
-        @include breakpoint('sm') {
-            grid-template-columns: 1fr 1fr 1fr;
-        };
     }
 
     .preparation {

@@ -1,33 +1,32 @@
+@use '../../styles/components' as *;
+
 .info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacer-small);
 
     li {
-        backdrop-filter: blur(12px);
-        background: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        padding: var(--spacer-small);
         display: flex;
         flex-direction: column;
         justify-content: center;
+        gap: 5px;
+        border-radius: var(--radius);
+        border: 1px solid var(--white-alpha);
+        @extend .simple-glassmorphism;
+        padding: var(--spacer-small);
+
+        .full {
+            grid-column: span 2;
+        }
+    
+        .type {
+            color: var(--white-alpha);
+        }
     }
 
-    .full {
-        grid-column: span 2;
-    }
-
-    .type {
-        display: block;
-        font-size: 1rem;        
-        opacity: 0.7;
-    }
 
     .property {
-        display: block;
-        font-weight: 700;
-        font-size: 1.1rem;
+        font-size: .9rem;
     }
     .tags-box {
         grid-column: span 2;

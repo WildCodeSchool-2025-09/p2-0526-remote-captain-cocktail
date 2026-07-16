@@ -53,5 +53,8 @@
         },
         "ingredient": "ingredient",
         "ingredients": "ingredients"
+    },
+    "details": {
+        "toPlan": "To plan"
     }
 }
