@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CocktailTrending from "../../components/CocktailTrending/CocktailTrending";
 import Icon from "../../components/Icon/Icon";
 import styles from "./Home.module.scss";
 
@@ -31,7 +32,7 @@ function Home() {
 				</p>
 			</article>
 			<article className={styles.moment}>
-				{/* TODO : Ajouter le composant CocktailTrending à l'intérieur de l'article */}
+				<CocktailTrending />
 			</article>
 			<article className={styles["all-cocktails"]}>
 				<h3>All cocktails</h3>
