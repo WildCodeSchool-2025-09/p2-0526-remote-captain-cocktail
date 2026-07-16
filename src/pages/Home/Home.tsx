@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CocktailCard from "../../components/CocktailCard/CocktailCard";
+import CocktailTrending from "../../components/CocktailTrending/CocktailTrending";
 import Icon from "../../components/Icon/Icon";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import type { Cocktail } from "../../types/types";
@@ -61,7 +62,7 @@ function Home() {
 				</p>
 			</article>
 			<article className={styles.moment}>
-				{/* TODO : Ajouter le composant CocktailTrending à l'intérieur de l'article */}
+				<CocktailTrending />
 			</article>
 			<article className={styles["all-cocktails"]}>
 				<h3>All cocktails</h3>
