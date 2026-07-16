@@ -95,14 +95,14 @@ function CocktailDetails({ idDrink }: CocktailDetailsProps) {
 				</button>
 			</div>
 			<h1>{cocktailDetails.strDrink}</h1>
-			<ul className={styles["cocktail-tags"]}>
+			<ul className={styles["tags-container"]}>
 				<li className={styles.alcool}>{cocktailDetails.strAlcoholic}</li>
 				<li>{cocktailDetails.strCategory}</li>
 			</ul>
 			<div className={styles["recipe-specs"]}>
-				<p>🕙 10 min</p>
-				<p>👩‍👦 1 pers.</p>
-				<p>⭐ {difficulty()}</p>
+				<span>🕙&nbsp;&nbsp;10 min</span>
+				<span>👩‍👦&nbsp;&nbsp;1 pers.</span>
+				<span>⭐&nbsp;&nbsp;{difficulty()}</span>
 			</div>
 			<h2>INGREDIENTS</h2>
 			<ul className={styles.ingredients}>
